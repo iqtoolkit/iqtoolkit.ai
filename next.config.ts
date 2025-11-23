@@ -1,8 +1,4 @@
 import type { NextConfig } from "next";
-import createMDX from "@next/mdx";
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 const nextConfig: NextConfig = {
   // Enable React strict mode for better development experience
@@ -64,28 +60,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-const withMDX = createMDX({
-  options: {
-    rehypePlugins: [
-      rehypeSlug,
-      [
-        rehypePrettyCode,
-        {
-          theme: "github-dark",
-          keepBackground: true,
-        },
-      ],
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: "wrap",
-          properties: {
-            className: ["anchor"],
-          },
-        },
-      ],
-    ],
-  },
-});
-
-export default withMDX(nextConfig);
+export default nextConfig;
