@@ -273,22 +273,114 @@ export default function AboutPage() {
             </div>
             <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800/50">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                Recent Certifications
+                Professional Certifications
               </h3>
-              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                <li>
-                  <strong>Microsoft Certified: Azure AI Fundamentals</strong> - Microsoft (October
-                  2025)
-                </li>
-                <li>
-                  <strong>Astronomer Certification for Apache Airflow 3 Fundamentals</strong> -
-                  Astronomer (July 2025)
-                </li>
-                <li className="text-sm text-gray-600 dark:text-gray-400">
-                  + 14 additional certifications in database administration, cloud architecture, and
-                  related technologies
-                </li>
-              </ul>
+              <div className="space-y-3">
+                <CertificationGroup title="Cloud & AI (2025)">
+                  <Certification
+                    name="Microsoft Certified: Azure AI Fundamentals"
+                    issuer="Microsoft"
+                    date="October 2025"
+                    credentialId="72EF74852647AB18"
+                  />
+                </CertificationGroup>
+
+                <CertificationGroup title="Data Engineering & Orchestration (2025)">
+                  <Certification
+                    name="Astronomer Certification for Apache Airflow 3 Fundamentals"
+                    issuer="Astronomer"
+                    date="July 2025"
+                  />
+                  <Certification
+                    name="Liquibase Certified Practitioner Exam"
+                    issuer="Liquibase"
+                    date="July 2025"
+                    credentialId="155249211"
+                  />
+                </CertificationGroup>
+
+                <CertificationGroup title="Kubernetes & Container Orchestration (2024)">
+                  <Certification
+                    name="CKA: Certified Kubernetes Administrator"
+                    issuer="The Linux Foundation"
+                    date="December 2024"
+                    expires="December 2026"
+                  />
+                  <Certification
+                    name="[PCEP-30-02] PCEP™ – Certified Entry-Level Python Programmer"
+                    issuer="Python Developer"
+                    date="December 2024"
+                  />
+                  <Certification
+                    name="CAPA: Certified Argo Project Associate"
+                    issuer="The Linux Foundation"
+                    date="May 2024"
+                    expires="May 2026"
+                    credentialId="LF-jwusb3lko8"
+                  />
+                </CertificationGroup>
+
+                <CertificationGroup title="Azure Architecture & Administration (2023)">
+                  <Certification
+                    name="Microsoft Certified: Azure Solutions Architect Expert"
+                    issuer="Microsoft"
+                    date="June 2023"
+                    expires="June 2026"
+                  />
+                  <Certification
+                    name="Microsoft Certified: Azure Administrator Associate"
+                    issuer="Microsoft"
+                    date="May 2023"
+                    expires="May 2026"
+                  />
+                </CertificationGroup>
+
+                <CertificationGroup title="Data Engineering & Databases (2020-2021)">
+                  <Certification
+                    name="Astronomer Certification DAG Authoring for Apache Airflow"
+                    issuer="Astronomer"
+                    date="December 2021"
+                  />
+                  <Certification
+                    name="Astronomer Certification for Apache Airflow Fundamentals"
+                    issuer="Astronomer"
+                    date="December 2021"
+                  />
+                  <Certification
+                    name="Liquibase Fundamentals Certification"
+                    issuer="Liquibase"
+                    date="July 2020"
+                  />
+                  <Certification
+                    name="Apache Cassandra™ 3.x Administrator Associate"
+                    issuer="DataStax"
+                    date="June 2020"
+                  />
+                  <Certification
+                    name="Microsoft Certified: Azure Fundamentals"
+                    issuer="Microsoft"
+                    date="April 2020"
+                  />
+                </CertificationGroup>
+
+                <CertificationGroup title="Database Administration & Security (2014-2016)">
+                  <Certification
+                    name="MCSA: SQL Server 2012/2014 - Certified 2016"
+                    issuer="Microsoft"
+                    date="October 2016"
+                  />
+                  <Certification
+                    name="Computer Hacking Forensic Investigator Certification"
+                    issuer="EC-Council"
+                    date="January 2015"
+                  />
+                  <Certification
+                    name="Certified Ethical Hacker (CEH)"
+                    issuer="EC-Council"
+                    date="December 2014"
+                  />
+                </CertificationGroup>
+              </div>
             </div>
           </div>
         </section>
@@ -467,6 +559,45 @@ function SkillCategory({ title, skills }: SkillCategoryProps) {
             {skill}
           </span>
         ))}
+      </div>
+    </div>
+  );
+}
+
+interface CertificationGroupProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+function CertificationGroup({ title, children }: CertificationGroupProps) {
+  return (
+    <div className="border-l-4 border-blue-500 pl-4">
+      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">{title}</h4>
+      <div className="space-y-2">{children}</div>
+    </div>
+  );
+}
+
+interface CertificationProps {
+  name: string;
+  issuer: string;
+  date: string;
+  expires?: string;
+  credentialId?: string;
+}
+
+function Certification({ name, issuer, date, expires, credentialId }: CertificationProps) {
+  return (
+    <div className="text-gray-700 dark:text-gray-300">
+      <div className="font-medium">{name}</div>
+      <div className="text-sm text-gray-600 dark:text-gray-400">
+        {issuer} • {date}
+        {expires && ` • Expires ${expires}`}
+        {credentialId && (
+          <span className="ml-2 text-xs font-mono bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded">
+            ID: {credentialId}
+          </span>
+        )}
       </div>
     </div>
   );
