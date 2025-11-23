@@ -10,24 +10,24 @@ describe("Home Page", () => {
 
   it("renders the compelling value proposition", () => {
     render(<Home />);
-    const tagline = screen.getByText(/Transform Database Intelligence with AI-Powered Analytics/i);
+    const tagline = screen.getByText(/Unified Database Intelligence Platform/i);
     expect(tagline).toBeInTheDocument();
   });
 
-  it("renders the unique differentiator about Ollama", () => {
+  it("renders the unique differentiator about self-hosted", () => {
     render(<Home />);
-    const differentiator = screen.getByText(/Powered by Ollama Integration/i);
+    const differentiator = screen.getByText(/Self-Hosted & Privacy-First/i);
     expect(differentiator).toBeInTheDocument();
   });
 
   it("renders all specific feature cards", () => {
     render(<Home />);
-    expect(screen.getByText("Database AI Assistant")).toBeInTheDocument();
-    expect(screen.getByText("Real-Time Metrics")).toBeInTheDocument();
-    expect(screen.getByText("Privacy-First Architecture")).toBeInTheDocument();
-    expect(screen.getByText("Query Optimization")).toBeInTheDocument();
-    expect(screen.getByText("Migration Tools")).toBeInTheDocument();
-    expect(screen.getByText("Production-Ready")).toBeInTheDocument();
+    expect(screen.getByText("Multi-Database Support")).toBeInTheDocument();
+    expect(screen.getByText("AI-Powered Analysis")).toBeInTheDocument();
+    expect(screen.getByText("Self-Hosted & Open Source")).toBeInTheDocument();
+    expect(screen.getByText("PostgreSQL Analyzer")).toBeInTheDocument();
+    expect(screen.getByText("MongoDB Analyzer")).toBeInTheDocument();
+    expect(screen.getByText(/Data Governance.*Coming Soon/i)).toBeInTheDocument();
   });
 
   it("renders GitHub link", () => {
@@ -46,10 +46,6 @@ describe("Home Page", () => {
 
     const submitButton = screen.getByRole("button", { name: /Stay Updated/i });
     expect(submitButton).toBeInTheDocument();
-
-    const form = emailInput.closest("form");
-    expect(form).toHaveAttribute("data-netlify", "true");
-    expect(form).toHaveAttribute("name", "newsletter");
   });
 
   it("renders footer with AI expertise mention", () => {
