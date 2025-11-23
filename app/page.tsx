@@ -391,6 +391,14 @@ export default function Home() {
                     Contributing
                   </a>
                 </li>
+                <li>
+                  <Link
+                    href="/cv"
+                    className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                  >
+                    Resume/CV
+                  </Link>
+                </li>
               </ul>
             </div>
 
