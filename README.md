@@ -5,18 +5,30 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_SITE_ID/deploy-status)](https://app.netlify.com/sites/iqtoolkit-ai/deploys)
 
-**Official website for iqtoolkit** - A flagship portfolio showcasing advanced AI tools and solutions.
+**Official website for iqtoolkit.ai** - Self-hosted, multi-database intelligence platform.
 
-Repository for the source code and deployment files of the iqtoolkit.ai website, published via Netlify. All updates, features, and infrastructure for iqtoolkit.ai live here.
+Repository for the marketing website of iqtoolkit.ai - a unified, open-source database intelligence platform for MongoDB, PostgreSQL, and beyond. Built by a DBA-turned-architect to solve the fragmentation of multi-database operations.
 
-## 🚀 Features
+## 🎯 About iqtoolkit
+
+iqtoolkit is a **self-hosted only** platform that brings AI-powered query analysis and performance insights to multiple database types. Currently in development with **v0.2.0-alpha launching December 2025**.
+
+**Key Differentiators:**
+- 🔒 **Self-Hosted Only** - Deploy on YOUR infrastructure (Docker, Kubernetes, on-premises)
+- 🗄️ **Multi-Database** - MongoDB + PostgreSQL from day one (MySQL, SQL Server in Q2 2026)
+- 🤖 **AI Choice** - Ollama (private, on-premises) OR OpenAI (cloud, managed)
+- 🌐 **Open Source** - MIT/Apache 2.0 license, no vendor lock-in
+- 👨‍💻 **DBA-Built** - Designed by someone who lived the operational pain
+
+## 🚀 Website Features
 
 - ⚡ **Next.js 16** - Latest React framework with App Router
 - 🎨 **Tailwind CSS 4** - Modern utility-first CSS framework
 - 📱 **Responsive Design** - Mobile-first, works on all devices
 - ♿ **Accessibility** - WCAG compliant
 - 🔍 **SEO Optimized** - Meta tags, sitemap, robots.txt
-- 📧 **Newsletter Integration** - EmailOctopus API for subscriber management
+- 📧 **Newsletter Integration** - EmailOctopus API for alpha testing waitlist
+- 📝 **MDX Blog** - Technical blog with syntax highlighting
 - 🧪 **Testing** - Jest & React Testing Library
 - 📊 **Code Coverage** - Automated coverage reporting
 - 🔧 **TypeScript** - Type-safe code

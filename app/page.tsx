@@ -57,54 +57,54 @@ export default function Home() {
 
           {/* Compelling Value Proposition */}
           <p className="mx-auto mb-6 max-w-3xl text-2xl font-semibold text-gray-900 dark:text-white sm:text-3xl">
-            Transform Database Intelligence with AI-Powered Analytics
+            Unified Database Intelligence Platform
           </p>
           <p className="mx-auto mb-12 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-            The only open-source toolkit that combines multi-database expertise with AI-driven
-            insights to optimize database performance, automate monitoring, and accelerate
-            development across MongoDB, PostgreSQL, and more.
+            Self-hosted, open-source platform for multi-database operations. Built by a DBA-turned-architect
+            to bring intelligent query analysis and performance insights to MongoDB, PostgreSQL, and beyond.
+            Currently in development - v0.2.0-alpha launching December 2025.
           </p>
 
           {/* Key Differentiator */}
           <div className="mx-auto mb-16 max-w-3xl rounded-2xl border border-blue-200 bg-blue-50 p-6 dark:border-blue-900 dark:bg-blue-950/30">
             <p className="text-lg font-medium text-blue-900 dark:text-blue-100">
-              💡 <strong>Powered by Ollama Integration</strong> - Leverage local AI models for
-              intelligent query optimization, schema analysis, and performance recommendations
-              without sending your data to external APIs.
+              🔒 <strong>Self-Hosted & Privacy-First</strong> - Deploy on your infrastructure via Docker or Kubernetes.
+              Choose Ollama for private, on-premises AI or OpenAI for cloud-based analysis. Your data never leaves your control.
+              No vendor lock-in. Ever.
             </p>
           </div>
 
-          {/* Features Grid - Specific Value Props */}
+          {/* Features Grid - Roadmap */}
           <div className="mx-auto mb-16 grid max-w-4xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <FeatureCard
-              title="Database AI Assistant"
-              description="Natural language query generation, automated index recommendations, and intelligent schema optimization powered by local AI models for MongoDB, PostgreSQL, and more"
+              title="Multi-Database Support"
+              description="Unified platform for MongoDB and PostgreSQL query analysis (v0.2.0). MySQL and SQL Server coming in v0.4.0."
               icon="🗄️"
             />
             <FeatureCard
-              title="Real-Time Metrics"
-              description="Live database performance dashboards with AI-powered anomaly detection and predictive resource planning"
-              icon="📊"
+              title="AI-Powered Analysis"
+              description="Query optimization powered by your choice of Ollama (private) or OpenAI (cloud). Intelligent index recommendations and performance insights."
+              icon="🤖"
             />
             <FeatureCard
-              title="Privacy-First Architecture"
-              description="Run entirely on-premise with Ollama integration—your database metadata never leaves your infrastructure"
+              title="Self-Hosted & Open Source"
+              description="Deploy via Docker, Kubernetes with Helm charts, or on-premises. MIT/Apache 2.0 license. Full control of your data."
               icon="🔒"
             />
             <FeatureCard
-              title="Query Optimization"
-              description="Automatic EXPLAIN plan analysis, slow query detection, and AI-suggested optimizations that actually work"
-              icon="⚡"
+              title="PostgreSQL Analyzer"
+              description="EXPLAIN plan analysis, query rewriting suggestions, index recommendations, and anti-pattern detection (Dec 2025)."
+              icon="🐘"
             />
             <FeatureCard
-              title="Migration Tools"
-              description="Seamless schema evolution tracking, version control integration, and automated migration validation"
-              icon="🚀"
+              title="MongoDB Analyzer"
+              description="Aggregation pipeline optimization, document structure analysis, index strategy recommendations, and sharding insights (Dec 2025)."
+              icon="🍃"
             />
             <FeatureCard
-              title="Production-Ready"
-              description="Battle-tested in production environments, comprehensive test coverage, and enterprise-grade reliability"
-              icon="✨"
+              title="Data Governance"
+              description="Schema discovery, PII/PHI detection, compliance readiness (GDPR, HIPAA, SOC 2) via OpenMetadata integration."
+              icon="📋"
             />
           </div>
 
