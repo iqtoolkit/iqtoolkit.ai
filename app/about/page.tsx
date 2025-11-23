@@ -65,6 +65,11 @@ export default function AboutPage() {
               or privacy compromises. Every feature is built from actual DBA pain points, not
               theoretical use cases.
             </p>
+            <p>
+              <strong className="text-blue-600 dark:text-blue-400">The vision:</strong> Make
+              AI-powered database intelligence accessible to every operations team—regardless of
+              budget, cloud provider, or infrastructure complexity.
+            </p>
           </div>
         </section>
 
