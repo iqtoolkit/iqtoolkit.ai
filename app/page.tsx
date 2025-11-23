@@ -102,9 +102,17 @@ export default function Home() {
 
             {/* Email Signup Form */}
             <div id="newsletter" className="mt-8 w-full max-w-md">
-              <form className="flex flex-col gap-3 sm:flex-row">
+              <form
+                name="newsletter"
+                method="POST"
+                data-netlify="true"
+                action="/thank-you"
+                className="flex flex-col gap-3 sm:flex-row"
+              >
+                <input type="hidden" name="form-name" value="newsletter" />
                 <input
                   type="email"
+                  name="email"
                   placeholder="your.email@example.com"
                   className="flex-1 rounded-full border border-gray-300 px-6 py-3 text-gray-900 placeholder-gray-500 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:placeholder-gray-400"
                   required

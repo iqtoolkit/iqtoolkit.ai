@@ -42,9 +42,14 @@ describe("Home Page", () => {
     const emailInput = screen.getByPlaceholderText(/your.email@example.com/i);
     expect(emailInput).toBeInTheDocument();
     expect(emailInput).toHaveAttribute("type", "email");
+    expect(emailInput).toHaveAttribute("name", "email");
 
-    const submitButton = screen.getByRole("button", { name: /Join Waitlist/i });
+    const submitButton = screen.getByRole("button", { name: /Stay Updated/i });
     expect(submitButton).toBeInTheDocument();
+
+    const form = emailInput.closest("form");
+    expect(form).toHaveAttribute("data-netlify", "true");
+    expect(form).toHaveAttribute("name", "newsletter");
   });
 
   it("renders footer with AI expertise mention", () => {
