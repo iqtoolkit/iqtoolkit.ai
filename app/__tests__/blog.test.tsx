@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import BlogPage from "../blog/page";
 import "@testing-library/jest-dom";
+import * as blogLib from "@/lib/blog";
 
 // Mock the blog utility functions
 jest.mock("@/lib/blog", () => ({
@@ -74,7 +75,7 @@ describe("Blog Page", () => {
 describe("Blog Page - Empty State", () => {
   beforeEach(() => {
     // Override mock to return empty array
-    jest.mocked(require("@/lib/blog").getAllPosts).mockReturnValue([]);
+    jest.spyOn(blogLib, "getAllPosts").mockReturnValue([]);
   });
 
   it("shows empty state message when no posts exist", () => {
