@@ -14,10 +14,15 @@
 /coverage
 *.lcov
 .nyc_output
+/.jest-cache
+/test-results
+/__snapshots__
 
 # next.js
 /.next/
 /out/
+.next
+.swc
 
 # production
 /build
@@ -54,6 +59,10 @@ next-env.d.ts
 
 # Local Netlify folder
 .netlify
+
+# Lighthouse CI
+.lighthouseci
+lighthouseci
 
 # Temporary files
 /tmp
