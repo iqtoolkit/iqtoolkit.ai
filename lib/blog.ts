@@ -35,7 +35,7 @@ export function getAllPosts(): BlogPostMetadata[] {
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data, content } = matter(fileContents);
-      const stats = readingTime(content, 200);
+      const stats = readingTime(content, { wordsPerMinute: 200 });
 
       return {
         slug,
@@ -72,7 +72,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     }
 
     const { data, content } = matter(fileContents);
-    const stats = readingTime(content, 200);
+    const stats = readingTime(content, { wordsPerMinute: 200 });
 
     return {
       slug,
