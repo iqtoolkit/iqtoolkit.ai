@@ -3,7 +3,7 @@
 [![CI/CD Pipeline](https://github.com/iqtoolkit/iqtoolkit.ai/actions/workflows/ci.yml/badge.svg)](https://github.com/iqtoolkit/iqtoolkit.ai/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR_SITE_ID/deploy-status)](https://app.netlify.com/sites/iqtoolkit-ai/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d291fed6-fa36-4dfc-96d5-666ab326b6b3/deploy-status)](https://app.netlify.com/projects/iqtoolkit/deploys)
 
 **Official website for iqtoolkit.ai** - Self-hosted, multi-database intelligence platform.
 
