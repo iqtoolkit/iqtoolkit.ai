@@ -26,6 +26,7 @@ EMAILOCTOPUS_LIST_ID=your_list_id_here
 ```
 
 **For Netlify deployment:**
+
 1. Go to Netlify Dashboard → **Site settings** → **Environment variables**
 2. Add both variables:
    - `EMAILOCTOPUS_API_KEY`
@@ -58,6 +59,7 @@ Visit `http://localhost:3000` and test the newsletter signup form.
 ## Managing Subscribers
 
 Access your subscribers in EmailOctopus:
+
 1. Dashboard → **Lists** → Your list
 2. View all subscribers, export, segment, etc.
 
