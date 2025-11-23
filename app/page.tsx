@@ -1,4 +1,45 @@
+"use client";
+
+import { useState, FormEvent } from "react";
+
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("loading");
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus("success");
+        setMessage(data.message || "Successfully subscribed!");
+        setEmail("");
+        // Redirect to thank you page after 2 seconds
+        setTimeout(() => {
+          window.location.href = "/thank-you";
+        }, 2000);
+      } else {
+        setStatus("error");
+        setMessage(data.error || "Failed to subscribe. Please try again.");
+      }
+    } catch (error) {
+      setStatus("error");
+      setMessage("An unexpected error occurred. Please try again.");
+      console.error("Newsletter subscription error:", error);
+    }
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-950">
       {/* Hero Section */}
@@ -102,28 +143,36 @@ export default function Home() {
 
             {/* Email Signup Form */}
             <div id="newsletter" className="mt-8 w-full max-w-md">
-              <form
-                name="newsletter"
-                method="POST"
-                data-netlify="true"
-                action="/thank-you"
-                className="flex flex-col gap-3 sm:flex-row"
-              >
-                <input type="hidden" name="form-name" value="newsletter" />
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
                 <input
                   type="email"
                   name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="your.email@example.com"
                   className="flex-1 rounded-full border border-gray-300 px-6 py-3 text-gray-900 placeholder-gray-500 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:placeholder-gray-400"
                   required
+                  disabled={status === "loading"}
                 />
                 <button
                   type="submit"
-                  className="rounded-full bg-blue-600 px-8 py-3 font-medium text-white transition-colors hover:bg-blue-700"
+                  disabled={status === "loading"}
+                  className="rounded-full bg-blue-600 px-8 py-3 font-medium text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  Stay Updated
+                  {status === "loading" ? "Subscribing..." : "Stay Updated"}
                 </button>
               </form>
+              {message && (
+                <p
+                  className={`mt-3 text-center text-sm ${
+                    status === "success"
+                      ? "text-green-600 dark:text-green-400"
+                      : "text-red-600 dark:text-red-400"
+                  }`}
+                >
+                  {message}
+                </p>
+              )}
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                 Get notified about new features and releases
               </p>

@@ -16,6 +16,7 @@ Repository for the source code and deployment files of the iqtoolkit.ai website,
 - 📱 **Responsive Design** - Mobile-first, works on all devices
 - ♿ **Accessibility** - WCAG compliant
 - 🔍 **SEO Optimized** - Meta tags, sitemap, robots.txt
+- 📧 **Newsletter Integration** - EmailOctopus API for subscriber management
 - 🧪 **Testing** - Jest & React Testing Library
 - 📊 **Code Coverage** - Automated coverage reporting
 - 🔧 **TypeScript** - Type-safe code
@@ -57,13 +58,21 @@ cd iqtoolkit.ai
 npm install
 ```
 
-3. Run the development server:
+3. Set up environment variables (for newsletter):
+
+```bash
+cp .env.example .env.local
+```
+
+Edit `.env.local` and add your EmailOctopus credentials. See [docs/EMAILOCTOPUS_SETUP.md](docs/EMAILOCTOPUS_SETUP.md) for details.
+
+4. Run the development server:
 
 ```bash
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📝 Available Scripts
 
