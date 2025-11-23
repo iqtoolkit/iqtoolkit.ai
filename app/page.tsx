@@ -60,17 +60,18 @@ export default function Home() {
             Unified Database Intelligence Platform
           </p>
           <p className="mx-auto mb-12 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-            Self-hosted, open-source platform for multi-database operations. Built by a DBA-turned-architect
-            to bring intelligent query analysis and performance insights to MongoDB, PostgreSQL, and beyond.
-            Currently in development - v0.2.0-alpha launching December 2025.
+            Self-hosted, open-source platform for multi-database operations. Built by a
+            DBA-turned-architect to bring intelligent query analysis and performance insights to
+            MongoDB, PostgreSQL, and beyond. Currently in development - v0.2.0-alpha launching
+            December 2025.
           </p>
 
           {/* Key Differentiator */}
           <div className="mx-auto mb-16 max-w-3xl rounded-2xl border border-blue-200 bg-blue-50 p-6 dark:border-blue-900 dark:bg-blue-950/30">
             <p className="text-lg font-medium text-blue-900 dark:text-blue-100">
-              🔒 <strong>Self-Hosted & Privacy-First</strong> - Deploy on your infrastructure via Docker or Kubernetes.
-              Choose Ollama for private, on-premises AI or OpenAI for cloud-based analysis. Your data never leaves your control.
-              No vendor lock-in. Ever.
+              🔒 <strong>Self-Hosted & Privacy-First</strong> - Deploy on your infrastructure via
+              Docker or Kubernetes. Choose Ollama for private, on-premises AI or OpenAI for
+              cloud-based analysis. Your data never leaves your control. No vendor lock-in. Ever.
             </p>
           </div>
 

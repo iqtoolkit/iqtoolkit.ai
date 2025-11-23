@@ -14,6 +14,7 @@ Repository for the marketing website of iqtoolkit.ai - a unified, open-source da
 iqtoolkit is a **self-hosted only** platform that brings AI-powered query analysis and performance insights to multiple database types. Currently in development with **v0.2.0-alpha launching December 2025**.
 
 **Key Differentiators:**
+
 - 🔒 **Self-Hosted Only** - Deploy on YOUR infrastructure (Docker, Kubernetes, on-premises)
 - 🗄️ **Multi-Database** - MongoDB + PostgreSQL from day one (MySQL, SQL Server in Q2 2026)
 - 🤖 **AI Choice** - Ollama (private, on-premises) OR OpenAI (cloud, managed)

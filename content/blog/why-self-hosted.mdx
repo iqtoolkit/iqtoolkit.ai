@@ -15,11 +15,13 @@ Here's why.
 Most database management tools today are cloud-based SaaS products. While convenient, this approach creates serious concerns for enterprises:
 
 ### Security & Privacy Risks
+
 - **Data Exposure**: Your database schemas, queries, and metadata are sent to external services
 - **Compliance Nightmares**: HIPAA, PCI DSS, and GDPR regulations often prohibit sending data externally
 - **Loss of Control**: You don't know how third parties process or store your sensitive information
 
 ### Operational Concerns
+
 - **Vendor Lock-In**: Changing providers means migration pain and data export challenges
 - **Cost Escalation**: Per-seat or per-query pricing can become expensive at scale
 - **Availability Dependency**: Your operations depend on someone else's uptime SLA
@@ -52,6 +54,7 @@ Self-hosted deployment makes it straightforward to comply with regulations:
 ### Predictable, Transparent Costs
 
 No per-request charges. No surprise bills. Just:
+
 - **One-Time Setup**: Install once via Docker or Helm
 - **Unlimited Usage**: Analyze as many databases as you need
 - **Scalable**: Add hardware instead of paying per user/query
@@ -62,7 +65,9 @@ No per-request charges. No surprise bills. Just:
 We support **two AI options** - you choose based on your security requirements:
 
 ### Ollama (Default - Private)
+
 Run AI models entirely on-premises:
+
 ```bash
 # Install Ollama
 docker run -d ollama/ollama
@@ -76,13 +81,16 @@ OLLAMA_MODEL=llama2
 ```
 
 **Benefits:**
+
 - Zero external API calls
 - Perfect for regulated industries
 - No per-request costs
 - Works offline
 
 ### OpenAI (Optional - Cloud)
+
 For teams that prefer cloud AI:
+
 ```bash
 # Configure with your API key
 OPENAI_API_KEY=your-key
@@ -90,6 +98,7 @@ OPENAI_MODEL=gpt-4
 ```
 
 **Benefits:**
+
 - Latest AI capabilities
 - Powerful analysis
 - Managed infrastructure
@@ -100,17 +109,20 @@ The choice is yours. Both are first-class supported options.
 ## Deployment Options
 
 ### Docker (Development & Small Teams)
+
 ```bash
 docker-compose up -d
 ```
 
 Perfect for:
+
 - Local development
 - Small team deployments
 - Quick testing
 - Single-server setups
 
 ### Kubernetes with Helm (Enterprise)
+
 ```bash
 helm install iqtoolkit iqtoolkit/iqtoolkit \
   --set deployment.replicas=3 \
@@ -118,12 +130,14 @@ helm install iqtoolkit iqtoolkit/iqtoolkit \
 ```
 
 Designed for:
+
 - Production environments
 - Multi-environment setups (dev/staging/prod)
 - High availability
 - Enterprise scale
 
 Works on:
+
 - AWS EKS
 - Google GKE
 - Azure AKS
@@ -131,7 +145,9 @@ Works on:
 - On-premises K8s
 
 ### On-Premises (Complete Air-Gap)
+
 Install without internet connectivity:
+
 - Download Docker images offline
 - Transfer to secure network
 - Deploy behind firewall
@@ -140,21 +156,27 @@ Install without internet connectivity:
 ## Real-World Use Cases
 
 ### Financial Services Company
+
 A bank uses iqtoolkit.ai to optimize PostgreSQL databases handling millions of transactions:
+
 - **Zero data leakage** to third parties
 - **Ollama runs on-premises** (air-gapped network)
 - **Compliance** with banking regulations
 - **Cost savings** vs. SaaS alternatives ($50K+/year saved)
 
 ### Healthcare Platform
+
 A healthcare provider manages patient data across MongoDB clusters:
+
 - **HIPAA compliant** local AI processing
 - **No PHI exposure** to external services
 - **Fast analysis** without network latency
 - **Audit-ready** with complete data isolation
 
 ### Startup Team
+
 An early-stage company runs iqtoolkit on developer laptops:
+
 - **Offline development** without internet dependency
 - **Zero subscription costs** (open source)
 - **Fast iteration** with instant AI feedback
@@ -163,6 +185,7 @@ An early-stage company runs iqtoolkit on developer laptops:
 ## Why This Matters for Your Career
 
 As a DBA-turned-architect, I've seen the shift:
+
 - **10 years ago**: Self-hosted was default
 - **5 years ago**: Cloud became trendy
 - **Today**: Enterprises are re-evaluating cloud costs and lock-in
@@ -173,18 +196,21 @@ By building iqtoolkit as self-hosted, we're positioning for this future.
 ## Development Roadmap
 
 **v0.2.0-alpha (December 2025)**
+
 - Docker deployment ready
 - Helm charts (alpha) for Kubernetes
 - Ollama + OpenAI support
 - PostgreSQL + MongoDB analyzers
 
 **v0.2.0 Stable (January 2026)**
+
 - Production-grade Helm charts
 - Multi-cloud tested (EKS, GKE, AKS)
 - On-premises deployment guide
 - Air-gapped installation support
 
 **v0.4.0 (Q2 2026)**
+
 - Enhanced security hardening
 - RBAC and access controls
 - Audit logging
@@ -193,12 +219,14 @@ By building iqtoolkit as self-hosted, we're positioning for this future.
 ## Join the Movement
 
 We're building iqtoolkit in the open. If you believe in:
+
 - **Data privacy** over convenience
 - **Self-hosted** over SaaS
 - **Open source** over proprietary
 - **No vendor lock-in** over platform dependency
 
 Then join us:
+
 - **RFC Discussion**: [Share your feedback](https://github.com/iqtoolkit/iqtoolkit.ai/discussions)
 - **Newsletter**: [Sign up](/) for alpha testing
 - **GitHub**: [Follow development](https://github.com/iqtoolkit/iqtoolkit.ai)
@@ -207,4 +235,4 @@ Then join us:
 
 **Self-hosted. Privacy-first. Open source. Multi-database.**
 
-*v0.2.0-alpha launching December 2025 | No SaaS. Ever.*
+_v0.2.0-alpha launching December 2025 | No SaaS. Ever._
