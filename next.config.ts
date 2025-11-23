@@ -1,8 +1,15 @@
 import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 const nextConfig: NextConfig = {
   // Enable React strict mode for better development experience
   reactStrictMode: true,
+
+  // Configure MDX support
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 
   // Optimize production builds
   poweredByHeader: false, // Remove X-Powered-By header for security
@@ -57,4 +64,28 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+  options: {
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypePrettyCode,
+        {
+          theme: "github-dark",
+          keepBackground: true,
+        },
+      ],
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: "wrap",
+          properties: {
+            className: ["anchor"],
+          },
+        },
+      ],
+    ],
+  },
+});
+
+export default withMDX(nextConfig);
