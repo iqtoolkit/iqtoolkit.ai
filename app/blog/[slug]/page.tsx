@@ -58,7 +58,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Header */}
       <header className="border-b border-gray-200 dark:border-gray-700">
         <div className="mx-auto max-w-4xl px-6 py-6 lg:px-8">
-          <Link href="/blog" className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors">
+          <Link
+            href="/blog"
+            className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+          >
             ← Back to Blog
           </Link>
         </div>

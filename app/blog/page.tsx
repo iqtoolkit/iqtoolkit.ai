@@ -15,7 +15,10 @@ export default function BlogPage() {
       {/* Header */}
       <header className="border-b border-gray-200 dark:border-gray-700">
         <div className="mx-auto max-w-7xl px-6 py-6 lg:px-8">
-          <Link href="/" className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors">
+          <Link
+            href="/"
+            className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+          >
             ← Back to Home
           </Link>
         </div>
@@ -34,7 +37,9 @@ export default function BlogPage() {
         {/* Blog Posts Grid */}
         {posts.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-gray-600 dark:text-gray-400 text-lg">No blog posts yet. Check back soon!</p>
+            <p className="text-gray-600 dark:text-gray-400 text-lg">
+              No blog posts yet. Check back soon!
+            </p>
           </div>
         ) : (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
