@@ -103,7 +103,7 @@ export default function Home() {
               icon="🍃"
             />
             <FeatureCard
-              title="Data Governance"
+              title="Data Governance (Coming Soon)"
               description="Schema discovery, PII/PHI detection, compliance readiness (GDPR, HIPAA, SOC 2) via OpenMetadata integration."
               icon="📋"
             />
@@ -133,7 +133,7 @@ export default function Home() {
                 Explore on GitHub
               </a>
               <a
-                href="https://github.com/iqtoolkit/iqtoolkit.ai"
+                href="https://docs.iqtoolkit.ai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-full border-2 border-blue-600 px-8 py-4 text-base font-medium text-blue-600 transition-all hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-600 dark:hover:text-white"
