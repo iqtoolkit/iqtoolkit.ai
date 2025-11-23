@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -48,12 +49,12 @@ export default function Home() {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
-              <a href="/" className="flex items-center gap-2">
+              <Link href="/" className="flex items-center gap-2">
                 <span className="text-2xl">🤖</span>
                 <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   iqtoolkit.ai
                 </span>
-              </a>
+              </Link>
             </div>
 
             {/* Menu */}
@@ -64,18 +65,18 @@ export default function Home() {
               >
                 Features
               </a>
-              <a
+              <Link
                 href="/blog"
                 className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
               >
                 Blog
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/about"
                 className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
               >
                 About
-              </a>
+              </Link>
               <a
                 href="https://docs.iqtoolkit.ai"
                 target="_blank"
@@ -273,7 +274,7 @@ export default function Home() {
                 <strong className="text-blue-600 dark:text-blue-400">Giovanni Martinez</strong> is a
                 Senior Database Administrator transitioning to AI Database Architect with{" "}
                 <strong>13+ years of experience</strong> optimizing databases for education
-                organizations, SaaS companies, and Fortune 100 enterprises including McKesson's
+                organizations, SaaS companies, and Fortune 100 enterprises including McKesson&apos;s
                 healthcare platforms.
               </p>
               <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
@@ -289,16 +290,16 @@ export default function Home() {
                 <strong>
                   database optimization, cloud architecture (AWS/Azure), and AI/ML integration
                 </strong>
-                . Based in Florida, he's building iqtoolkit as an open-source solution that puts
-                database professionals back in control of their data and their AI.
+                . Based in Florida, he&apos;s building iqtoolkit as an open-source solution that
+                puts database professionals back in control of their data and their AI.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4">
-                <a
+                <Link
                   href="/about"
                   className="inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-blue-700"
                 >
                   View Full Bio & Experience
-                </a>
+                </Link>
                 <a
                   href="https://linkedin.com/in/gmartinez-dbai"
                   target="_blank"
@@ -353,12 +354,12 @@ export default function Home() {
               </h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a
+                  <Link
                     href="/blog"
                     className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
                   >
                     Blog
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a
