@@ -8,33 +8,58 @@ describe("Home Page", () => {
     expect(heading).toHaveTextContent("iqtoolkit.ai");
   });
 
-  it("renders the tagline", () => {
+  it("renders the compelling value proposition", () => {
     render(<Home />);
-    const tagline = screen.getByText(/Advanced AI Tools & Solutions/i);
+    const tagline = screen.getByText(/Transform Database Intelligence with AI-Powered Analytics/i);
     expect(tagline).toBeInTheDocument();
   });
 
-  it("renders all feature cards", () => {
+  it("renders the unique differentiator about Ollama", () => {
     render(<Home />);
-    expect(screen.getByText("AI-Powered")).toBeInTheDocument();
-    expect(screen.getByText("Open Source")).toBeInTheDocument();
-    expect(screen.getByText("Innovation")).toBeInTheDocument();
-    expect(screen.getByText("Performance")).toBeInTheDocument();
-    expect(screen.getByText("Scalable")).toBeInTheDocument();
-    expect(screen.getByText("Best Practices")).toBeInTheDocument();
+    const differentiator = screen.getByText(/Powered by Ollama Integration/i);
+    expect(differentiator).toBeInTheDocument();
+  });
+
+  it("renders all specific feature cards", () => {
+    render(<Home />);
+    expect(screen.getByText("Database AI Assistant")).toBeInTheDocument();
+    expect(screen.getByText("Real-Time Metrics")).toBeInTheDocument();
+    expect(screen.getByText("Privacy-First Architecture")).toBeInTheDocument();
+    expect(screen.getByText("Query Optimization")).toBeInTheDocument();
+    expect(screen.getByText("Migration Tools")).toBeInTheDocument();
+    expect(screen.getByText("Production-Ready")).toBeInTheDocument();
   });
 
   it("renders GitHub link", () => {
     render(<Home />);
-    const githubLink = screen.getByText(/View on GitHub/i);
+    const githubLink = screen.getByText(/Explore on GitHub/i);
     expect(githubLink).toBeInTheDocument();
     expect(githubLink.closest("a")).toHaveAttribute("href", "https://github.com/iqtoolkit");
   });
 
-  it("renders footer with copyright", () => {
+  it("renders email signup form", () => {
+    render(<Home />);
+    const emailInput = screen.getByPlaceholderText(/your.email@example.com/i);
+    expect(emailInput).toBeInTheDocument();
+    expect(emailInput).toHaveAttribute("type", "email");
+
+    const submitButton = screen.getByRole("button", { name: /Join Waitlist/i });
+    expect(submitButton).toBeInTheDocument();
+  });
+
+  it("renders footer with AI expertise mention", () => {
     render(<Home />);
     const currentYear = new Date().getFullYear();
-    const footer = screen.getByText(new RegExp(`${currentYear} iqtoolkit.ai`, "i"));
+    const footer = screen.getByText(new RegExp(`${currentYear}.*Database \\+ AI integration`, "i"));
     expect(footer).toBeInTheDocument();
+  });
+
+  it("renders social media links", () => {
+    render(<Home />);
+    const githubLinks = screen.getAllByLabelText(/GitHub/i);
+    const twitterLink = screen.getByLabelText(/Twitter/i);
+
+    expect(githubLinks.length).toBeGreaterThan(0);
+    expect(twitterLink).toBeInTheDocument();
   });
 });
