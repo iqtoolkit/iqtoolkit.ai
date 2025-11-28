@@ -10,7 +10,7 @@ describe("Home Page", () => {
 
   it("renders the compelling value proposition", () => {
     render(<Home />);
-    const tagline = screen.getByText(/Unified Database Intelligence Platform/i);
+    const tagline = screen.getByText(/Diagnose database incidents/i);
     expect(tagline).toBeInTheDocument();
   });
 
@@ -30,11 +30,14 @@ describe("Home Page", () => {
     expect(screen.getByText(/Data Governance.*Coming Soon/i)).toBeInTheDocument();
   });
 
-  it("renders GitHub link", () => {
+  it("renders GitHub CTA link", () => {
     render(<Home />);
-    const githubLink = screen.getByText(/Explore on GitHub/i);
+    const githubLink = screen.getByText(/Star on GitHub/i);
     expect(githubLink).toBeInTheDocument();
-    expect(githubLink.closest("a")).toHaveAttribute("href", "https://github.com/iqtoolkit");
+    expect(githubLink.closest("a")).toHaveAttribute(
+      "href",
+      "https://github.com/iqtoolkit/iqtoolkit-analyzer"
+    );
   });
 
   it("renders email signup form", () => {
