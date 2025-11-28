@@ -9,6 +9,14 @@ export default function Home() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
+  const scrollToNewsletter = () => {
+    const el = document.getElementById("newsletter");
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 100; // offset for sticky nav
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("loading");
@@ -100,12 +108,13 @@ export default function Home() {
               >
                 GitHub
               </a>
-              <a
-                href="#newsletter"
+              <button
+                type="button"
+                onClick={scrollToNewsletter}
                 className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-2 text-sm font-medium text-white transition-all hover:scale-105"
               >
                 Get Updates
-              </a>
+              </button>
             </div>
 
             {/* Mobile menu button */}
