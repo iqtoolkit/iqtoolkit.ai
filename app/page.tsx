@@ -141,7 +141,7 @@ export default function Home() {
           </p>
           <p className="mx-auto mb-12 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
             AI-powered query analysis for PostgreSQL and MongoDB. Self-hosted and privacy-first.
-            v0.2.0-alpha launches December 14, 2025.
+            <span className="ml-1 font-semibold text-green-700 dark:text-green-300">v0.2.2 — Stable now</span>.
           </p>
 
           {/* Key Differentiator */}
@@ -159,14 +159,14 @@ export default function Home() {
               title="Multi-Database Support"
               description="Unified platform for MongoDB and PostgreSQL query analysis (v0.2.0). MySQL and SQL Server coming in v0.4.0."
               icon="🗄️"
-              badge="v0.2.0"
+              badge="v0.2.2"
               badgeTone="now"
             />
             <FeatureCard
               title="AI-Powered Analysis"
               description="Query optimization powered by your choice of Ollama (private) or OpenAI (cloud). Intelligent index recommendations and performance insights."
               icon="🤖"
-              badge="v0.2.0"
+              badge="v0.2.2"
               badgeTone="now"
             />
             <FeatureCard
@@ -178,16 +178,16 @@ export default function Home() {
             />
             <FeatureCard
               title="PostgreSQL Analyzer"
-              description="EXPLAIN plan analysis, query rewriting suggestions, index recommendations, and anti-pattern detection (Dec 2025)."
+              description="Slow query analysis, EXPLAIN insights, index recommendations, and anti-pattern detection (v0.2.2)."
               icon="🐘"
-              badge="Dec 14"
+              badge="v0.2.2"
               badgeTone="now"
             />
             <FeatureCard
               title="MongoDB Analyzer"
-              description="Aggregation pipeline optimization, document structure analysis, index strategy recommendations, and sharding insights (Dec 2025)."
+              description="Aggregation pipeline optimization, document structure analysis, index strategy recommendations, and sharding insights (v0.2.2)."
               icon="🍃"
-              badge="Dec 14"
+              badge="v0.2.2"
               badgeTone="now"
             />
             <FeatureCard
@@ -197,6 +197,28 @@ export default function Home() {
               badge="Coming Soon"
               badgeTone="soon"
             />
+            <FeatureCard
+              title="Rich Reports"
+              description="Export results to Markdown, JSON, and HTML (including MongoDB dashboards) to share or archive analyses."
+              icon="📈"
+              badge="v0.2.2"
+              badgeTone="now"
+            />
+          </div>
+
+          {/* Architecture Snapshot */}
+          <div className="mx-auto mb-16 max-w-4xl rounded-2xl border border-gray-200 bg-white p-6 text-left dark:border-gray-800 dark:bg-gray-900">
+            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Modular Monorepo Architecture</h3>
+            <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">
+              Built for velocity and reliability with clear module boundaries and shared contracts.
+            </p>
+            <ul className="grid gap-2 text-sm text-gray-700 dark:text-gray-300 sm:grid-cols-2">
+              <li>• <strong>iqtoolkit_analyzer</strong> — CLI package (to be service-ized)</li>
+              <li>• <strong>iqtoolkit-contracts</strong> — Shared Pydantic models</li>
+              <li>• <strong>iqtoolkit-iqai</strong> — AI Copilot service (pydantic-ai)</li>
+              <li>• <strong>iqtoolkithub</strong> — Orchestration gateway (Analyzer + IQAI)</li>
+              <li>• <strong>iqtoolkit-deployment</strong> — Helm/K8s deployment assets</li>
+            </ul>
           </div>
 
           {/* CTA Section with Email Signup (single dominant CTA + subtle nudge) */}
@@ -434,8 +456,8 @@ export default function Home() {
 
           <div className="mt-8 border-t border-gray-200 pt-8 dark:border-gray-800">
             <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-              © {new Date().getFullYear()} iqtoolkit.ai - Open source MIT License. Specialized in
-              Database + AI integration.
+              © {new Date().getFullYear()} iqtoolkit.ai — Open source MIT License. Specialized in
+              Database + AI integration. Contact: <a className="underline hover:text-blue-600" href="mailto:gio@iqtoolkit.ai">gio@iqtoolkit.ai</a>
             </p>
           </div>
         </div>
