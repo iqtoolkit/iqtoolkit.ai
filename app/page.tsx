@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -77,6 +78,12 @@ export default function Home() {
               >
                 About
               </Link>
+              <Link
+                href="/roadmap"
+                className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+              >
+                Roadmap
+              </Link>
               <a
                 href="https://docs.iqtoolkit.ai"
                 target="_blank"
@@ -86,7 +93,7 @@ export default function Home() {
                 Docs
               </a>
               <a
-                href="https://github.com/iqtoolkit"
+                href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
@@ -137,13 +144,14 @@ export default function Home() {
 
           {/* Compelling Value Proposition */}
           <p className="mx-auto mb-6 max-w-3xl text-2xl font-semibold text-gray-900 dark:text-white sm:text-3xl">
-            Unified Database Intelligence Platform
+            Diagnose database incidents in seconds, not 45 minutes.
           </p>
           <p className="mx-auto mb-12 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-            Self-hosted, open-source platform for multi-database operations. Built by a
-            DBA-turned-architect to bring intelligent query analysis and performance insights to
-            MongoDB, PostgreSQL, and beyond. Currently in development - v0.2.0-alpha launching
-            December 2025.
+            AI-powered query analysis for PostgreSQL and MongoDB. Self-hosted and privacy-first.
+            <span className="ml-1 font-semibold text-green-700 dark:text-green-300">
+              v0.2.2 — Stable now
+            </span>
+            .
           </p>
 
           {/* Key Differentiator */}
@@ -155,71 +163,128 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Features Grid - Roadmap */}
+          {/* Features Grid - Roadmap (clearly mark Now vs Coming Soon) */}
           <div className="mx-auto mb-16 grid max-w-4xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <FeatureCard
               title="Multi-Database Support"
               description="Unified platform for MongoDB and PostgreSQL query analysis (v0.2.0). MySQL and SQL Server coming in v0.4.0."
               icon="🗄️"
+              badge="v0.2.2"
+              badgeTone="now"
             />
             <FeatureCard
               title="AI-Powered Analysis"
               description="Query optimization powered by your choice of Ollama (private) or OpenAI (cloud). Intelligent index recommendations and performance insights."
               icon="🤖"
+              badge="v0.2.2"
+              badgeTone="now"
             />
             <FeatureCard
               title="Self-Hosted & Open Source"
               description="Deploy via Docker, Kubernetes with Helm charts, or on-premises. MIT/Apache 2.0 license. Full control of your data."
               icon="🔒"
+              badge="Available"
+              badgeTone="now"
             />
             <FeatureCard
               title="PostgreSQL Analyzer"
-              description="EXPLAIN plan analysis, query rewriting suggestions, index recommendations, and anti-pattern detection (Dec 2025)."
+              description="Slow query analysis, EXPLAIN insights, index recommendations, and anti-pattern detection (v0.2.2)."
               icon="🐘"
+              badge="v0.2.2"
+              badgeTone="now"
             />
             <FeatureCard
               title="MongoDB Analyzer"
-              description="Aggregation pipeline optimization, document structure analysis, index strategy recommendations, and sharding insights (Dec 2025)."
+              description="Aggregation pipeline optimization, document structure analysis, index strategy recommendations, and sharding insights (v0.2.2)."
               icon="🍃"
+              badge="v0.2.2"
+              badgeTone="now"
             />
             <FeatureCard
               title="Data Governance (Coming Soon)"
               description="Schema discovery, PII/PHI detection, compliance readiness (GDPR, HIPAA, SOC 2) via OpenMetadata integration."
               icon="📋"
+              badge="Coming Soon"
+              badgeTone="soon"
+            />
+            <FeatureCard
+              title="Rich Reports"
+              description="Export results to Markdown, JSON, and HTML (including MongoDB dashboards) to share or archive analyses."
+              icon="📈"
+              badge="v0.2.2"
+              badgeTone="now"
             />
           </div>
 
-          {/* CTA Section with Email Signup */}
+          {/* Architecture Snapshot */}
+          <div className="mx-auto mb-16 max-w-4xl rounded-2xl border border-gray-200 bg-white p-6 text-left dark:border-gray-800 dark:bg-gray-900">
+            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+              Modular Monorepo Architecture
+            </h3>
+            <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">
+              Built for velocity and reliability with clear module boundaries and shared contracts.
+            </p>
+            <ul className="grid gap-2 text-sm text-gray-700 dark:text-gray-300 sm:grid-cols-2">
+              <li>
+                • <strong>iqtoolkit_analyzer</strong> — CLI package (to be service-ized)
+              </li>
+              <li>
+                • <strong>iqtoolkit-contracts</strong> — Shared Pydantic models
+              </li>
+              <li>
+                • <strong>iqtoolkit-iqai</strong> — AI Copilot service (pydantic-ai)
+              </li>
+              <li>
+                • <strong>iqtoolkithub</strong> — Orchestration gateway (Analyzer + IQAI)
+              </li>
+              <li>
+                • <strong>iqtoolkit-deployment</strong> — Helm/K8s deployment assets
+              </li>
+            </ul>
+            <div className="mt-4 flex flex-wrap gap-4 text-sm">
+              <Link
+                href="/roadmap"
+                className="text-blue-600 underline underline-offset-4 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+              >
+                View the Roadmap →
+              </Link>
+              <a
+                href="https://github.com/iqtoolkit/iqtoolkit-analyzer/blob/main/ROADMAP.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 underline underline-offset-4 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+              >
+                GitHub ROADMAP.md →
+              </a>
+            </div>
+          </div>
+
+          {/* CTA Section with Email Signup (single dominant CTA + subtle nudge) */}
           <div className="mb-16 flex flex-col items-center justify-center gap-4">
-            <div className="flex flex-col items-center gap-4 sm:flex-row">
+            <div className="flex flex-col items-center gap-3">
               <a
-                href="https://github.com/iqtoolkit"
+                href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-base font-medium text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                className="inline-flex items-center gap-3 justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-base font-medium text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
               >
-                <svg
-                  className="mr-2 h-5 w-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                Explore on GitHub
+                <span className="mr-1">⭐</span>
+                Star on GitHub
+                <Image
+                  src="https://img.shields.io/github/stars/iqtoolkit/iqtoolkit-analyzer?style=social"
+                  alt="GitHub stars"
+                  width={90}
+                  height={20}
+                  unoptimized
+                  className="h-5 w-auto"
+                />
               </a>
-              <a
-                href="https://docs.iqtoolkit.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full border-2 border-blue-600 px-8 py-4 text-base font-medium text-blue-600 transition-all hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-600 dark:hover:text-white"
+              <Link
+                href="/blog/why-iqtoolkit-suite"
+                className="text-sm text-gray-600 underline underline-offset-4 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
               >
-                View Documentation
-              </a>
+                Or read the launch post →
+              </Link>
             </div>
 
             {/* Email Signup Form */}
@@ -363,7 +428,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="https://github.com/iqtoolkit"
+                    href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
@@ -438,8 +503,11 @@ export default function Home() {
 
           <div className="mt-8 border-t border-gray-200 pt-8 dark:border-gray-800">
             <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-              © {new Date().getFullYear()} iqtoolkit.ai - Open source MIT License. Specialized in
-              Database + AI integration.
+              © {new Date().getFullYear()} iqtoolkit.ai — Open source MIT License. Specialized in
+              Database + AI integration. Contact:{" "}
+              <a className="underline hover:text-blue-600" href="mailto:gio@iqtoolkit.ai">
+                gio@iqtoolkit.ai
+              </a>
             </p>
           </div>
         </div>
@@ -452,9 +520,11 @@ interface FeatureCardProps {
   title: string;
   description: string;
   icon: string;
+  badge?: string;
+  badgeTone?: "now" | "soon";
 }
 
-function FeatureCard({ title, description, icon }: FeatureCardProps) {
+function FeatureCard({ title, description, icon, badge, badgeTone }: FeatureCardProps) {
   return (
     <div className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:scale-105 hover:border-blue-300 hover:shadow-xl dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-700">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 opacity-0 transition-opacity group-hover:opacity-100 dark:from-blue-950/20 dark:to-purple-950/20"></div>
@@ -462,6 +532,17 @@ function FeatureCard({ title, description, icon }: FeatureCardProps) {
         <div className="mb-4 inline-flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 p-3 dark:from-blue-900/50 dark:to-purple-900/50">
           <span className="text-3xl">{icon}</span>
         </div>
+        {badge ? (
+          <span
+            className={`mb-2 inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${
+              badgeTone === "soon"
+                ? "border-amber-200 bg-amber-100 text-amber-800 dark:border-amber-800 dark:bg-amber-900/30 dark:text-amber-300"
+                : "border-green-200 bg-green-100 text-green-800 dark:border-green-800 dark:bg-green-900/30 dark:text-green-300"
+            }`}
+          >
+            {badge}
+          </span>
+        ) : null}
         <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">{description}</p>
       </div>

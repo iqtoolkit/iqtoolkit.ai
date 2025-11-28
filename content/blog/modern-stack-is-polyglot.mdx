@@ -1,0 +1,60 @@
+---
+title: "The Modern Stack is Polyglot. Why are our tools still siloed?"
+date: "2025-11-28"
+author: "Giovanni Martinez"
+excerpt: "If you're managing infrastructure today, you aren't just running PostgreSQL. You're running PostgreSQL, MongoDB, Redis, and more. Yet our tools remain siloed. Here is why iqtoolkit is different."
+tags: ["database-engineering", "postgresql", "mongodb", "sre", "devops", "architecture"]
+---
+
+## The Reality
+
+If you're managing infrastructure today, you aren't just running PostgreSQL. You're running PostgreSQL for relational data, MongoDB for documents, maybe Redis for caching, and other modules/business units that use MySQL or SQL Server instances.
+
+## The Problem
+
+When production breaks at 2 AM, we're forced to context-switch between 4-5 different tools.
+
+- `pg_stat_statements` for Postgres
+- `db.currentOp()` or Atlas for Mongo
+- Datadog for metrics
+- CloudWatch/grep for logs
+
+We spend 90% of our time **correlating** data across these silos and only 10% actually **fixing** the root cause.
+
+## The Solution
+
+I built **iqtoolkit** to be the unified intelligence layer we've been missing. It’s an open-source, self-hosted platform designed to standardize database troubleshooting across engines.
+
+## 🛠 Technical Architecture
+
+### 1. Multi-Database Analyzer (Modular Design)
+
+Instead of separate tools, iqtoolkit uses a modular architecture to analyze different engines under one roof:
+
+- **PostgreSQL Module:** Deep analysis of `EXPLAIN (ANALYZE, BUFFERS)`, index usage stats, and anti-pattern detection (e.g., implicit casting preventing index usage).
+- **MongoDB Module:** Aggregation pipeline optimization, document structure analysis, and sharding key recommendations.
+- **Future (Q2 2026):** MySQL & SQL Server modules.
+
+### 2. Privacy-First AI Layer (IqAI)
+
+We know you can't paste production query plans into ChatGPT.
+
+- **Default:** Runs 100% local using **Ollama** (Llama 3, Mistral, etc.). Your schema and queries never leave your VPC.
+- **Optional:** Configurable OpenAI integration for teams who prefer cloud LLMs.
+- **Capability:** It doesn't just "chat." It parses execution plans, identifies bottlenecks (like sequential scans on high-cardinality tables), and generates specific DDL fixes.
+
+### 3. Deployment & Compliance
+
+- **Container-Native:** Ships as Docker containers and Helm charts.
+- **Self-Hosted:** Deploy on your own Kubernetes cluster or bare metal.
+- **Compliance Ready:** Designed for HIPAA/SOC 2 environments where data sovereignty is non-negotiable.
+
+## 📅 Roadmap
+
+- **v0.2.2 (Now):** Stable release with PostgreSQL & MongoDB slow query analysis, configurable Ollama/OpenAI, and Markdown/JSON/HTML reports.
+- **v0.2.3 (Q1 2026):** PostgreSQL EXPLAIN analyzer (RFC-002), anti-pattern detection, index suggestions, and MongoDB enhancements.
+- **v0.3.0 (Q2 2026):** Service-ize Analyzer + stand up IQAI service, Hub gateway orchestration, Helm charts & CI/CD.
+
+If you are an architect or DBA tired of tool sprawl, I want to hear from you. What’s the one feature you wish your current monitoring stack had?
+
+[Check out the project on GitHub](https://github.com/iqtoolkit)
