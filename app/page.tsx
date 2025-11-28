@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -77,6 +78,12 @@ export default function Home() {
               >
                 About
               </Link>
+              <Link
+                href="/roadmap"
+                className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+              >
+                Roadmap
+              </Link>
               <a
                 href="https://docs.iqtoolkit.ai"
                 target="_blank"
@@ -86,7 +93,7 @@ export default function Home() {
                 Docs
               </a>
               <a
-                href="https://github.com/iqtoolkit"
+                href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
@@ -141,7 +148,10 @@ export default function Home() {
           </p>
           <p className="mx-auto mb-12 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
             AI-powered query analysis for PostgreSQL and MongoDB. Self-hosted and privacy-first.
-            <span className="ml-1 font-semibold text-green-700 dark:text-green-300">v0.2.2 — Stable now</span>.
+            <span className="ml-1 font-semibold text-green-700 dark:text-green-300">
+              v0.2.2 — Stable now
+            </span>
+            .
           </p>
 
           {/* Key Differentiator */}
@@ -208,29 +218,66 @@ export default function Home() {
 
           {/* Architecture Snapshot */}
           <div className="mx-auto mb-16 max-w-4xl rounded-2xl border border-gray-200 bg-white p-6 text-left dark:border-gray-800 dark:bg-gray-900">
-            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Modular Monorepo Architecture</h3>
+            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+              Modular Monorepo Architecture
+            </h3>
             <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">
               Built for velocity and reliability with clear module boundaries and shared contracts.
             </p>
             <ul className="grid gap-2 text-sm text-gray-700 dark:text-gray-300 sm:grid-cols-2">
-              <li>• <strong>iqtoolkit_analyzer</strong> — CLI package (to be service-ized)</li>
-              <li>• <strong>iqtoolkit-contracts</strong> — Shared Pydantic models</li>
-              <li>• <strong>iqtoolkit-iqai</strong> — AI Copilot service (pydantic-ai)</li>
-              <li>• <strong>iqtoolkithub</strong> — Orchestration gateway (Analyzer + IQAI)</li>
-              <li>• <strong>iqtoolkit-deployment</strong> — Helm/K8s deployment assets</li>
+              <li>
+                • <strong>iqtoolkit_analyzer</strong> — CLI package (to be service-ized)
+              </li>
+              <li>
+                • <strong>iqtoolkit-contracts</strong> — Shared Pydantic models
+              </li>
+              <li>
+                • <strong>iqtoolkit-iqai</strong> — AI Copilot service (pydantic-ai)
+              </li>
+              <li>
+                • <strong>iqtoolkithub</strong> — Orchestration gateway (Analyzer + IQAI)
+              </li>
+              <li>
+                • <strong>iqtoolkit-deployment</strong> — Helm/K8s deployment assets
+              </li>
             </ul>
+            <div className="mt-4 flex flex-wrap gap-4 text-sm">
+              <Link
+                href="/roadmap"
+                className="text-blue-600 underline underline-offset-4 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+              >
+                View the Roadmap →
+              </Link>
+              <a
+                href="https://github.com/iqtoolkit/iqtoolkit-analyzer/blob/main/ROADMAP.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 underline underline-offset-4 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+              >
+                GitHub ROADMAP.md →
+              </a>
+            </div>
           </div>
 
           {/* CTA Section with Email Signup (single dominant CTA + subtle nudge) */}
           <div className="mb-16 flex flex-col items-center justify-center gap-4">
             <div className="flex flex-col items-center gap-3">
               <a
-                href="https://github.com/iqtoolkit"
+                href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-base font-medium text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                className="inline-flex items-center gap-3 justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-base font-medium text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
               >
-                <span className="mr-2">⭐</span> Star on GitHub
+                <span className="mr-1">⭐</span>
+                Star on GitHub
+                <Image
+                  src="https://img.shields.io/github/stars/iqtoolkit/iqtoolkit-analyzer?style=social"
+                  alt="GitHub stars"
+                  width={90}
+                  height={20}
+                  unoptimized
+                  className="h-5 w-auto"
+                />
               </a>
               <Link
                 href="/blog/why-iqtoolkit-suite"
@@ -381,7 +428,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="https://github.com/iqtoolkit"
+                    href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
@@ -457,7 +504,10 @@ export default function Home() {
           <div className="mt-8 border-t border-gray-200 pt-8 dark:border-gray-800">
             <p className="text-center text-sm text-gray-600 dark:text-gray-400">
               © {new Date().getFullYear()} iqtoolkit.ai — Open source MIT License. Specialized in
-              Database + AI integration. Contact: <a className="underline hover:text-blue-600" href="mailto:gio@iqtoolkit.ai">gio@iqtoolkit.ai</a>
+              Database + AI integration. Contact:{" "}
+              <a className="underline hover:text-blue-600" href="mailto:gio@iqtoolkit.ai">
+                gio@iqtoolkit.ai
+              </a>
             </p>
           </div>
         </div>
