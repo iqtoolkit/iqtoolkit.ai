@@ -66,4 +66,11 @@ describe("Home Page", () => {
     expect(githubLinks.length).toBeGreaterThan(0);
     expect(twitterLink).toBeInTheDocument();
   });
+
+  it("renders Roadmap link in navbar", () => {
+    render(<Home />);
+    const roadmap = screen.getByText("Roadmap");
+    expect(roadmap).toBeInTheDocument();
+    expect(roadmap.closest("a")).toHaveAttribute("href", "/roadmap");
+  });
 });
