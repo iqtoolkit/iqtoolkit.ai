@@ -29,20 +29,28 @@ export const metadata: Metadata = {
   publisher: "iqtoolkit",
   metadataBase: new URL("https://iqtoolkit.ai"),
   openGraph: {
-    type: "website",
-    locale: "en_US",
+    title: "iqtoolkit.ai",
+    description: "Open-source tools to diagnose, explain, and prevent database incidents.",
     url: "https://iqtoolkit.ai",
-    title: "iqtoolkit.ai - Advanced AI Tools & Solutions",
-    description:
-      "Official portfolio website showcasing cutting-edge AI tools and innovative technology solutions.",
     siteName: "iqtoolkit.ai",
+    images: [
+      {
+        url: "/img/iqtoolkitai-high-resolution-logo-transparent.png",
+        width: 1200,
+        height: 630,
+        alt: "iqtoolkit.ai logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "iqtoolkit.ai - Advanced AI Tools & Solutions",
-    description:
-      "Official portfolio website showcasing cutting-edge AI tools and innovative technology solutions.",
-    creator: "@iqtoolkit",
+  icons: {
+    icon: [
+      { url: "/img/wordmark-favicon.ico", sizes: "any" },
+      { url: "/img/wordmark-favicon.ico", type: "image/x-icon" },
+    ],
+    shortcut: ["/img/wordmark-favicon.ico"],
+    apple: ["/img/wordmark-favicon.ico"],
   },
   robots: {
     index: true,

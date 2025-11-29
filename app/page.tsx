@@ -59,10 +59,14 @@ export default function Home() {
             {/* Logo */}
             <div className="flex items-center">
               <Link href="/" className="flex items-center gap-2">
-                <span className="text-2xl">🤖</span>
-                <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  iqtoolkit.ai
-                </span>
+                <Image
+                  src="/img/iqtoolkitai-high-resolution-logo-transparent.png"
+                  alt="iqtoolkit.ai high-resolution logo (transparent)"
+                  width={415}
+                  height={83}
+                  className="h-20 w-auto"
+                  priority
+                />
               </Link>
             </div>
 
@@ -143,11 +147,18 @@ export default function Home() {
         <div className="w-full max-w-5xl text-center">
           {/* Logo/Brand with Visual Impact */}
           <div className="mb-6">
-            <div className="mb-4 inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 p-4 shadow-lg">
-              <span className="text-4xl">🤖</span>
+            <div className="mb-4 inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 p-2 shadow-lg">
+              <Image
+                src="/img/layout-icon-slogan-color-transparent.png"
+                alt="iqtoolkit.ai wordmark"
+                width={1600}
+                height={320}
+                priority
+                className="w-1/2 h-auto mx-auto"
+              />
             </div>
             <h1 className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl md:text-7xl">
-              iqtoolkit<span className="text-blue-600">.ai</span>
+              iqtoolkit.ai
             </h1>
           </div>
 
@@ -294,6 +305,14 @@ export default function Home() {
               >
                 Or read the launch post →
               </Link>
+              <a
+                href="https://mastodon.social/@iqtoolkit"
+                target="_blank"
+                rel="me noopener noreferrer"
+                className="text-sm text-gray-600 underline underline-offset-4 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+              >
+                Follow @iqtoolkit on Mastodon
+              </a>
             </div>
 
             {/* Email Signup Form */}
@@ -374,6 +393,13 @@ export default function Home() {
                 >
                   View Full Bio & Experience
                 </Link>
+                <Image
+                  src="/img/text-wordmark-slogan-centered-color.png"
+                  alt="iqtoolkit wordmark"
+                  width={240}
+                  height={40}
+                  className="h-10 w-auto"
+                />
                 <a
                   href="https://linkedin.com/in/gmartinez-dbai"
                   target="_blank"
@@ -496,14 +522,20 @@ export default function Home() {
                   </svg>
                 </a>
                 <a
-                  href="https://twitter.com/iqtoolkit"
+                  href="https://mastodon.social/@iqtoolkit"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="me noopener noreferrer"
                   className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
-                  aria-label="Twitter"
+                  aria-label="Mastodon"
                 >
-                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  {/* Simple Mastodon icon (fallback) */}
+                  <svg
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 2c5.523 0 10 4.372 10 9.764 0 6.773-4.953 8.356-10 8.356s-10-1.583-10-8.356C2 6.372 6.477 2 12 2zm-3.5 6.5a1 1 0 011 1V14h-1.5V9.5a1 1 0 011-1zm7 0a1 1 0 011 1V14h-1.5V9.5a1 1 0 011-1zm-3.5 2.25c.69 0 1.25.56 1.25 1.25v3h-2.5v-3c0-.69.56-1.25 1.25-1.25z" />
                   </svg>
                 </a>
               </div>

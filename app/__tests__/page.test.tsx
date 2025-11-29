@@ -61,10 +61,10 @@ describe("Home Page", () => {
   it("renders social media links", () => {
     render(<Home />);
     const githubLinks = screen.getAllByLabelText(/GitHub/i);
-    const twitterLink = screen.getByLabelText(/Twitter/i);
+    const mastodonLink = screen.getByLabelText(/Mastodon/i);
 
     expect(githubLinks.length).toBeGreaterThan(0);
-    expect(twitterLink).toBeInTheDocument();
+    expect(mastodonLink).toBeInTheDocument();
   });
 
   it("renders Roadmap link in navbar", () => {
