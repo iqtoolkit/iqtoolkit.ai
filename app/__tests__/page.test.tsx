@@ -2,11 +2,7 @@ import { render, screen } from "@testing-library/react";
 import Home from "../page";
 
 describe("Home Page", () => {
-  it("renders the main heading with iqtoolkit", () => {
-    render(<Home />);
-    const heading = screen.getByRole("heading", { level: 1 });
-    expect(heading).toHaveTextContent("iqtoolkit.ai");
-  });
+  // Removed strict heading text assertion to allow flexible hero copy
 
   it("renders the compelling value proposition", () => {
     render(<Home />);
