@@ -159,8 +159,7 @@ export default function Home() {
               Diagnose database incidents faster with AI-powered query analysis.
             </h1>
           </div>
-          <p className="mx-auto mb-8 max-w-3xl text-xl text-gray-700 dark:text-gray-300 sm:text-2xl">
-          </p>
+          <p className="mx-auto mb-8 max-w-3xl text-xl text-gray-700 dark:text-gray-300 sm:text-2xl"></p>
           <div className="mb-12 flex flex-wrap items-center justify-center gap-4">
             <a
               href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
