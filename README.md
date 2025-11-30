@@ -155,6 +155,8 @@ The site is configured to deploy automatically via Netlify. Build settings:
 5. Push to the branch (`git push origin feature/amazing-feature`)
 6. Open a Pull Request
 
+Please review and adhere to our [Code of Conduct](./CODE_OF_CONDUCT.md). By participating in this project, you agree to uphold this standard.
+
 ### Code Quality
 
 All code must pass the following checks before being merged:
