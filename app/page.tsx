@@ -156,12 +156,10 @@ export default function Home() {
           {/* Tightened Hero */}
           <div className="mb-6">
             <h1 className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl md:text-7xl">
-              iqtoolkit.ai
+              Diagnose database incidents faster with AI-powered query analysis.
             </h1>
           </div>
           <p className="mx-auto mb-8 max-w-3xl text-xl text-gray-700 dark:text-gray-300 sm:text-2xl">
-            Diagnose database incidents faster with AI-powered query analysis for PostgreSQL and
-            MongoDB — self-hosted and privacy-first.
           </p>
           <div className="mb-12 flex flex-wrap items-center justify-center gap-4">
             <a
