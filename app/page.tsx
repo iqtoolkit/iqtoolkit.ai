@@ -112,6 +112,14 @@ export default function Home() {
               >
                 GitHub
               </a>
+              <a
+                href="https://github.com/iqtoolkit"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+              >
+                Org GitHub
+              </a>
               <button
                 type="button"
                 onClick={scrollToNewsletter}
@@ -145,34 +153,27 @@ export default function Home() {
       {/* Hero Section */}
       <main className="flex flex-1 flex-col items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
         <div className="w-full max-w-5xl text-center">
-          {/* Logo/Brand with Visual Impact */}
+          {/* Tightened Hero */}
           <div className="mb-6">
-            <div className="mb-4 inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 p-2 shadow-lg">
-              <Image
-                src="/img/layout-icon-slogan-color-transparent.png"
-                alt="iqtoolkit.ai wordmark"
-                width={1600}
-                height={320}
-                priority
-                className="w-1/2 h-auto mx-auto"
-              />
-            </div>
             <h1 className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl md:text-7xl">
               iqtoolkit.ai
             </h1>
           </div>
-
-          {/* Compelling Value Proposition */}
-          <p className="mx-auto mb-6 max-w-3xl text-2xl font-semibold text-gray-900 dark:text-white sm:text-3xl">
-            Diagnose database incidents in seconds, not 45 minutes.
+          <p className="mx-auto mb-8 max-w-3xl text-xl text-gray-700 dark:text-gray-300 sm:text-2xl">
+            Diagnose database incidents faster with AI-powered query analysis for PostgreSQL and
+            MongoDB — self-hosted and privacy-first.
           </p>
-          <p className="mx-auto mb-12 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-            AI-powered query analysis for PostgreSQL and MongoDB. Self-hosted and privacy-first.
-            <span className="ml-1 font-semibold text-green-700 dark:text-green-300">
-              v0.2.2 — Stable now
-            </span>
-            .
-          </p>
+          <div className="mb-12 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 text-base font-semibold text-white transition-all hover:scale-105"
+            >
+              View on GitHub
+            </a>
+            <span className="text-sm text-gray-600 dark:text-gray-400">v0.2.2 — Stable</span>
+          </div>
 
           {/* Key Differentiator */}
           <div className="mx-auto mb-16 max-w-3xl rounded-2xl border border-blue-200 bg-blue-50 p-6 dark:border-blue-900 dark:bg-blue-950/30">
@@ -187,44 +188,44 @@ export default function Home() {
           <div className="mx-auto mb-16 grid max-w-4xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <FeatureCard
               title="Multi-Database Support"
-              description="Unified platform for MongoDB and PostgreSQL query analysis (v0.2.0). MySQL and SQL Server coming in v0.4.0."
+              description="Analyze PostgreSQL and MongoDB today; MySQL and SQL Server next."
               icon="🗄️"
               badge="v0.2.2"
               badgeTone="now"
             />
             <FeatureCard
               title="AI-Powered Analysis"
-              description="Query optimization powered by your choice of Ollama (private) or OpenAI (cloud). Intelligent index recommendations and performance insights."
+              description="Automatically surface slow queries, spot missing indexes, and summarize EXPLAIN plans."
               icon="🤖"
               badge="v0.2.2"
               badgeTone="now"
             />
             <FeatureCard
               title="Self-Hosted & Open Source"
-              description="Deploy via Docker, Kubernetes with Helm charts, or on-premises. MIT/Apache 2.0 license. Full control of your data."
+              description="Deploy via Docker or Kubernetes; keep data private with local LLMs (Ollama) or use OpenAI in the cloud."
               icon="🔒"
-              badge="Available"
+              badge="v0.2.2"
               badgeTone="now"
             />
             <FeatureCard
               title="PostgreSQL Analyzer"
-              description="Slow query analysis, EXPLAIN insights, index recommendations, and anti-pattern detection (v0.2.2)."
+              description="Turn EXPLAIN into action: index suggestions, plan insights, and anomaly detection."
               icon="🐘"
               badge="v0.2.2"
               badgeTone="now"
             />
             <FeatureCard
               title="MongoDB Analyzer"
-              description="Aggregation pipeline optimization, document structure analysis, index strategy recommendations, and sharding insights (v0.2.2)."
+              description="Find slow ops, highlight inefficient scans, and guide index strategies."
               icon="🍃"
               badge="v0.2.2"
               badgeTone="now"
             />
             <FeatureCard
               title="Data Governance (Coming Soon)"
-              description="Schema discovery, PII/PHI detection, compliance readiness (GDPR, HIPAA, SOC 2) via OpenMetadata integration."
-              icon="📋"
-              badge="Coming Soon"
+              description="Policy controls and audit trails for regulated teams."
+              icon="🛡️"
+              badge="v0.3"
               badgeTone="soon"
             />
             <FeatureCard
@@ -348,7 +349,7 @@ export default function Home() {
                 </p>
               )}
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                Get notified about new features and releases
+                Release notes, deployment tips, and tuning guides.
               </p>
             </div>
           </div>
@@ -536,6 +537,21 @@ export default function Home() {
                     aria-hidden="true"
                   >
                     <path d="M12 2c5.523 0 10 4.372 10 9.764 0 6.773-4.953 8.356-10 8.356s-10-1.583-10-8.356C2 6.372 6.477 2 12 2zm-3.5 6.5a1 1 0 011 1V14h-1.5V9.5a1 1 0 011-1zm7 0a1 1 0 011 1V14h-1.5V9.5a1 1 0 011-1zm-3.5 2.25c.69 0 1.25.56 1.25 1.25v3h-2.5v-3c0-.69.56-1.25 1.25-1.25z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                  aria-label="Analyzer Repo"
+                >
+                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      fillRule="evenodd"
+                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                 </a>
               </div>

@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Giovanni Martinez | iqtoolkit Creator",
+  title: "Giovanni Martinez — About",
   description:
-    "Meet Giovanni Martinez, creator of iqtoolkit—an AI Database Architect with 13+ years optimizing PostgreSQL, MongoDB, and SQL Server for Fortune 100 companies.",
+    "Database Administrator and AI-Enabled Database Architect with 13+ years experience in PostgreSQL and open-source databases. Creator of iqtoolkit.",
 };
 
 export default function AboutPage() {
@@ -32,19 +32,67 @@ export default function AboutPage() {
             </div>
           </div>
           <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            About the Creator
+            Giovanni Martinez
           </h1>
         </div>
 
-        {/* Introduction */}
-        <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 dark:prose-invert dark:prose-headings:text-white dark:prose-p:text-gray-300 mb-12">
-          <p className="text-xl leading-relaxed">
-            <strong className="text-blue-600 dark:text-blue-400">Giovanni Martinez</strong> is a
-            Senior Database Administrator turned AI Database Architect with{" "}
-            <strong>13+ years of experience</strong> optimizing PostgreSQL, MongoDB, and SQL Server
-            for education, SaaS, and Fortune 100 healthcare companies including
-            McKesson/CoverMyMeds.
-          </p>
+        {/* Introduction (condensed bullets) */}
+        <div className="mb-6">
+          <ul className="grid gap-4 text-lg text-gray-800 dark:text-gray-200">
+            <li>
+              • Database Administrator and AI-enabled Architect with <strong>13+ years</strong>{" "}
+              across PostgreSQL and open-source ecosystems; creator of <strong>iqtoolkit</strong>{" "}
+              (launched 2025).
+            </li>
+            <li>
+              • Focus: query performance, reliability engineering, and privacy-first AI for on-prem
+              and cloud.
+            </li>
+            <li>
+              • Location & contact: Ocala, FL •{" "}
+              <a className="underline hover:text-blue-600" href="mailto:gio@iqtoolkit.ai">
+                gio@iqtoolkit.ai
+              </a>
+            </li>
+            <li>
+              • Links:{" "}
+              <a
+                className="underline hover:text-blue-600"
+                href="https://www.iqtoolkit.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                iqtoolkit.ai
+              </a>{" "}
+              •
+              <a
+                className="underline hover:text-blue-600 ml-1"
+                href="https://github.com/gmartinez-dbai"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                github.com/gmartinez-dbai
+              </a>{" "}
+              •
+              <a
+                className="underline hover:text-blue-600 ml-1"
+                href="https://linkedin.com/in/gmartinez-dbai"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                linkedin.com/in/gmartinez-dbai
+              </a>{" "}
+              •
+              <a
+                className="underline hover:text-blue-600 ml-1"
+                href="https://mastodon.social/@iqtoolkit"
+                target="_blank"
+                rel="me noopener noreferrer"
+              >
+                @iqtoolkit
+              </a>
+            </li>
+          </ul>
         </div>
 
         {/* Why iqtoolkit Exists */}
@@ -100,17 +148,23 @@ export default function AboutPage() {
                 AI/ML & Development
               </h3>
               <p className="text-gray-700 dark:text-gray-300">
-                Python, Ollama, Azure AI, FastAPI, Apache Airflow
+                Python, Local LLM (Ollama), FastAPI, Apache Airflow
               </p>
             </div>
             <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800/50">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                Key Certifications
+                Certifications
               </h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                Azure Solutions Architect Expert, Certified Kubernetes Administrator (CKA), Azure AI
-                Fundamentals
-              </p>
+              <div className="space-y-3 text-gray-700 dark:text-gray-300">
+                <div>
+                  <span className="font-semibold">Current:</span> Microsoft Certified: Azure AI
+                  Fundamentals (AI-900), Azure Solutions Architect Expert, Certified Kubernetes
+                  Administrator (CKA)
+                </div>
+                <div>
+                  <span className="font-semibold">Previous (Expired):</span> AWS Solutions Architect
+                </div>
+              </div>
             </div>
           </div>
           <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800/50">
@@ -126,7 +180,7 @@ export default function AboutPage() {
         <section className="mb-12">
           <div className="rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white p-8 dark:border-blue-700 dark:from-blue-950/30 dark:to-gray-900">
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-              <strong>For recruiters and hiring managers:</strong>
+              <strong>My full professional resume:</strong>
             </p>
             <Link
               href="/cv"
@@ -142,6 +196,10 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
             Let&apos;s Connect
           </h2>
+          <p className="mb-4 text-gray-700 dark:text-gray-300">
+            Currently building AI-enabled database diagnostics and mentoring teams on PostgreSQL,
+            Kubernetes, and Terraform.
+          </p>
           <div className="prose prose-lg max-w-none prose-p:text-gray-700 dark:prose-invert dark:prose-p:text-gray-300 mb-6">
             <p>
               Whether you&apos;re interested in contributing to iqtoolkit, exploring collaboration
@@ -197,12 +255,12 @@ export default function AboutPage() {
           </Link>
           <span className="text-gray-300 dark:text-gray-700">|</span>
           <a
-            href="https://github.com/iqtoolkit"
+            href="https://github.com/gmartinez-dbai"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
           >
-            Explore iqtoolkit on GitHub →
+            View personal GitHub profile →
           </a>
         </div>
       </main>

@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Giovanni Martinez | iqtoolkit Creator",
+  title: "Giovanni Martinez — Resume / CV",
   description:
-    "Learn about Giovanni Martinez, Senior Database Administrator turned AI Database Architect and founder of iqtoolkit - 13+ years optimizing databases for Fortune 100 companies.",
+    "Database Administrator and AI-Enabled Database Architect with 13+ years experience in PostgreSQL and open-source databases. Creator of iqtoolkit.",
 };
 
 export default function AboutPage() {
@@ -19,6 +19,7 @@ export default function AboutPage() {
           >
             ← Back to Home
           </Link>
+          {/* Removed header download/Mastodon buttons per user preference */}
         </div>
       </header>
 
@@ -35,10 +36,11 @@ export default function AboutPage() {
             Giovanni Martinez
           </h1>
           <p className="text-2xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-            Senior Database Administrator → AI Database Architect
+            Database Administrator | AI-Enabled Database Architect
           </p>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            PostgreSQL Optimizer | Building ML/AI-Ready Data Systems | Open-Source Innovator
+            Ocala, FL • www.iqtoolkit.ai • github.com/gmartinez-dbai •
+            linkedin.com/in/gmartinez-dbai • mastodon.social/@iqtoolkit • gio@iqtoolkit.ai
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <a
@@ -68,13 +70,12 @@ export default function AboutPage() {
               GitHub
             </a>
             <a
-              href="https://github.com/iqtoolkit"
+              href="https://mastodon.social/@iqtoolkit"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="me noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border-2 border-gray-300 px-6 py-3 text-sm font-medium text-gray-700 transition-all hover:border-blue-600 hover:text-blue-600 dark:border-gray-700 dark:text-gray-300 dark:hover:border-blue-400 dark:hover:text-blue-400"
             >
-              <span className="text-lg">🤖</span>
-              iqtoolkit Project
+              🐘 Mastodon
             </a>
           </div>
         </div>
@@ -86,16 +87,17 @@ export default function AboutPage() {
           </h2>
           <div className="prose prose-lg max-w-none prose-p:text-gray-700 dark:prose-invert dark:prose-p:text-gray-300">
             <p>
-              Senior Database Administrator transitioning to AI Database Architect with{" "}
-              <strong>13+ years of experience</strong> in database optimization, performance tuning,
-              and cloud architecture. Founder of <strong>iqtoolkit</strong>—an open-source,
-              privacy-first platform for intelligent database analysis and optimization.
+              Database Administrator with <strong>13+ years</strong> of PostgreSQL and open-source
+              database experience, focused on data optimization, AI-driven analysis tools, and
+              large-scale implementation. Creator of <strong>iqtoolkit</strong> (launched 2025), an
+              AI-powered multi-database analysis platform for PostgreSQL, MongoDB, and more.
             </p>
             <p>
-              Proven expertise in building and tuning databases for education organizations, SaaS
-              companies, and Fortune 100 enterprises (McKesson). Specializing in PostgreSQL,
-              MongoDB, SQL Server optimization with emerging focus on AI-driven database solutions,
-              ML/AI integration, and container-native deployments.
+              Demonstrated success deploying databases within Kubernetes and modern cloud-native
+              environments. Experienced in integrating CI/CD, compliance, and automation into
+              database operations, with hands-on coaching of teams in Postgres, Python, and DevOps
+              tooling. Passionate about open-source, privacy-first data solutions, and distributed
+              systems.
             </p>
           </div>
         </section>
@@ -112,22 +114,22 @@ export default function AboutPage() {
               period="February 2022 - Present"
               duration="3 years 10 months"
               highlights={[
-                "Diagnosed and resolved complex PostgreSQL performance bottlenecks, significantly increasing query efficiency and system stability",
-                "Architected and deployed comprehensive Datadog monitoring dashboards for PostgreSQL, providing real-time alerting and deep performance insights",
-                "Led enterprise-wide rollout of Transparent Data Encryption (TDE) and Change Data Capture (CDC) on SQL Server, strengthening data security and compliance",
-                "Automated critical maintenance and deployment workflows with Puppet and Terraform, eliminating repetitive tasks and standardizing configurations",
-                "Embedded database operations into CI/CD pipelines, accelerating feature delivery while maintaining reliability",
-                "Part of cross-functional team overseeing mission-critical SQL Server and PostgreSQL platforms for healthcare applications",
+                "Diagnosed and resolved complex PostgreSQL performance and stability issues on terabyte-scale production infrastructure",
+                "Architected and managed Datadog-based monitoring and real-time alerting for PostgreSQL",
+                "Led database deployments inside Kubernetes, including CloudNativePG tests and Liquibase integration into CI/CD",
+                "Implemented Transparent Data Encryption (TDE) and Change Data Capture (CDC) for SQL Server",
+                "Automated routines using Puppet and Terraform; standardized configuration management",
+                "Mentored team members in Python, PostgreSQL, Kubernetes, DevOps Tools, and Terraform",
               ]}
               technologies={[
                 "PostgreSQL",
                 "SQL Server",
-                "Terraform",
-                "Datadog",
-                "Puppet",
                 "Kubernetes",
+                "Docker",
+                "Terraform",
+                "Liquibase",
+                "Datadog",
                 "AWS",
-                "GitOps",
                 "CI/CD",
               ]}
             />
@@ -156,14 +158,20 @@ export default function AboutPage() {
               period="June 2016 - December 2020"
               duration="4 years 7 months"
               highlights={[
-                "Setup automated platform to provide PostgreSQL and Cassandra to developer teams",
-                "Managed and optimized PostgreSQL database infrastructure for enterprise contact center solutions",
-                "Installed, deployed, and maintained database infrastructure",
-                "Identified, troubleshot, and resolved database system alarms and alerts",
-                "Created and maintained database deployment documentation",
-                "Performed capacity planning and maintained performance metrics",
+                "Assisted teams with troubleshooting, tuning, and cluster configurations for Cassandra & PostgreSQL",
+                "Implemented MongoDB upgrade with zero downtime",
+                "Automated provisioning and routine tasks using Bash/Python/PowerShell",
+                "Supported MySQL, Cassandra, MongoDB, PostgreSQL, and SQL Server (monitoring, backup, failover, upgrades)",
+                "Documented infrastructure and best practices",
               ]}
-              technologies={["PostgreSQL", "Cassandra", "OLTP", "AWS", "Automation"]}
+              technologies={[
+                "PostgreSQL",
+                "Cassandra",
+                "MongoDB",
+                "MySQL",
+                "SQL Server",
+                "Automation",
+              ]}
             />
 
             {/* EDP University */}
@@ -178,7 +186,7 @@ export default function AboutPage() {
                 "Developed reports using SQL skills",
                 "Worked with servers and databases for educational institution",
               ]}
-              technologies={["SQL Database", "Database Administration", "Systems Administration"]}
+              technologies={["SQL Server", "Database Administration", "Systems Administration"]}
             />
           </div>
         </section>
@@ -190,60 +198,35 @@ export default function AboutPage() {
           </h2>
           <div className="grid gap-6 md:grid-cols-2">
             <SkillCategory
-              title="Database Technologies"
+              title="Databases"
+              skills={["PostgreSQL (13+ yrs)", "SQL Server", "Cassandra", "MongoDB", "MySQL"]}
+            />
+            <SkillCategory
+              title="Data Engineering"
               skills={[
-                "PostgreSQL",
-                "Microsoft SQL Server",
-                "MongoDB",
-                "MySQL",
-                "Cassandra",
-                "Query Tuning",
-                "Index Optimization",
-                "Performance Tuning",
-                "OLTP",
-                "Data Migration",
-                "Backup & Recovery",
+                "Apache Airflow",
+                "Argo Workflows",
+                "DBT (familiar)",
+                "Liquibase",
+                "Data pipeline automation",
               ]}
             />
             <SkillCategory
               title="Cloud & Infrastructure"
-              skills={[
-                "AWS",
-                "Azure",
-                "Kubernetes",
-                "Docker",
-                "Terraform",
-                "Puppet",
-                "GitOps",
-                "CI/CD",
-                "Infrastructure as Code",
-              ]}
-            />
-            <SkillCategory
-              title="Monitoring & Tools"
-              skills={["Datadog", "Performance Metrics", "Real-time Alerting", "Apache Airflow"]}
+              skills={["Azure", "AWS", "Kubernetes", "Docker", "Terraform", "Linode", "Puppet"]}
             />
             <SkillCategory
               title="Development & AI/ML"
-              skills={[
-                "Python",
-                "SQL",
-                "Bash/Shell",
-                "FastAPI",
-                "AI-driven Database Solutions",
-                "Ollama",
-                "Azure AI",
-                "Local LLM Deployment",
-              ]}
+              skills={["Python", "SQL", "Bash/Shell", "FastAPI", "Local LLM deployment (Ollama)"]}
             />
             <SkillCategory
               title="Security & Compliance"
               skills={[
+                "Access control",
                 "Transparent Data Encryption (TDE)",
                 "Change Data Capture (CDC)",
                 "HIPAA",
                 "SOC 2",
-                "Privacy-First Architecture",
               ]}
             />
           </div>
@@ -276,108 +259,91 @@ export default function AboutPage() {
                 Professional Certifications
               </h3>
               <div className="space-y-3">
-                <CertificationGroup title="Cloud & AI (2025)">
+                <CertificationGroup title="Cloud & AI">
                   <Certification
-                    name="Microsoft Certified: Azure AI Fundamentals"
+                    name="Microsoft Certified: Azure AI Fundamentals (AI-900)"
                     issuer="Microsoft"
-                    date="October 2025"
-                    credentialId="72EF74852647AB18"
+                    date="2025"
                   />
                 </CertificationGroup>
 
-                <CertificationGroup title="Data Engineering & Orchestration (2025)">
+                <CertificationGroup title="Data Engineering & Orchestration">
                   <Certification
-                    name="Astronomer Certification for Apache Airflow 3 Fundamentals"
+                    name="Astronomer Certification for Apache Airflow (Fundamentals & DAG Authoring)"
                     issuer="Astronomer"
-                    date="July 2025"
+                    date="2021–2025"
                   />
                   <Certification
-                    name="Liquibase Certified Practitioner Exam"
+                    name="Liquibase Certified Practitioner"
                     issuer="Liquibase"
-                    date="July 2025"
-                    credentialId="155249211"
+                    date="2025"
                   />
+                  <Certification name="Liquibase Fundamentals" issuer="Liquibase" date="2020" />
                 </CertificationGroup>
 
-                <CertificationGroup title="Kubernetes & Container Orchestration (2024)">
+                <CertificationGroup title="Kubernetes & Containers">
                   <Certification
                     name="CKA: Certified Kubernetes Administrator"
                     issuer="The Linux Foundation"
-                    date="December 2024"
-                    expires="December 2026"
-                  />
-                  <Certification
-                    name="[PCEP-30-02] PCEP™ – Certified Entry-Level Python Programmer"
-                    issuer="Python Developer"
-                    date="December 2024"
+                    date="2024"
+                    expires="2026"
                   />
                   <Certification
                     name="CAPA: Certified Argo Project Associate"
                     issuer="The Linux Foundation"
-                    date="May 2024"
-                    expires="May 2026"
-                    credentialId="LF-jwusb3lko8"
+                    date="2024"
+                    expires="2026"
                   />
                 </CertificationGroup>
 
-                <CertificationGroup title="Azure Architecture & Administration (2023)">
+                <CertificationGroup title="Azure Architecture & Administration">
                   <Certification
                     name="Microsoft Certified: Azure Solutions Architect Expert"
                     issuer="Microsoft"
-                    date="June 2023"
-                    expires="June 2026"
+                    date="2023"
+                    expires="2026"
                   />
                   <Certification
                     name="Microsoft Certified: Azure Administrator Associate"
                     issuer="Microsoft"
-                    date="May 2023"
-                    expires="May 2026"
+                    date="2023"
+                    expires="2026"
                   />
                 </CertificationGroup>
 
-                <CertificationGroup title="Data Engineering & Databases (2020-2021)">
+                <CertificationGroup title="Programming & Databases">
                   <Certification
-                    name="Astronomer Certification DAG Authoring for Apache Airflow"
-                    issuer="Astronomer"
-                    date="December 2021"
-                  />
-                  <Certification
-                    name="Astronomer Certification for Apache Airflow Fundamentals"
-                    issuer="Astronomer"
-                    date="December 2021"
-                  />
-                  <Certification
-                    name="Liquibase Fundamentals Certification"
-                    issuer="Liquibase"
-                    date="July 2020"
+                    name="PCEP™ – Certified Entry-Level Python Programmer"
+                    issuer="Python Institute"
+                    date="2024"
                   />
                   <Certification
                     name="Apache Cassandra™ 3.x Administrator Associate"
                     issuer="DataStax"
-                    date="June 2020"
+                    date="2020"
                   />
                   <Certification
                     name="Microsoft Certified: Azure Fundamentals"
                     issuer="Microsoft"
-                    date="April 2020"
+                    date="2020"
                   />
                 </CertificationGroup>
 
-                <CertificationGroup title="Database Administration & Security (2014-2016)">
+                <CertificationGroup title="Database & Security">
                   <Certification
                     name="MCSA: SQL Server 2012/2014 - Certified 2016"
                     issuer="Microsoft"
-                    date="October 2016"
+                    date="2016"
                   />
                   <Certification
                     name="Computer Hacking Forensic Investigator Certification"
                     issuer="EC-Council"
-                    date="January 2015"
+                    date="2015"
                   />
                   <Certification
                     name="Certified Ethical Hacker (CEH)"
                     issuer="EC-Council"
-                    date="December 2014"
+                    date="2014"
                   />
                 </CertificationGroup>
               </div>
