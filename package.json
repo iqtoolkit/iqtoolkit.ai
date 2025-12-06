@@ -13,11 +13,12 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,css}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,css}\"",
+    "security:check": "npm audit --audit-level=moderate",
     "type-check": "tsc --noEmit",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "validate": "npm run format:check && npm run lint && npm run type-check && npm run build"
+    "validate": "npm run security:check && npm run format:check && npm run lint && npm run type-check && npm run build"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
