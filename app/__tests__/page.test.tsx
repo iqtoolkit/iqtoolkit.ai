@@ -58,9 +58,13 @@ describe("Home Page", () => {
     render(<Home />);
     const githubLinks = screen.getAllByLabelText(/GitHub/i);
     const mastodonLink = screen.getByLabelText(/Mastodon/i);
+    const twitterLink = screen.getByLabelText(/Twitter/i);
+    const linkedinLink = screen.getByLabelText(/LinkedIn/i);
 
-    expect(githubLinks.length).toBeGreaterThan(0);
+    expect(githubLinks.length).toBeGreaterThanOrEqual(2);
     expect(mastodonLink).toBeInTheDocument();
+    expect(twitterLink).toBeInTheDocument();
+    expect(linkedinLink).toBeInTheDocument();
   });
 
   it("renders Roadmap link in navbar", () => {
