@@ -549,14 +549,13 @@ export default function Home() {
                   className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
                   aria-label="Mastodon"
                 >
-                  <svg
+                  <Image
+                    src="/img/mastodon.svg"
+                    alt="Mastodon"
+                    width={24}
+                    height={24}
                     className="h-6 w-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path d="M12 2c5.523 0 10 4.372 10 9.764 0 6.773-4.953 8.356-10 8.356s-10-1.583-10-8.356C2 6.372 6.477 2 12 2zm-3.5 6.5a1 1 0 011 1V14h-1.5V9.5a1 1 0 011-1zm7 0a1 1 0 011 1V14h-1.5V9.5a1 1 0 011-1zm-3.5 2.25c.69 0 1.25.56 1.25 1.25v3h-2.5v-3c0-.69.56-1.25 1.25-1.25z" />
-                  </svg>
+                  />
                 </a>
                 <a
                   href="https://twitter.com/iqtoolkit"
