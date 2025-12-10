@@ -40,9 +40,9 @@ export default function AboutPage() {
         <div className="mb-6">
           <ul className="grid gap-4 text-lg text-gray-800 dark:text-gray-200">
             <li>
-              • Database Administrator and AI-enabled Architect with more than 10 years of experience{" "}
-              across PostgreSQL and open-source ecosystems; creator of <strong>iqtoolkit</strong>{" "}
-              (launched 2025).
+              • Database Administrator and AI-enabled Architect with more than 10 years of
+              experience across PostgreSQL and open-source ecosystems; creator of{" "}
+              <strong>iqtoolkit</strong> (launched 2025).
             </li>
             <li>
               • Focus: query performance, reliability engineering, and privacy-first AI for on-prem
