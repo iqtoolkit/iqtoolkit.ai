@@ -87,10 +87,10 @@ export default function AboutPage() {
           </h2>
           <div className="prose prose-lg max-w-none prose-p:text-gray-700 dark:prose-invert dark:prose-p:text-gray-300">
             <p>
-              Database Administrator with more than 10 years of PostgreSQL and open-source
-              database experience, focused on data optimization, AI-driven analysis tools, and
-              large-scale implementation. Creator of <strong>iqtoolkit</strong> (launched 2025), an
-              AI-powered multi-database analysis platform for PostgreSQL, MongoDB, and more.
+              Database Administrator with more than 10 years of PostgreSQL and open-source database
+              experience, focused on data optimization, AI-driven analysis tools, and large-scale
+              implementation. Creator of <strong>iqtoolkit</strong> (launched 2025), an AI-powered
+              multi-database analysis platform for PostgreSQL, MongoDB, and more.
             </p>
             <p>
               Demonstrated success deploying databases within Kubernetes and modern cloud-native
