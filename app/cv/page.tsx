@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Giovanni Martinez — Resume / CV",
   description:
-    "Database Administrator and AI-Enabled Database Architect with 13+ years experience in PostgreSQL and open-source databases. Creator of iqtoolkit.",
+    "Database Administrator and AI-Enabled Database Architect with more than 10 years experience in PostgreSQL and open-source databases. Creator of iqtoolkit.",
 };
 
 export default function AboutPage() {
@@ -87,7 +87,7 @@ export default function AboutPage() {
           </h2>
           <div className="prose prose-lg max-w-none prose-p:text-gray-700 dark:prose-invert dark:prose-p:text-gray-300">
             <p>
-              Database Administrator with <strong>13+ years</strong> of PostgreSQL and open-source
+              Database Administrator with more than 10 years of PostgreSQL and open-source
               database experience, focused on data optimization, AI-driven analysis tools, and
               large-scale implementation. Creator of <strong>iqtoolkit</strong> (launched 2025), an
               AI-powered multi-database analysis platform for PostgreSQL, MongoDB, and more.
@@ -199,7 +199,7 @@ export default function AboutPage() {
           <div className="grid gap-6 md:grid-cols-2">
             <SkillCategory
               title="Databases"
-              skills={["PostgreSQL (13+ yrs)", "SQL Server", "Cassandra", "MongoDB", "MySQL"]}
+              skills={["PostgreSQL (10+ yrs)", "SQL Server", "Cassandra", "MongoDB", "MySQL"]}
             />
             <SkillCategory
               title="Data Engineering"

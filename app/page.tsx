@@ -372,7 +372,7 @@ export default function Home() {
               <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
                 <strong className="text-blue-600 dark:text-blue-400">Giovanni Martinez</strong> is a
                 Senior Database Administrator transitioning to AI Database Architect with{" "}
-                <strong>13+ years of experience</strong> optimizing databases for education
+                more than 10 years of experience optimizing databases for education
                 organizations, SaaS companies, and Fortune 100 enterprises including McKesson&apos;s
                 healthcare platforms.
               </p>

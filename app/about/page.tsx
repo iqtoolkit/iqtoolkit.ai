@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Giovanni Martinez — About",
   description:
-    "Database Administrator and AI-Enabled Database Architect with 13+ years experience in PostgreSQL and open-source databases. Creator of iqtoolkit.",
+    "Database Administrator and AI-Enabled Database Architect with more than 10 years experience in PostgreSQL and open-source databases. Creator of iqtoolkit.",
 };
 
 export default function AboutPage() {
@@ -40,7 +40,7 @@ export default function AboutPage() {
         <div className="mb-6">
           <ul className="grid gap-4 text-lg text-gray-800 dark:text-gray-200">
             <li>
-              • Database Administrator and AI-enabled Architect with <strong>13+ years</strong>{" "}
+              • Database Administrator and AI-enabled Architect with more than 10 years of experience{" "}
               across PostgreSQL and open-source ecosystems; creator of <strong>iqtoolkit</strong>{" "}
               (launched 2025).
             </li>

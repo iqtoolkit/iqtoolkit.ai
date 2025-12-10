@@ -8,11 +8,11 @@ datapro75@outlook.com
 
 ## Professional Summary
 
-Database Administrator with 13+ years of PostgreSQL and open-source database experience, focused on data optimization, AI-driven analysis tools, and large-scale implementation. Creator of **iqtoolkit** (launched 2025), an AI-powered multi-database analysis platform for PostgreSQL, MongoDB, and more. Demonstrated success deploying databases within Kubernetes and modern cloud-native environments. Experienced in integrating CI/CD, compliance, and automation into database operations, with hands-on coaching of teams in Postgres, Python, and DevOps tooling. Passionate about open-source, privacy-first data solutions, and distributed systems.
+Database Administrator with more than 10 years of PostgreSQL and open-source database experience, focused on data optimization, AI-driven analysis tools, and large-scale implementation. Creator of **iqtoolkit** (launched 2025), an AI-powered multi-database analysis platform for PostgreSQL, MongoDB, and more. Demonstrated success deploying databases within Kubernetes and modern cloud-native environments. Experienced in integrating CI/CD, compliance, and automation into database operations, with hands-on coaching of teams in Postgres, Python, and DevOps tooling. Passionate about open-source, privacy-first data solutions, and distributed systems.
 
 ## Technical Skills
 
-**Databases:** PostgreSQL (13+ yrs), SQL Server, Cassandra, MongoDB, MySQL
+**Databases:** PostgreSQL (more than 10 yrs), SQL Server, Cassandra, MongoDB, MySQL
 
 **Data Engineering:** Apache Airflow, Argo Workflows, DBT (familiar), Liquibase, Data pipeline automation
 
