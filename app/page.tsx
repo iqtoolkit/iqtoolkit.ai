@@ -409,9 +409,11 @@ export default function Home() {
               </p>
               <p className="mb-8 text-lg text-[#c0c9e5]">
                 From deploying Transparent Data Encryption at enterprise scale to architecting
-                AI-powered monitoring dashboards with Datadog, Giovanni brings deep expertise in{" "}
-                <strong>database optimization, cloud architecture (AWS/Azure), and AI/ML integration</strong>.
-                Based in Florida, he&apos;s building iqtoolkit as an open-source solution that
+                AI-powered monitoring dashboards with Datadog, Giovanni brings deep expertise in
+                <strong>
+                  database optimization, cloud architecture (AWS/Azure), and AI/ML integration
+                </strong>
+                . Based in Florida, he&apos;s building iqtoolkit as an open-source solution that
                 puts database professionals back in control of their data and their AI.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4">
