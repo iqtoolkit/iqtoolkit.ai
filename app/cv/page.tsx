@@ -9,45 +9,43 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="relative min-h-screen overflow-hidden bg-[#030712] text-[#e4ebff]">
+      <div className="pointer-events-none absolute inset-0 opacity-40">
+        <div className="absolute -top-32 left-1/3 h-96 w-96 rounded-full bg-[#1f8f63] blur-[220px]"></div>
+        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-[#15487a] blur-[240px]"></div>
+      </div>
+
       {/* Header */}
-      <header className="border-b border-gray-200 dark:border-gray-700">
+      <header className="relative border-b border-[#1f2b3f] bg-[#030712]/90 backdrop-blur-xl">
         <div className="mx-auto max-w-5xl px-6 py-6 lg:px-8">
-          <Link
-            href="/"
-            className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
-          >
+          <Link href="/" className="text-sm text-[#8ea2c6] transition-colors hover:text-[#6dffbd]">
             ← Back to Home
           </Link>
-          {/* Removed header download/Mastodon buttons per user preference */}
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
+      <main className="relative mx-auto max-w-5xl px-6 py-16 lg:px-8">
         {/* Hero */}
         <div className="mb-16 text-center">
-          <div className="mb-6 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-1">
-            <div className="rounded-full bg-white dark:bg-gray-900 p-8">
-              <span className="text-6xl">👨‍💻</span>
-            </div>
+          <div className="mx-auto mb-6 inline-flex items-center justify-center rounded-full border border-[#1f2b3f] bg-[#0b1425] p-8 shadow-[0_25px_120px_rgba(3,7,18,0.6)]">
+            <span className="text-6xl">👨‍💻</span>
           </div>
-          <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Giovanni Martinez
-          </h1>
-          <p className="text-2xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-            Database Administrator | AI-Enabled Database Architect
+          <p className="mb-3 text-sm uppercase tracking-[0.3em] text-[#6dffbd]">Curriculum Vitae</p>
+          <h1 className="text-5xl font-bold text-white">Giovanni Martinez</h1>
+          <p className="mt-2 text-2xl font-semibold bg-gradient-to-r from-[#3fb366] to-[#6dffbd] bg-clip-text text-transparent">
+            Database Administrator · AI-Enabled Database Architect
           </p>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Ocala, FL • www.iqtoolkit.ai • github.com/gmartinez-dbai •
-            linkedin.com/in/gmartinez-dbai • mastodon.social/@iqtoolkit • gio@iqtoolkit.ai
+          <p className="mt-4 text-xl text-[#c0c9e5]">
+            Ocala, FL • iqtoolkit.ai • github.com/gmartinez-dbai • linkedin.com/in/gmartinez-dbai •
+            mastodon.social/@iqtoolkit • gio@iqtoolkit.ai
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <a
               href="https://linkedin.com/in/gmartinez-dbai"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-blue-700"
+              className="inline-flex items-center gap-2 rounded-full bg-[#3fb366] px-6 py-3 text-sm font-semibold text-[#030712] transition-all hover:bg-[#6dffbd]"
             >
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -58,7 +56,7 @@ export default function AboutPage() {
               href="https://github.com/gmartinez-dbai"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-gray-300 px-6 py-3 text-sm font-medium text-gray-700 transition-all hover:border-blue-600 hover:text-blue-600 dark:border-gray-700 dark:text-gray-300 dark:hover:border-blue-400 dark:hover:text-blue-400"
+              className="inline-flex items-center gap-2 rounded-full border border-[#1f2b3f] px-6 py-3 text-sm font-medium text-[#c0c9e5] transition-all hover:border-[#6dffbd] hover:text-[#6dffbd]"
             >
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -73,7 +71,7 @@ export default function AboutPage() {
               href="https://mastodon.social/@iqtoolkit"
               target="_blank"
               rel="me noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-gray-300 px-6 py-3 text-sm font-medium text-gray-700 transition-all hover:border-blue-600 hover:text-blue-600 dark:border-gray-700 dark:text-gray-300 dark:hover:border-blue-400 dark:hover:text-blue-400"
+              className="inline-flex items-center gap-2 rounded-full border border-[#1f2b3f] px-6 py-3 text-sm font-medium text-[#c0c9e5] transition-all hover:border-[#6dffbd] hover:text-[#6dffbd]"
             >
               🐘 Mastodon
             </a>
@@ -82,10 +80,8 @@ export default function AboutPage() {
 
         {/* Professional Summary */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
-            Professional Summary
-          </h2>
-          <div className="prose prose-lg max-w-none prose-p:text-gray-700 dark:prose-invert dark:prose-p:text-gray-300">
+          <h2 className="mb-6 text-3xl font-bold text-white">Professional Summary</h2>
+          <div className="prose prose-lg max-w-none text-[#c0c9e5] prose-strong:text-white">
             <p>
               Database Administrator with more than 10 years of PostgreSQL and open-source database
               experience, focused on data optimization, AI-driven analysis tools, and large-scale
@@ -104,7 +100,7 @@ export default function AboutPage() {
 
         {/* Experience Timeline */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Experience</h2>
+          <h2 className="mb-8 text-3xl font-bold text-white">Experience</h2>
           <div className="space-y-12">
             {/* CoverMyMeds */}
             <ExperienceCard
@@ -193,9 +189,7 @@ export default function AboutPage() {
 
         {/* Technical Skills */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-            Technical Expertise
-          </h2>
+          <h2 className="mb-8 text-3xl font-bold text-white">Technical Expertise</h2>
           <div className="grid gap-6 md:grid-cols-2">
             <SkillCategory
               title="Databases"
@@ -234,30 +228,24 @@ export default function AboutPage() {
 
         {/* Education & Certifications */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-            Education & Certifications
-          </h2>
+          <h2 className="mb-8 text-3xl font-bold text-white">Education & Certifications</h2>
           <div className="space-y-6">
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800/50">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            <div className="rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-6">
+              <h3 className="mb-2 text-xl font-semibold text-white">
                 Master&apos;s Degree, Information Security and Assurance
               </h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Western Governors University | 2014 - 2015
-              </p>
+              <p className="text-[#8ea2c6]">Western Governors University | 2014 - 2015</p>
             </div>
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800/50">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            <div className="rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-6">
+              <h3 className="mb-2 text-xl font-semibold text-white">
                 Bachelor&apos;s Degree, Information Systems with Major in Networks
               </h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-[#8ea2c6]">
                 EDP College of Puerto Rico Inc-San Juan | 2008 - 2012
               </p>
             </div>
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800/50">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                Professional Certifications
-              </h3>
+            <div className="rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-6">
+              <h3 className="mb-4 text-xl font-semibold text-white">Professional Certifications</h3>
               <div className="space-y-3">
                 <CertificationGroup title="Cloud & AI">
                   <Certification
@@ -353,25 +341,19 @@ export default function AboutPage() {
 
         {/* Open Source Projects */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-            Open Source Projects
-          </h2>
-          <div className="rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-purple-50 p-8 dark:border-blue-700 dark:from-blue-950/30 dark:to-purple-950/30">
+          <h2 className="mb-8 text-3xl font-bold text-white">Open Source Projects</h2>
+          <div className="rounded-2xl border border-[#1f2b3f] bg-gradient-to-br from-[#060c1a] to-[#0d1f23] p-8 shadow-[0_30px_160px_rgba(20,71,51,0.35)]">
             <div className="flex items-start gap-4 mb-4">
               <span className="text-4xl">🤖</span>
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                  iqtoolkit Analyzer
-                </h3>
-                <p className="text-lg font-medium text-blue-600 dark:text-blue-400 mb-4">
-                  Founder & Lead Developer
-                </p>
+                <h3 className="mb-2 text-2xl font-bold text-white">iqtoolkit Analyzer</h3>
+                <p className="mb-4 text-lg font-medium text-[#6dffbd]">Founder & Lead Developer</p>
               </div>
             </div>
-            <p className="text-gray-700 dark:text-gray-300 mb-4">
+            <p className="mb-4 text-[#c0c9e5]">
               Self-hosted, privacy-first database intelligence platform for PostgreSQL and MongoDB
             </p>
-            <ul className="space-y-2 text-gray-700 dark:text-gray-300 mb-6">
+            <ul className="mb-6 space-y-2 text-[#c0c9e5]">
               <li>• Open-source (MIT license), container-native, ML-enabled query analyzer</li>
               <li>• Privacy by design with Ollama local AI (no vendor lock-in)</li>
               <li>• Multi-database support: PostgreSQL, MongoDB (MySQL/SQL Server roadmapped)</li>
@@ -388,7 +370,7 @@ export default function AboutPage() {
               href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-blue-700"
+              className="inline-flex items-center gap-2 rounded-full bg-[#3fb366] px-6 py-3 text-sm font-semibold text-[#030712] transition-all hover:bg-[#6dffbd]"
             >
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -404,35 +386,33 @@ export default function AboutPage() {
 
         {/* Languages */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Languages</h2>
+          <h2 className="mb-6 text-3xl font-bold text-white">Languages</h2>
           <div className="flex gap-4">
-            <div className="flex-1 rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800/50">
-              <p className="text-lg font-semibold text-gray-900 dark:text-white mb-2">English 🇺🇸</p>
-              <p className="text-gray-600 dark:text-gray-400">Professional working proficiency</p>
+            <div className="flex-1 rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-6">
+              <p className="mb-2 text-lg font-semibold text-white">English 🇺🇸</p>
+              <p className="text-[#8ea2c6]">Professional working proficiency</p>
             </div>
-            <div className="flex-1 rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800/50">
-              <p className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Spanish 🇵🇷</p>
-              <p className="text-gray-600 dark:text-gray-400">Native or bilingual proficiency</p>
+            <div className="flex-1 rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-6">
+              <p className="mb-2 text-lg font-semibold text-white">Spanish 🇵🇷</p>
+              <p className="text-[#8ea2c6]">Native or bilingual proficiency</p>
             </div>
           </div>
         </section>
 
         {/* Contact CTA */}
         <section className="text-center">
-          <div className="rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white p-12 dark:border-blue-700 dark:from-blue-950/30 dark:to-gray-900">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              Let&apos;s Connect
-            </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+          <div className="rounded-2xl border border-[#1f2b3f] bg-gradient-to-br from-[#060d1b] to-[#0e1f23] p-12">
+            <h2 className="mb-4 text-3xl font-bold text-white">Let&apos;s Connect</h2>
+            <p className="mx-auto mb-8 max-w-2xl text-lg text-[#c0c9e5]">
               Interested in database optimization, AI-powered solutions, or contributing to
-              iqtoolkit? Let&apos;s connect on LinkedIn or GitHub.
+              iqtoolkit? Reach out any time.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
                 href="https://linkedin.com/in/gmartinez-dbai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-base font-medium text-white transition-all hover:bg-blue-700"
+                className="inline-flex items-center gap-2 rounded-full bg-[#3fb366] px-8 py-4 text-base font-semibold text-[#030712] transition-all hover:bg-[#6dffbd]"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -441,7 +421,7 @@ export default function AboutPage() {
               </a>
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-blue-600 px-8 py-4 text-base font-medium text-blue-600 transition-all hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-600 dark:hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full border border-[#1f2b3f] px-8 py-4 text-base font-semibold text-[#c0c9e5] transition-all hover:border-[#6dffbd] hover:text-[#6dffbd]"
               >
                 Back to iqtoolkit.ai
               </Link>
@@ -473,11 +453,11 @@ function ExperienceCard({
   technologies,
 }: ExperienceCardProps) {
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-8 dark:border-gray-700 dark:bg-gray-800/50">
+    <div className="rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-8 shadow-[0_20px_120px_rgba(3,7,18,0.55)]">
       <div className="mb-4">
-        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{company}</h3>
-        <p className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-1">{title}</p>
-        <div className="flex flex-wrap gap-2 text-sm text-gray-600 dark:text-gray-400">
+        <h3 className="mb-2 text-2xl font-bold text-white">{company}</h3>
+        <p className="mb-1 text-lg font-semibold text-[#6dffbd]">{title}</p>
+        <div className="flex flex-wrap gap-2 text-sm text-[#8ea2c6]">
           <span>{location}</span>
           <span>•</span>
           <span>{period}</span>
@@ -485,10 +465,10 @@ function ExperienceCard({
           <span>{duration}</span>
         </div>
       </div>
-      <ul className="space-y-2 mb-6">
+      <ul className="mb-6 space-y-2">
         {highlights.map((highlight, index) => (
-          <li key={index} className="text-gray-700 dark:text-gray-300 flex gap-2">
-            <span className="text-blue-600 dark:text-blue-400 mt-1">•</span>
+          <li key={index} className="flex gap-2 text-[#c0c9e5]">
+            <span className="mt-1 text-[#6dffbd]">•</span>
             <span>{highlight}</span>
           </li>
         ))}
@@ -497,7 +477,7 @@ function ExperienceCard({
         {technologies.map((tech) => (
           <span
             key={tech}
-            className="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900/30 px-3 py-1 text-xs font-medium text-blue-700 dark:text-blue-300"
+            className="inline-flex items-center rounded-full bg-[#123f2a] px-3 py-1 text-xs font-medium text-[#6dffbd]"
           >
             {tech}
           </span>
@@ -514,13 +494,13 @@ interface SkillCategoryProps {
 
 function SkillCategory({ title, skills }: SkillCategoryProps) {
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800/50">
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{title}</h3>
-      <div className="flex flex-wrap gap-2">
+    <div className="rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-6">
+      <h3 className="mb-4 text-xl font-bold text-white">{title}</h3>
+      <div className="flex flex-wrap gap-2 text-[#c0c9e5]">
         {skills.map((skill) => (
           <span
             key={skill}
-            className="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-700 px-3 py-1 text-sm text-gray-700 dark:text-gray-300"
+            className="inline-flex items-center rounded-full bg-[#111b2d] px-3 py-1 text-sm"
           >
             {skill}
           </span>
@@ -537,8 +517,8 @@ interface CertificationGroupProps {
 
 function CertificationGroup({ title, children }: CertificationGroupProps) {
   return (
-    <div className="border-l-4 border-blue-500 pl-4">
-      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">{title}</h4>
+    <div className="border-l-4 border-[#3fb366] pl-4">
+      <h4 className="mb-3 text-lg font-semibold text-white">{title}</h4>
       <div className="space-y-2">{children}</div>
     </div>
   );
@@ -554,13 +534,13 @@ interface CertificationProps {
 
 function Certification({ name, issuer, date, expires, credentialId }: CertificationProps) {
   return (
-    <div className="text-gray-700 dark:text-gray-300">
-      <div className="font-medium">{name}</div>
-      <div className="text-sm text-gray-600 dark:text-gray-400">
+    <div className="text-[#c0c9e5]">
+      <div className="font-medium text-white">{name}</div>
+      <div className="text-sm text-[#8ea2c6]">
         {issuer} • {date}
         {expires && ` • Expires ${expires}`}
         {credentialId && (
-          <span className="ml-2 text-xs font-mono bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded">
+          <span className="ml-2 rounded bg-[#111b2d] px-2 py-0.5 text-xs font-mono">
             ID: {credentialId}
           </span>
         )}

@@ -1,0 +1,117 @@
+---
+title: "How to Use iqtoolkit/pgtools: HOT Update Optimization Checklist (Part 1)"
+date: "2025-12-15"
+excerpt: "Learn what PostgreSQL HOT updates are, why they matter, and how to use iqtoolkit/pgtools to generate fillfactor recommendations as actionable SQL."
+author: "Giovanni Martinez"
+tags: ["postgresql", "pgtools", "performance", "dba", "maintenance"]
+---
+
+# How to Use iqtoolkit/pgtools: HOT Update Optimization Checklist (Part 1)
+
+This is the first post in a short series on using **iqtoolkit/pgtools** for practical PostgreSQL performance work.
+
+In this post you’ll learn:
+
+- What HOT updates are (and why you should care)
+- How to spot “low HOT update percentage”
+- How to run the pgtools checklist script and turn its output into exact `ALTER TABLE ... SET (fillfactor=...)` statements
+
+## What are HOT updates?
+
+**HOT** stands for **Heap-Only Tuple** updates.
+
+In PostgreSQL, an `UPDATE` may need to update:
+
+- The table row (heap tuple)
+- Any indexes on the table
+
+When the updated columns **do not affect any indexed columns**, PostgreSQL can often avoid touching indexes entirely by creating a new version of the row on the same heap page and linking it to the old row.
+
+That is a HOT update.
+
+Why it matters:
+
+- Fewer index writes
+- Less index bloat
+- Less WAL and I/O pressure
+- Often better update throughput
+
+So a low HOT update ratio is a strong signal that update-heavy tables may benefit from tuning.
+
+## How do you detect low HOT updates?
+
+At a high level, you’re comparing total updates to HOT updates.
+
+PostgreSQL tracks counters per table in `pg_stat_user_tables`:
+
+- `n_tup_upd`: number of updates
+- `n_tup_hot_upd`: number of HOT updates
+
+A simple ratio is:
+
+```text
+HOT% = 100 * n_tup_hot_upd / max(n_tup_upd, 1)
+```
+
+If HOT% is low on a table that gets lots of updates, that’s often a sign of one (or more) of the following:
+
+- Updates frequently change indexed columns (HOT is impossible in that case)
+- The table is packed too tightly (default `fillfactor=100`), leaving little room for an updated row to stay on the same page
+- Vacuum isn’t keeping up, so space reuse patterns get worse
+
+## Using pgtools to generate recommendations
+
+The pgtools checklist script emits JSON recommendations you can pipe into `jq` for a clean summary.
+
+### Example
+
+```bash
+psql -d iqtoolkit_test -Xq -f optimization/hot_update_optimization_checklist_json.sql \
+  | jq -r '.recommendations[] | {table_name, current_fillfactor, issue, action}'
+```
+
+Example output:
+
+```json
+{
+  "table_name": "public.payments",
+  "current_fillfactor": 100,
+  "issue": "Low HOT update percentage",
+  "action": "ALTER TABLE public.payments SET (fillfactor = 80);"
+}
+{
+  "table_name": "public.orders",
+  "current_fillfactor": 100,
+  "issue": "Low HOT update percentage",
+  "action": "ALTER TABLE public.orders SET (fillfactor = 80);"
+}
+```
+
+What this is telling you:
+
+- These tables currently have `fillfactor=100`
+- pgtools detected HOT updates are low enough that leaving page “headroom” is likely to improve HOT behavior
+- It gives you the exact action to take
+
+## Applying the recommendation safely
+
+A few important operational details:
+
+- `ALTER TABLE ... SET (fillfactor = 80)` changes the setting for **future** row versions.
+- Existing pages aren’t automatically rewritten. To fully realize the change on existing data layout, you typically need a rewrite operation (choose what’s appropriate for your environment):
+  - `VACUUM (FULL)` (blocking)
+  - `CLUSTER` (blocking)
+  - `pg_repack` (non-core extension approach)
+
+Also keep in mind:
+
+- Lower `fillfactor` increases table size (you’re reserving free space on pages).
+- The tradeoff is often worth it for update-heavy tables because it can reduce index churn and bloat.
+
+## Quick “what next” checklist
+
+After applying the fillfactor change, validate the result:
+
+1. Let the workload run (you need real updates to occur)
+2. Re-check `pg_stat_user_tables` HOT% over time
+3. Watch for reduced index bloat and improved update throughput

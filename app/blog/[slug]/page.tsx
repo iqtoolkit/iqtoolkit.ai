@@ -54,13 +54,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="relative min-h-screen overflow-hidden bg-[#030712] text-[#e4ebff]">
+      <div className="pointer-events-none absolute inset-0 opacity-50">
+        <div className="absolute -top-20 left-1/3 h-72 w-72 rounded-full bg-[#1f8f63] blur-[200px]"></div>
+        <div className="absolute top-32 right-0 h-80 w-80 rounded-full bg-[#15487a] blur-[220px]"></div>
+      </div>
+
       {/* Header */}
-      <header className="border-b border-gray-200 dark:border-gray-700">
+      <header className="relative border-b border-[#1f2b3f] bg-[#030712]/90 backdrop-blur-xl">
         <div className="mx-auto max-w-4xl px-6 py-6 lg:px-8">
           <Link
             href="/blog"
-            className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+            className="text-sm text-[#8ea2c6] transition-colors hover:text-[#6dffbd]"
           >
             ← Back to Blog
           </Link>
@@ -68,13 +73,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </header>
 
       {/* Article */}
-      <article className="mx-auto max-w-4xl px-6 py-16 lg:px-8">
-        {/* Article Header */}
+      <article className="relative mx-auto max-w-4xl px-6 py-16 lg:px-8">
         <header className="mb-12 text-center">
-          <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">{post.title}</h1>
+          <p className="mb-3 text-sm uppercase tracking-[0.3em] text-[#6dffbd]">
+            iqtoolkit journal
+          </p>
+          <h1 className="text-5xl font-bold text-white">{post.title}</h1>
 
-          {/* Meta Info */}
-          <div className="flex items-center justify-center gap-6 text-gray-600 dark:text-gray-400 mb-6">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-[#8ea2c6]">
             <time dateTime={post.date}>
               {new Date(post.date).toLocaleDateString("en-US", {
                 year: "numeric",
@@ -88,13 +94,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <span>By {post.author}</span>
           </div>
 
-          {/* Tags */}
           {post.tags.length > 0 && (
-            <div className="flex flex-wrap justify-center gap-2">
+            <div className="mt-6 flex flex-wrap justify-center gap-2">
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-500/10 px-3 py-1 text-sm font-medium text-blue-700 dark:text-blue-400 ring-1 ring-inset ring-blue-200 dark:ring-blue-500/20"
+                  className="inline-flex items-center rounded-full bg-[#123f2a] px-3 py-1 text-sm font-medium text-[#6dffbd]"
                 >
                   {tag}
                 </span>
@@ -103,8 +108,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           )}
         </header>
 
-        {/* Article Content */}
-        <div className="prose prose-lg prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-code:text-blue-700 prose-pre:bg-gray-100 prose-pre:border prose-pre:border-gray-200 dark:prose-invert dark:prose-headings:text-white dark:prose-p:text-gray-300 dark:prose-a:text-blue-400 dark:prose-strong:text-white dark:prose-code:text-blue-300 dark:prose-pre:bg-gray-800 dark:prose-pre:border-gray-700">
+        <div className="prose prose-lg mx-auto max-w-none text-[#c0c9e5] prose-headings:text-white prose-a:text-[#6dffbd] prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-[#6dffbd] prose-pre:bg-[#050b18] prose-pre:border prose-pre:border-[#1f2b3f]">
           <MDXRemote
             source={post.content}
             options={{
@@ -134,12 +138,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </article>
 
-      {/* Footer Navigation */}
-      <footer className="border-t border-gray-200 dark:border-gray-700 mt-16">
+      <footer className="relative border-t border-[#1f2b3f]">
         <div className="mx-auto max-w-4xl px-6 py-8 lg:px-8">
           <Link
             href="/blog"
-            className="inline-flex items-center text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
+            className="inline-flex items-center text-sm text-[#8ea2c6] transition-colors hover:text-[#6dffbd]"
           >
             ← Back to all posts
           </Link>

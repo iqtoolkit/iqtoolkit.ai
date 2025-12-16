@@ -2,8 +2,14 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #030712;
+  --foreground: #e4ebff;
+  --surface: #0b1425;
+  --surface-muted: #111b2d;
+  --stroke: #1f2b3f;
+  --accent: #3fb366;
+  --accent-strong: #6dffbd;
+  --muted: #5a6071;
 }
 
 @theme inline {
@@ -12,14 +18,12 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at top, rgba(19, 48, 83, 0.45), transparent 60%), var(--background);
   color: var(--foreground);
+  font-feature-settings:
+    "ss01" on,
+    "cv11" on;
+  text-rendering: optimizeLegibility;
 }

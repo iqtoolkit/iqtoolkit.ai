@@ -51,9 +51,12 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-950">
+    <div className="relative flex min-h-screen flex-col overflow-hidden bg-[#030712] text-[#e4ebff]">
+      <div className="pointer-events-none absolute inset-0 opacity-40">
+        <div className="mx-auto mt-[-8rem] h-96 w-96 rounded-full bg-[#144733] blur-[150px]"></div>
+      </div>
       {/* Navigation */}
-      <nav className="border-b border-gray-200 bg-white/80 backdrop-blur-sm dark:border-gray-800 dark:bg-gray-950/80 sticky top-0 z-50">
+      <nav className="sticky top-0 z-50 border-b border-[#1f2b3f] bg-[#0b1425]/90 backdrop-blur-xl">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
@@ -74,25 +77,25 @@ export default function Home() {
             <div className="hidden md:flex md:items-center md:gap-8">
               <a
                 href="#features"
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+                className="text-sm font-medium text-[#a7b4d6] transition-colors hover:text-[#6dffbd]"
               >
                 Features
               </a>
               <Link
                 href="/blog"
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+                className="text-sm font-medium text-[#a7b4d6] transition-colors hover:text-[#6dffbd]"
               >
                 Blog
               </Link>
               <Link
                 href="/about"
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+                className="text-sm font-medium text-[#a7b4d6] transition-colors hover:text-[#6dffbd]"
               >
                 About
               </Link>
               <Link
                 href="/roadmap"
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+                className="text-sm font-medium text-[#a7b4d6] transition-colors hover:text-[#6dffbd]"
               >
                 Roadmap
               </Link>
@@ -100,7 +103,7 @@ export default function Home() {
                 href="https://docs.iqtoolkit.ai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+                className="text-sm font-medium text-[#a7b4d6] transition-colors hover:text-[#6dffbd]"
               >
                 Docs
               </a>
@@ -108,7 +111,7 @@ export default function Home() {
                 href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+                className="text-sm font-medium text-[#a7b4d6] transition-colors hover:text-[#6dffbd]"
               >
                 GitHub
               </a>
@@ -116,14 +119,14 @@ export default function Home() {
                 href="https://github.com/iqtoolkit"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
+                className="text-sm font-medium text-[#a7b4d6] transition-colors hover:text-[#6dffbd]"
               >
                 Org GitHub
               </a>
               <button
                 type="button"
                 onClick={scrollToNewsletter}
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-2 text-sm font-medium text-white transition-all hover:scale-105"
+                className="inline-flex items-center justify-center rounded-full border border-transparent bg-[#3fb366] px-6 py-2 text-sm font-semibold text-[#030712] transition-all hover:scale-105 hover:bg-[#6dffbd]"
               >
                 Get Updates
               </button>
@@ -133,7 +136,7 @@ export default function Home() {
             <div className="md:hidden">
               <button
                 type="button"
-                className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                className="inline-flex items-center justify-center rounded-md p-2 text-[#e4ebff] hover:bg-[#111b2d]"
                 aria-label="Open menu"
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -151,38 +154,48 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <main className="flex flex-1 flex-col items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
-        <div className="w-full max-w-5xl text-center">
+      <main className="relative flex flex-1 flex-col items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-10 top-24 h-56 w-56 rounded-full bg-[#1f8f63] blur-[160px] opacity-40"></div>
+          <div className="absolute right-0 top-10 h-64 w-64 rounded-full bg-[#15487a] blur-[180px] opacity-40"></div>
+        </div>
+        <div className="relative w-full max-w-5xl text-center">
           {/* Tightened Hero */}
           <div className="mb-6">
-            <h1 className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl md:text-7xl">
+            <h1 className="bg-gradient-to-r from-[#e4ebff] via-[#6dffbd] to-[#3fb366] bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl md:text-7xl">
               Diagnose database incidents faster with AI-powered query analysis.
             </h1>
           </div>
-          <p className="mx-auto mb-8 max-w-3xl text-xl text-gray-700 dark:text-gray-300 sm:text-2xl"></p>
+          <p className="mx-auto mb-8 max-w-3xl text-xl text-[#a7b4d6] sm:text-2xl">
+            Battle-tested observability workflows, tuned for PostgreSQL and MongoDB teams that need
+            on-prem control without sacrificing speed.
+          </p>
           <div className="mb-12 flex flex-wrap items-center justify-center gap-4">
             <a
               href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 text-base font-semibold text-white transition-all hover:scale-105"
+              className="inline-flex items-center justify-center rounded-full border border-transparent bg-[#3fb366] px-6 py-3 text-base font-semibold text-[#030712] transition-all hover:scale-105 hover:bg-[#6dffbd]"
             >
               View on GitHub
             </a>
-            <span className="text-sm text-gray-600 dark:text-gray-400">v0.2.2 — Stable</span>
+            <span className="text-sm text-[#8ea2c6]">v0.2.2 — Stable</span>
           </div>
 
           {/* Key Differentiator */}
-          <div className="mx-auto mb-16 max-w-3xl rounded-2xl border border-blue-200 bg-blue-50 p-6 dark:border-blue-900 dark:bg-blue-950/30">
-            <p className="text-lg font-medium text-blue-900 dark:text-blue-100">
-              🔒 <strong>Self-Hosted & Privacy-First</strong> - Deploy on your infrastructure via
-              Docker or Kubernetes. Choose Ollama for private, on-premises AI or OpenAI for
-              cloud-based analysis. Your data never leaves your control. No vendor lock-in. Ever.
+          <div className="mx-auto mb-16 max-w-3xl rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-6 text-left shadow-[0_0_80px_rgba(20,71,51,0.25)]">
+            <p className="text-left text-lg font-medium text-[#e4ebff]">
+              🔒 <strong>Self-Hosted & Privacy-First</strong> — Deploy via Docker or Kubernetes with
+              Ollama for offline AI or OpenAI for cloud analysis. Your query data never leaves your
+              perimeter. No vendor lock-in. Ever.
             </p>
           </div>
 
           {/* Features Grid - Roadmap (clearly mark Now vs Coming Soon) */}
-          <div className="mx-auto mb-16 grid max-w-4xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            id="features"
+            className="mx-auto mb-16 grid max-w-4xl gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          >
             <FeatureCard
               title="Multi-Database Support"
               description="Analyze PostgreSQL and MongoDB today; MySQL and SQL Server next."
@@ -235,14 +248,12 @@ export default function Home() {
           </div>
 
           {/* Architecture Snapshot */}
-          <div className="mx-auto mb-16 max-w-4xl rounded-2xl border border-gray-200 bg-white p-6 text-left dark:border-gray-800 dark:bg-gray-900">
-            <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-              Modular Monorepo Architecture
-            </h3>
-            <p className="mb-3 text-sm text-gray-600 dark:text-gray-400">
+          <div className="mx-auto mb-16 max-w-4xl rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-6 text-left">
+            <h3 className="mb-2 text-lg font-semibold text-white">Modular Monorepo Architecture</h3>
+            <p className="mb-3 text-sm text-[#8ea2c6]">
               Built for velocity and reliability with clear module boundaries and shared contracts.
             </p>
-            <ul className="grid gap-2 text-sm text-gray-700 dark:text-gray-300 sm:grid-cols-2">
+            <ul className="grid gap-2 text-sm text-[#c0c9e5] sm:grid-cols-2">
               <li>
                 • <strong>iqtoolkit_analyzer</strong> — CLI package (to be service-ized)
               </li>
@@ -262,7 +273,7 @@ export default function Home() {
             <div className="mt-4 flex flex-wrap gap-4 text-sm">
               <Link
                 href="/roadmap"
-                className="text-blue-600 underline underline-offset-4 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                className="text-[#6dffbd] underline underline-offset-4 hover:text-white"
               >
                 View the Roadmap →
               </Link>
@@ -270,7 +281,7 @@ export default function Home() {
                 href="https://github.com/iqtoolkit/iqtoolkit-analyzer/blob/main/ROADMAP.md"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 underline underline-offset-4 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                className="text-[#6dffbd] underline underline-offset-4 hover:text-white"
               >
                 GitHub ROADMAP.md →
               </a>
@@ -284,7 +295,7 @@ export default function Home() {
                 href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-base font-medium text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                className="inline-flex items-center justify-center gap-3 rounded-full border border-transparent bg-[#3fb366] px-8 py-4 text-base font-semibold text-[#030712] shadow-[0_20px_80px_rgba(63,179,102,0.35)] transition-all hover:scale-105 hover:bg-[#6dffbd]"
               >
                 <span className="mr-1">⭐</span>
                 Star on GitHub
@@ -299,7 +310,7 @@ export default function Home() {
               </a>
               <Link
                 href="/blog/why-iqtoolkit-suite"
-                className="text-sm text-gray-600 underline underline-offset-4 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                className="text-sm text-[#8ea2c6] underline underline-offset-4 hover:text-white"
               >
                 Or read the launch post →
               </Link>
@@ -307,7 +318,7 @@ export default function Home() {
                 href="https://mastodon.social/@iqtoolkit"
                 target="_blank"
                 rel="me noopener noreferrer"
-                className="text-sm text-gray-600 underline underline-offset-4 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                className="text-sm text-[#8ea2c6] underline underline-offset-4 hover:text-white"
               >
                 Follow @iqtoolkit on Mastodon
               </a>
@@ -315,7 +326,7 @@ export default function Home() {
                 href="https://twitter.com/iqtoolkit"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-gray-600 underline underline-offset-4 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                className="text-sm text-[#8ea2c6] underline underline-offset-4 hover:text-white"
               >
                 Follow @iqtoolkit on Twitter
               </a>
@@ -330,14 +341,14 @@ export default function Home() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your.email@example.com"
-                  className="flex-1 rounded-full border border-gray-300 px-6 py-3 text-gray-900 placeholder-gray-500 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:bg-gray-900 dark:text-white dark:placeholder-gray-400"
+                  className="flex-1 rounded-full border border-[#1f2b3f] bg-[#111b2d] px-6 py-3 text-white placeholder-[#5a6071] focus:border-[#3fb366] focus:outline-none focus:ring-2 focus:ring-[#3fb366]"
                   required
                   disabled={status === "loading"}
                 />
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="rounded-full bg-blue-600 px-8 py-3 font-medium text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="rounded-full bg-[#3fb366] px-8 py-3 font-semibold text-[#030712] transition-colors hover:bg-[#6dffbd] disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {status === "loading" ? "Subscribing..." : "Stay Updated"}
                 </button>
@@ -345,15 +356,13 @@ export default function Home() {
               {message && (
                 <p
                   className={`mt-3 text-center text-sm ${
-                    status === "success"
-                      ? "text-green-600 dark:text-green-400"
-                      : "text-red-600 dark:text-red-400"
+                    status === "success" ? "text-[#6dffbd]" : "text-[#ff6f91]"
                   }`}
                 >
                   {message}
                 </p>
               )}
-              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              <p className="mt-2 text-sm text-[#8ea2c6]">
                 Release notes, deployment tips, and tuning guides.
               </p>
             </div>
@@ -362,28 +371,25 @@ export default function Home() {
       </main>
 
       {/* About the Creator */}
-      <section className="border-t border-gray-200 bg-gradient-to-b from-gray-50 to-white dark:border-gray-800 dark:from-gray-900 dark:to-gray-950">
+      <section className="border-t border-[#1f2b3f] bg-[#050b18]">
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              About the Creator
-            </h2>
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-white">About the Creator</h2>
             <div className="mx-auto max-w-3xl">
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-                <strong className="text-blue-600 dark:text-blue-400">Giovanni Martinez</strong> is a
-                Senior Database Administrator transitioning to AI Database Architect with more than
-                10 years of experience optimizing databases for education organizations, SaaS
-                companies, and Fortune 100 enterprises including McKesson&apos;s healthcare
-                platforms.
+              <p className="mb-6 text-lg text-[#c0c9e5]">
+                <strong className="text-[#6dffbd]">Giovanni Martinez</strong> is a Senior Database
+                Administrator transitioning to AI Database Architect with more than 10 years of
+                experience optimizing databases for education organizations, SaaS companies, and
+                Fortune 100 enterprises including McKesson&apos;s healthcare platforms.
               </p>
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+              <p className="mb-6 text-lg text-[#c0c9e5]">
                 After years of solving the same database performance challenges across PostgreSQL,
                 MongoDB, and SQL Server, Giovanni founded <strong>iqtoolkit</strong> to build what
                 the industry was missing: a <strong>privacy-first, self-hosted platform</strong>{" "}
                 that unifies database intelligence across multiple database systems—without vendor
                 lock-in or sending sensitive data to third-party clouds.
               </p>
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
+              <p className="mb-8 text-lg text-[#c0c9e5]">
                 From deploying Transparent Data Encryption at enterprise scale to architecting
                 AI-powered monitoring dashboards with Datadog, Giovanni brings deep expertise in{" "}
                 <strong>
@@ -395,7 +401,7 @@ export default function Home() {
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <Link
                   href="/about"
-                  className="inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-blue-700"
+                  className="inline-flex items-center justify-center rounded-full bg-[#3fb366] px-6 py-3 text-sm font-semibold text-[#030712] transition-all hover:bg-[#6dffbd]"
                 >
                   View Full Bio & Experience
                 </Link>
@@ -410,7 +416,7 @@ export default function Home() {
                   href="https://linkedin.com/in/gmartinez-dbai"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full border-2 border-gray-300 px-6 py-3 text-sm font-medium text-gray-700 transition-all hover:border-blue-600 hover:text-blue-600 dark:border-gray-700 dark:text-gray-300 dark:hover:border-blue-400 dark:hover:text-blue-400"
+                  className="inline-flex items-center justify-center rounded-full border-2 border-[#1f2b3f] px-6 py-3 text-sm font-medium text-[#c0c9e5] transition-all hover:border-[#6dffbd] hover:text-[#6dffbd]"
                 >
                   <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -421,7 +427,7 @@ export default function Home() {
                   href="https://github.com/gmartinez-dbai"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full border-2 border-gray-300 px-6 py-3 text-sm font-medium text-gray-700 transition-all hover:border-blue-600 hover:text-blue-600 dark:border-gray-700 dark:text-gray-300 dark:hover:border-blue-400 dark:hover:text-blue-400"
+                  className="inline-flex items-center justify-center rounded-full border-2 border-[#1f2b3f] px-6 py-3 text-sm font-medium text-[#c0c9e5] transition-all hover:border-[#6dffbd] hover:text-[#6dffbd]"
                 >
                   <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                     <path
@@ -439,15 +445,13 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950">
+      <footer className="border-t border-[#1f2b3f] bg-[#030712]">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="grid gap-8 md:grid-cols-3">
             {/* Brand & Mission */}
             <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-                iqtoolkit.ai
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <h3 className="mb-3 text-lg font-semibold text-white">iqtoolkit.ai</h3>
+              <p className="text-sm text-[#8ea2c6]">
                 Empowering database professionals with AI-driven insights and automation tools.
                 Built by engineers, for engineers.
               </p>
@@ -455,14 +459,12 @@ export default function Home() {
 
             {/* Quick Links */}
             <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-                Resources
-              </h3>
+              <h3 className="mb-3 text-lg font-semibold text-white">Resources</h3>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link
                     href="/blog"
-                    className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                    className="text-[#8ea2c6] transition-colors hover:text-[#6dffbd]"
                   >
                     Blog
                   </Link>
@@ -472,7 +474,7 @@ export default function Home() {
                     href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                    className="text-[#8ea2c6] transition-colors hover:text-[#6dffbd]"
                   >
                     GitHub Repository
                   </a>
@@ -482,7 +484,7 @@ export default function Home() {
                     href="https://github.com/iqtoolkit/iqtoolkit.ai"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                    className="text-[#8ea2c6] transition-colors hover:text-[#6dffbd]"
                   >
                     Documentation
                   </a>
@@ -492,7 +494,7 @@ export default function Home() {
                     href="https://github.com/iqtoolkit/iqtoolkit.ai/blob/main/CONTRIBUTING.md"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                    className="text-[#8ea2c6] transition-colors hover:text-[#6dffbd]"
                   >
                     Contributing
                   </a>
@@ -500,7 +502,7 @@ export default function Home() {
                 <li>
                   <Link
                     href="/cv"
-                    className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                    className="text-[#8ea2c6] transition-colors hover:text-[#6dffbd]"
                   >
                     Resume/CV
                   </Link>
@@ -510,13 +512,13 @@ export default function Home() {
 
             {/* Social & Contact */}
             <div>
-              <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">Connect</h3>
+              <h3 className="mb-3 text-lg font-semibold text-white">Connect</h3>
               <div className="flex flex-wrap gap-4">
                 <a
                   href="https://github.com/iqtoolkit"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                  className="text-[#8ea2c6] transition-colors hover:text-[#6dffbd]"
                   aria-label="GitHub (Org)"
                 >
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -531,7 +533,7 @@ export default function Home() {
                   href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                  className="text-[#8ea2c6] transition-colors hover:text-[#6dffbd]"
                   aria-label="GitHub (Analyzer Repo)"
                 >
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -546,7 +548,7 @@ export default function Home() {
                   href="https://mastodon.social/@iqtoolkit"
                   target="_blank"
                   rel="me noopener noreferrer"
-                  className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                  className="text-[#8ea2c6] transition-colors hover:text-[#6dffbd]"
                   aria-label="Mastodon"
                 >
                   <Image
@@ -561,7 +563,7 @@ export default function Home() {
                   href="https://twitter.com/iqtoolkit"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                  className="text-[#8ea2c6] transition-colors hover:text-[#6dffbd]"
                   aria-label="Twitter"
                 >
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -572,7 +574,7 @@ export default function Home() {
                   href="https://linkedin.com/in/gmartinez-dbai"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                  className="text-[#8ea2c6] transition-colors hover:text-[#6dffbd]"
                   aria-label="LinkedIn"
                 >
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -583,11 +585,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-8 border-t border-gray-200 pt-8 dark:border-gray-800">
-            <p className="text-center text-sm text-gray-600 dark:text-gray-400">
+          <div className="mt-8 border-t border-[#1f2b3f] pt-8">
+            <p className="text-center text-sm text-[#8ea2c6]">
               © {new Date().getFullYear()} iqtoolkit.ai — Open source MIT License. Specialized in
               Database + AI integration. Contact:{" "}
-              <a className="underline hover:text-blue-600" href="mailto:gio@iqtoolkit.ai">
+              <a className="underline hover:text-[#6dffbd]" href="mailto:gio@iqtoolkit.ai">
                 gio@iqtoolkit.ai
               </a>
             </p>
@@ -608,25 +610,25 @@ interface FeatureCardProps {
 
 function FeatureCard({ title, description, icon, badge, badgeTone }: FeatureCardProps) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:scale-105 hover:border-blue-300 hover:shadow-xl dark:border-gray-800 dark:bg-gray-900 dark:hover:border-blue-700">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 opacity-0 transition-opacity group-hover:opacity-100 dark:from-blue-950/20 dark:to-purple-950/20"></div>
+    <div className="group relative overflow-hidden rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-6 shadow-lg transition-all hover:-translate-y-1 hover:border-[#3fb366]/60">
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#12344f] to-transparent opacity-0 transition-opacity group-hover:opacity-100"></div>
       <div className="relative">
-        <div className="mb-4 inline-flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 p-3 dark:from-blue-900/50 dark:to-purple-900/50">
-          <span className="text-3xl">{icon}</span>
+        <div className="mb-4 inline-flex items-center justify-center rounded-xl bg-[#111b2d] p-3 text-3xl">
+          <span>{icon}</span>
         </div>
         {badge ? (
           <span
-            className={`mb-2 inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${
+            className={`mb-2 inline-flex items-center rounded-full px-3 py-0.5 text-xs font-semibold ${
               badgeTone === "soon"
-                ? "border-amber-200 bg-amber-100 text-amber-800 dark:border-amber-800 dark:bg-amber-900/30 dark:text-amber-300"
-                : "border-green-200 bg-green-100 text-green-800 dark:border-green-800 dark:bg-green-900/30 dark:text-green-300"
+                ? "bg-[#4d3310]/60 text-[#f9d28d]"
+                : "bg-[#123f2a] text-[#6dffbd]"
             }`}
           >
             {badge}
           </span>
         ) : null}
-        <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
-        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">{description}</p>
+        <h3 className="mb-3 text-lg font-semibold text-white">{title}</h3>
+        <p className="text-sm leading-relaxed text-[#a7b4d6]">{description}</p>
       </div>
     </div>
   );
