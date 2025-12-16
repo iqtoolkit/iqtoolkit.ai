@@ -81,7 +81,7 @@ export default function AboutPage() {
         {/* Professional Summary */}
         <section className="mb-16">
           <h2 className="mb-6 text-3xl font-bold text-white">Professional Summary</h2>
-          <div className="prose prose-lg max-w-none text-[#c0c9e5] prose-strong:text-white">
+          <div className="prose prose-invert prose-lg max-w-none text-[#c0c9e5] prose-p:text-[#c0c9e5] prose-li:text-[#c0c9e5] prose-headings:text-white prose-strong:text-white">
             <p>
               Database Administrator with more than 10 years of PostgreSQL and open-source database
               experience, focused on data optimization, AI-driven analysis tools, and large-scale

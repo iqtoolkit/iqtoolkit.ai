@@ -101,7 +101,7 @@ export default function AboutPage() {
         {/* Why iqtoolkit Exists */}
         <section className="rounded-3xl border border-[#1f2b3f] bg-[#0b1425] p-8">
           <h2 className="mb-4 text-3xl font-bold text-white">Why iqtoolkit Exists</h2>
-          <div className="prose prose-lg max-w-none text-[#c0c9e5] prose-strong:text-white">
+          <div className="prose prose-invert prose-lg max-w-none text-[#c0c9e5] prose-p:text-[#c0c9e5] prose-li:text-[#c0c9e5] prose-headings:text-white prose-strong:text-white">
             <p>
               After more than a decade of manually diagnosing slow queries, building monitoring
               dashboards, and tuning database performance in production environments, Giovanni

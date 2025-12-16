@@ -27,7 +27,7 @@ export function SocialIcon({ href, label, variant, rel }: SocialIconProps) {
       target="_blank"
       rel={rel ?? "noopener noreferrer"}
       aria-label={label}
-      className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+      className="text-[#8ea2c6] transition-colors hover:text-[#6dffbd]"
     >
       {icon.type === "image" ? (
         <Image src={icon.path} alt={label} width={24} height={24} className="h-6 w-6" />
