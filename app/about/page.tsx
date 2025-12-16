@@ -109,7 +109,7 @@ export default function AboutPage() {
               actionable intelligence.
             </p>
             <p>
-              <strong>iqtoolkit was created to solve real production challenges</strong>—bringing
+              <strong>iqtoolkit was created to solve real production challenges</strong> — bringing
               AI-powered insights to database operations without cloud dependencies, vendor lock-in,
               or privacy compromises. Every feature is built from actual DBA pain points, not
               theoretical use cases.

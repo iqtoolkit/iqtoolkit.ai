@@ -154,7 +154,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <main className="relative flex flex-1 flex-col items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
+      <main className="relative flex flex-1 flex-col items-center justify-center px-4 py-20 sm:px-6 lg:px-8">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-10 top-24 h-56 w-56 rounded-full bg-[#1f8f63] blur-[160px] opacity-40"></div>
           <div className="absolute right-0 top-10 h-64 w-64 rounded-full bg-[#15487a] blur-[180px] opacity-40"></div>
@@ -183,7 +183,7 @@ export default function Home() {
           </div>
 
           {/* Key Differentiator */}
-          <div className="mx-auto mb-16 max-w-3xl rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-6 text-left shadow-[0_0_80px_rgba(20,71,51,0.25)]">
+          <div className="mx-auto mb-20 max-w-3xl rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-6 text-left shadow-[0_0_80px_rgba(20,71,51,0.25)]">
             <p className="text-left text-lg font-medium text-[#e4ebff]">
               🔒 <strong>Self-Hosted & Privacy-First</strong> — Deploy via Docker or Kubernetes with
               Ollama for offline AI or OpenAI for cloud analysis. Your query data never leaves your
@@ -191,64 +191,78 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Features Grid - Roadmap (clearly mark Now vs Coming Soon) */}
-          <div
+          {/* Features (subtle band for separation) */}
+          <section
             id="features"
-            className="mx-auto mb-16 grid max-w-4xl gap-8 sm:grid-cols-2 lg:grid-cols-3"
+            className="mx-auto mb-20 w-full max-w-5xl rounded-3xl border border-[#1f2b3f] bg-[#050b18]/40 px-6 py-12 text-left"
           >
-            <FeatureCard
-              title="Multi-Database Support"
-              description="Analyze PostgreSQL and MongoDB today; MySQL and SQL Server next."
-              icon="🗄️"
-              badge="v0.2.2"
-              badgeTone="now"
-            />
-            <FeatureCard
-              title="AI-Powered Analysis"
-              description="Automatically surface slow queries, spot missing indexes, and summarize EXPLAIN plans."
-              icon="🤖"
-              badge="v0.2.2"
-              badgeTone="now"
-            />
-            <FeatureCard
-              title="Self-Hosted & Open Source"
-              description="Deploy via Docker or Kubernetes; keep data private with local LLMs (Ollama) or use OpenAI in the cloud."
-              icon="🔒"
-              badge="v0.2.2"
-              badgeTone="now"
-            />
-            <FeatureCard
-              title="PostgreSQL Analyzer"
-              description="Turn EXPLAIN into action: index suggestions, plan insights, and anomaly detection."
-              icon="🐘"
-              badge="v0.2.2"
-              badgeTone="now"
-            />
-            <FeatureCard
-              title="MongoDB Analyzer"
-              description="Find slow ops, highlight inefficient scans, and guide index strategies."
-              icon="🍃"
-              badge="v0.2.2"
-              badgeTone="now"
-            />
-            <FeatureCard
-              title="Data Governance (Coming Soon)"
-              description="Policy controls and audit trails for regulated teams."
-              icon="🛡️"
-              badge="v0.3"
-              badgeTone="soon"
-            />
-            <FeatureCard
-              title="Rich Reports"
-              description="Export results to Markdown, JSON, and HTML (including MongoDB dashboards) to share or archive analyses."
-              icon="📈"
-              badge="v0.2.2"
-              badgeTone="now"
-            />
-          </div>
+            <div className="mb-10 text-center">
+              <p className="mb-3 text-sm uppercase tracking-[0.3em] text-[#6dffbd]">Features</p>
+              <h2 className="text-3xl font-bold text-white sm:text-4xl">
+                Built for incident response and tuning
+              </h2>
+              <p className="mx-auto mt-4 max-w-3xl text-base text-[#8ea2c6]">
+                A focused toolkit that turns database signals into actionable next steps — without
+                giving up control of your data.
+              </p>
+            </div>
+
+            {/* Features Grid - Roadmap (clearly mark Now vs Coming Soon) */}
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <FeatureCard
+                title="Multi-Database Support"
+                description="Analyze PostgreSQL and MongoDB today; MySQL and SQL Server next."
+                icon="🗄️"
+                badge="v0.2.2"
+                badgeTone="now"
+              />
+              <FeatureCard
+                title="AI-Powered Analysis"
+                description="Automatically surface slow queries, spot missing indexes, and summarize EXPLAIN plans."
+                icon="🤖"
+                badge="v0.2.2"
+                badgeTone="now"
+              />
+              <FeatureCard
+                title="Self-Hosted & Open Source"
+                description="Deploy via Docker or Kubernetes; keep data private with local LLMs (Ollama) or use OpenAI in the cloud."
+                icon="🔒"
+                badge="v0.2.2"
+                badgeTone="now"
+              />
+              <FeatureCard
+                title="PostgreSQL Analyzer"
+                description="Turn EXPLAIN into action: index suggestions, plan insights, and anomaly detection."
+                icon="🐘"
+                badge="v0.2.2"
+                badgeTone="now"
+              />
+              <FeatureCard
+                title="MongoDB Analyzer"
+                description="Find slow ops, highlight inefficient scans, and guide index strategies."
+                icon="🍃"
+                badge="v0.2.2"
+                badgeTone="now"
+              />
+              <FeatureCard
+                title="Data Governance (Coming Soon)"
+                description="Policy controls and audit trails for regulated teams."
+                icon="🛡️"
+                badge="v0.3"
+                badgeTone="soon"
+              />
+              <FeatureCard
+                title="Rich Reports"
+                description="Export results to Markdown, JSON, and HTML (including MongoDB dashboards) to share or archive analyses."
+                icon="📈"
+                badge="v0.2.2"
+                badgeTone="now"
+              />
+            </div>
+          </section>
 
           {/* Architecture Snapshot */}
-          <div className="mx-auto mb-16 max-w-4xl rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-6 text-left">
+          <div className="mx-auto mb-20 max-w-4xl rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-6 text-left">
             <h3 className="mb-2 text-lg font-semibold text-white">Modular Monorepo Architecture</h3>
             <p className="mb-3 text-sm text-[#8ea2c6]">
               Built for velocity and reliability with clear module boundaries and shared contracts.
@@ -289,7 +303,7 @@ export default function Home() {
           </div>
 
           {/* CTA Section with Email Signup (single dominant CTA + subtle nudge) */}
-          <div className="mb-16 flex flex-col items-center justify-center gap-4">
+          <div className="mb-20 flex flex-col items-center justify-center gap-4">
             <div className="flex flex-col items-center gap-3">
               <a
                 href="https://github.com/iqtoolkit/iqtoolkit-analyzer"
@@ -382,6 +396,10 @@ export default function Home() {
                 experience optimizing databases for education organizations, SaaS companies, and
                 Fortune 100 enterprises including McKesson&apos;s healthcare platforms.
               </p>
+
+              <div className="my-10 border-t border-[#1f2b3f]" />
+
+              <h3 className="mb-3 text-xl font-semibold text-white">Why iqtoolkit</h3>
               <p className="mb-6 text-lg text-[#c0c9e5]">
                 After years of solving the same database performance challenges across PostgreSQL,
                 MongoDB, and SQL Server, Giovanni founded <strong>iqtoolkit</strong> to build what
@@ -392,10 +410,8 @@ export default function Home() {
               <p className="mb-8 text-lg text-[#c0c9e5]">
                 From deploying Transparent Data Encryption at enterprise scale to architecting
                 AI-powered monitoring dashboards with Datadog, Giovanni brings deep expertise in{" "}
-                <strong>
-                  database optimization, cloud architecture (AWS/Azure), and AI/ML integration
-                </strong>
-                . Based in Florida, he&apos;s building iqtoolkit as an open-source solution that
+                <strong>database optimization, cloud architecture (AWS/Azure), and AI/ML integration</strong>.
+                Based in Florida, he&apos;s building iqtoolkit as an open-source solution that
                 puts database professionals back in control of their data and their AI.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4">
