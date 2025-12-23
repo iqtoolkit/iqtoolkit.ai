@@ -37,12 +37,12 @@ export default function AboutPage() {
             Database Administrator · AI-Enabled Database Architect
           </p>
           <p className="mt-4 text-xl text-[#c0c9e5]">
-            Ocala, FL • iqtoolkit.ai • github.com/gmartinez-dbai • linkedin.com/in/gmartinez-dbai •
+            Ocala, FL • iqtoolkit.ai • github.com/iqtoolkit • linkedin.com/in/iqtoolkit •
             mastodon.social/@iqtoolkit • gio@iqtoolkit.ai
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <a
-              href="https://linkedin.com/in/gmartinez-dbai"
+              href="https://linkedin.com/in/iqtoolkit"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-[#3fb366] px-6 py-3 text-sm font-semibold text-[#030712] transition-all hover:bg-[#6dffbd]"
@@ -53,7 +53,7 @@ export default function AboutPage() {
               LinkedIn
             </a>
             <a
-              href="https://github.com/gmartinez-dbai"
+              href="https://github.com/iqtoolkit"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-[#1f2b3f] px-6 py-3 text-sm font-medium text-[#c0c9e5] transition-all hover:border-[#6dffbd] hover:text-[#6dffbd]"
@@ -409,7 +409,7 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="https://linkedin.com/in/gmartinez-dbai"
+                href="https://linkedin.com/in/iqtoolkit"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-[#3fb366] px-8 py-4 text-base font-semibold text-[#030712] transition-all hover:bg-[#6dffbd]"

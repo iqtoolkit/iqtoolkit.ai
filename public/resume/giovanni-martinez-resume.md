@@ -2,7 +2,7 @@
 
 **Database Administrator | AI-Enabled Database Architect (Senior-Level Experience)**
 
-Ocala, FL | www.iqtoolkit.ai | github.com/iqtoolkit | linkedin.com/in/gmartinez-dbai | mastodon.social/@iqtoolkit
+Ocala, FL | www.iqtoolkit.ai | github.com/iqtoolkit | linkedin.com/in/iqtoolkit | mastodon.social/@iqtoolkit
 
 datapro75@outlook.com
 

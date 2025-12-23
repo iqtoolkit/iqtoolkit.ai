@@ -431,7 +431,7 @@ export default function Home() {
                   className="h-10 w-auto"
                 />
                 <a
-                  href="https://linkedin.com/in/gmartinez-dbai"
+                  href="https://linkedin.com/in/iqtoolkit"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center rounded-full border-2 border-[#1f2b3f] px-6 py-3 text-sm font-medium text-[#c0c9e5] transition-all hover:border-[#6dffbd] hover:text-[#6dffbd]"
@@ -442,7 +442,7 @@ export default function Home() {
                   LinkedIn
                 </a>
                 <a
-                  href="https://github.com/gmartinez-dbai"
+                  href="https://github.com/iqtoolkit"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center rounded-full border-2 border-[#1f2b3f] px-6 py-3 text-sm font-medium text-[#c0c9e5] transition-all hover:border-[#6dffbd] hover:text-[#6dffbd]"
@@ -589,7 +589,7 @@ export default function Home() {
                   </svg>
                 </a>
                 <a
-                  href="https://linkedin.com/in/gmartinez-dbai"
+                  href="https://linkedin.com/in/iqtoolkit"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#8ea2c6] transition-colors hover:text-[#6dffbd]"

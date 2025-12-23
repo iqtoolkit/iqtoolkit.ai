@@ -70,16 +70,16 @@ export default function AboutPage() {
               •
               <a
                 className="text-[#6dffbd] underline-offset-4 hover:underline"
-                href="https://github.com/gmartinez-dbai"
+                href="https://github.com/iqtoolkit"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                github.com/gmartinez-dbai
+                github.com/iqtoolkit
               </a>
               •
               <a
                 className="text-[#6dffbd] underline-offset-4 hover:underline"
-                href="https://linkedin.com/in/gmartinez-dbai"
+                href="https://linkedin.com/in/iqtoolkit"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -198,7 +198,7 @@ export default function AboutPage() {
               LinkedIn
             </a>
             <a
-              href="https://github.com/gmartinez-dbai"
+              href="https://github.com/iqtoolkit"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-[#1f2b3f] px-6 py-3 text-sm font-medium text-[#c0c9e5] transition-all hover:border-[#6dffbd] hover:text-[#6dffbd]"
@@ -231,7 +231,7 @@ export default function AboutPage() {
           </Link>
           <span className="opacity-30">|</span>
           <a
-            href="https://github.com/gmartinez-dbai"
+            href="https://github.com/iqtoolkit"
             target="_blank"
             rel="noopener noreferrer"
             className="transition-colors hover:text-[#6dffbd]"
