@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -7,7 +9,18 @@ export const metadata: Metadata = {
     "iqtoolkit.ai roadmap: current release status, upcoming milestones, and long-term direction.",
 };
 
+function readLiveVersion() {
+  const versionPath = path.join(process.cwd(), "VERSION");
+  try {
+    const raw = fs.readFileSync(versionPath, "utf8").trim();
+    return raw || "unknown";
+  } catch {
+    return "unknown";
+  }
+}
+
 export default function RoadmapPage() {
+  const liveVersion = readLiveVersion();
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#030712] text-[#e4ebff]">
       <div className="pointer-events-none absolute inset-0 opacity-50">
@@ -50,21 +63,61 @@ export default function RoadmapPage() {
               Releases →
             </a>
           </div>
+          <div className="mt-5 flex justify-center">
+            <span className="rounded-full bg-[#0c1d2c] px-4 py-2 text-xs font-semibold text-[#6dffbd]">
+              Live status: {liveVersion}
+            </span>
+          </div>
         </div>
+
+        <section className="mb-10 rounded-3xl border border-[#1f2b3f] bg-[#050b18] p-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-semibold text-white">Recent releases</h2>
+            <span className="rounded-full bg-[#0f1a29] px-3 py-1 text-xs font-semibold text-[#8ea2c6]">
+              Shipped
+            </span>
+          </div>
+          <ul className="mt-4 space-y-2 text-[#c0c9e5]">
+            <li>
+              v0.2.4 — Governance & version sync; contributor workflow simplified; artifacts
+              aligned.
+            </li>
+            <li>
+              v0.2.3 — Multi-cloud AI support (Gemini, Bedrock, Claude, Azure OpenAI, OpenAI) with
+              6-provider client.
+            </li>
+            <li>
+              v0.2.2 — Ollama-first local AI support with privacy-first defaults and flexible
+              provider system.
+            </li>
+          </ul>
+        </section>
 
         <section className="mb-10 rounded-3xl border border-[#1f8f63] bg-[#061812] p-6 shadow-[0_25px_120px_rgba(6,24,18,0.6)]">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold text-white">Now</h2>
             <span className="rounded-full bg-[#123f2a] px-3 py-1 text-xs font-semibold text-[#6dffbd]">
-              v0.2.2 — Stable
+              v0.2.4 — Stable
             </span>
           </div>
           <ul className="mt-4 space-y-2 text-[#c0c9e5]">
-            <li>PostgreSQL analyzer: slow query analysis, EXPLAIN insights, index suggestions.</li>
-            <li>MongoDB analyzer: aggregation analysis, index strategy, sharding insights.</li>
-            <li>AI-powered analysis via Ollama (private) or OpenAI (cloud).</li>
-            <li>Self-hosted deployment: Docker, Kubernetes (Helm), on-prem friendly.</li>
-            <li>Reports: export to Markdown, JSON, and HTML (MongoDB dashboards included).</li>
+            <li>
+              Governance and version sync: contributor workflow simplified; artifacts aligned to
+              0.2.4.
+            </li>
+            <li>
+              AI providers: 6 supported (Ollama default, plus Gemini, Bedrock, Claude, Azure OpenAI,
+              OpenAI) with seamless switching.
+            </li>
+            <li>
+              Analyzers: PostgreSQL slow query + EXPLAIN components; MongoDB profiler-based slow
+              query analyzer.
+            </li>
+            <li>Reports: JSON, Markdown, and HTML (interactive MongoDB dashboards included).</li>
+            <li>
+              Deploy: Docker/Compose with privacy-first defaults via Ollama; cloud providers
+              optional.
+            </li>
           </ul>
         </section>
 
@@ -72,13 +125,15 @@ export default function RoadmapPage() {
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold text-white">Next</h2>
             <span className="rounded-full bg-[#3a250c] px-3 py-1 text-xs font-semibold text-[#f5c075]">
-              v0.2.3 — Q1 2026
+              v0.3.0 — Q2 2026
             </span>
           </div>
           <ul className="mt-4 space-y-2 text-[#c0c9e5]">
-            <li>Deeper PostgreSQL EXPLAIN/EXPLAIN ANALYZE heuristics and tips.</li>
-            <li>Improved index advisor with workload-aware recommendations.</li>
-            <li>Refinements to analyzer UX and richer output details.</li>
+            <li>
+              Platform modularity: Analyzer service, IQAI service, hub gateway, shared contracts.
+            </li>
+            <li>Orchestration: hub calls Analyzer + IQAI with clear interfaces.</li>
+            <li>Deployment hardening: Helm charts and CI/CD pipelines (dev → staging → prod).</li>
           </ul>
         </section>
 
@@ -86,22 +141,30 @@ export default function RoadmapPage() {
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold text-white">Later</h2>
             <span className="rounded-full bg-[#11233a] px-3 py-1 text-xs font-semibold text-[#8fb4ff]">
-              v0.3.0 — Q2 2026
+              v0.4.0 — Q3 2026
             </span>
           </div>
           <ul className="mt-4 space-y-2 text-[#c0c9e5]">
-            <li>Service orchestration via iqtoolkithub (Analyzer + IQAI integration).</li>
-            <li>Operational maturity improvements and deployment hardening.</li>
-            <li>Foundations for broader multi-database governance workflows.</li>
+            <li>
+              Traditional SQL expansion: MySQL slow query log support and SQL Server Extended
+              Events.
+            </li>
+            <li>Database-agnostic analysis engine with cross-database comparisons.</li>
+            <li>
+              Unified configuration for multiple database types and database-specific
+              recommendations.
+            </li>
           </ul>
         </section>
 
         <section className="rounded-3xl border border-[#1f2b3f] bg-[#050b18] p-6">
           <h2 className="text-xl font-semibold text-white">Beyond</h2>
           <ul className="mt-4 space-y-2 text-[#c0c9e5]">
-            <li>Expanded database support (MySQL, SQL Server).</li>
-            <li>Data governance workflows (PII/PHI detection, compliance readiness).</li>
-            <li>Deeper integrations with observability and metadata ecosystems.</li>
+            <li>
+              v1.0.0 (Q4 2026): web UI, API access, auth, scheduling, and enterprise integrations.
+            </li>
+            <li>ML/self-learning intelligence for trend detection and regression alerts.</li>
+            <li>Observability and collaboration: monitoring hooks, Slack/Teams notifications.</li>
           </ul>
           <p className="mt-4 text-sm text-[#8ea2c6]">
             For the most accurate details and changes, follow the canonical roadmap in{" "}
