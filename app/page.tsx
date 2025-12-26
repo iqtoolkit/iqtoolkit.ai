@@ -163,12 +163,12 @@ export default function Home() {
           {/* Tightened Hero */}
           <div className="mb-6">
             <h1 className="bg-gradient-to-r from-[#e4ebff] via-[#6dffbd] to-[#3fb366] bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl md:text-7xl">
-              Diagnose database incidents faster with AI-powered query analysis.
+              Modern database management, powered by AI
             </h1>
           </div>
           <p className="mx-auto mb-8 max-w-3xl text-xl text-[#a7b4d6] sm:text-2xl">
-            Battle-tested observability workflows, tuned for PostgreSQL and MongoDB teams that need
-            on-prem control without sacrificing speed.
+            Give data teams and DBAs AI-driven query and performance insights to prevent incidents,
+            not just react to them.
           </p>
           <div className="mb-12 flex flex-wrap items-center justify-center gap-4">
             <a
@@ -177,7 +177,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-full border border-transparent bg-[#3fb366] px-6 py-3 text-base font-semibold text-[#030712] transition-all hover:scale-105 hover:bg-[#6dffbd]"
             >
-              View on GitHub
+              Start monitoring with AI
             </a>
             <span className="text-sm text-[#8ea2c6]">v0.2.2 — Stable</span>
           </div>
