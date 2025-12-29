@@ -9,7 +9,8 @@ substitutions:
 steps:
   - name: gcr.io/cloud-builders/docker
     id: Build
-    args: ["build", "-t", "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA", "."]
+    args:
+      ["build", "-t", "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA", "."]
 
   - name: gcr.io/cloud-builders/docker
     id: Push

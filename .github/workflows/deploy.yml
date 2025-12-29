@@ -1,0 +1,42 @@
+name: Deploy to Cloud Run (WIF)
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write  # required for WIF
+
+    env:
+      REGION: us-central1
+      REPO: iqtoolkit
+      SERVICE: iqtoolkit-ai
+      PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+      WIF_PROVIDER: ${{ secrets.GCP_WIF_PROVIDER }}
+      SERVICE_ACCOUNT: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud (WIF)
+        uses: google-github-actions/auth@v2
+        with:
+          token_format: access_token
+          workload_identity_provider: ${{ env.WIF_PROVIDER }}
+          service_account: ${{ env.SERVICE_ACCOUNT }}
+          project_id: ${{ env.PROJECT_ID }}
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          version: latest
+
+      - name: Submit Cloud Build
+        run: |
+          gcloud builds submit --config cloudbuild.yaml \
+            --substitutions _REGION=${REGION},_REPO=${REPO},_SERVICE=${SERVICE}

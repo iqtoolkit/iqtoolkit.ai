@@ -133,6 +133,7 @@ This site is automatically deployed to Netlify when changes are pushed to the ma
 For Google Cloud, the simplest and most flexible option for a Next.js site with server routes (like `app/api/newsletter`) is Cloud Run. It runs a container, scales to zero, and supports environment variables for secrets.
 
 Prerequisites:
+
 - Enable APIs: Cloud Run, Cloud Build, Artifact Registry
 - `gcloud` CLI installed and authenticated
 
@@ -161,6 +162,7 @@ gcloud run deploy iqtoolkit-ai \
 ```
 
 Notes:
+
 - The Dockerfile uses Next.js `output: 'standalone'` for small runtime images.
 - The newsletter API reads `EMAILOCTOPUS_*` from Cloud Run env vars.
 - Blog content in `content/` is copied into the image and read at runtime.
