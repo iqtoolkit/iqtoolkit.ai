@@ -128,6 +128,44 @@ npm run test:coverage
 
 This site is automatically deployed to Netlify when changes are pushed to the main branch.
 
+### Deploy to Google Cloud Run
+
+For Google Cloud, the simplest and most flexible option for a Next.js site with server routes (like `app/api/newsletter`) is Cloud Run. It runs a container, scales to zero, and supports environment variables for secrets.
+
+Prerequisites:
+- Enable APIs: Cloud Run, Cloud Build, Artifact Registry
+- `gcloud` CLI installed and authenticated
+
+```bash
+# Set project and enable services
+gcloud config set project YOUR_PROJECT_ID
+gcloud services enable run.googleapis.com cloudbuild.googleapis.com artifactregistry.googleapis.com
+
+# Create an Artifact Registry Docker repo (one-time)
+gcloud artifacts repositories create iqtoolkit \
+	--repository-format=docker \
+	--location=us-central1 \
+	--description="Docker repo for iqtoolkit"
+
+# Build and push the Docker image
+gcloud builds submit --tag us-central1-docker.pkg.dev/$GOOGLE_CLOUD_PROJECT/iqtoolkit/iqtoolkit-ai:latest
+
+# Deploy to Cloud Run (HTTPS, public)
+gcloud run deploy iqtoolkit-ai \
+	--image us-central1-docker.pkg.dev/$GOOGLE_CLOUD_PROJECT/iqtoolkit/iqtoolkit-ai:latest \
+	--platform managed \
+	--region us-central1 \
+	--allow-unauthenticated \
+	--port 3000 \
+	--set-env-vars EMAILOCTOPUS_API_KEY=YOUR_KEY,EMAILOCTOPUS_LIST_ID=YOUR_LIST
+```
+
+Notes:
+- The Dockerfile uses Next.js `output: 'standalone'` for small runtime images.
+- The newsletter API reads `EMAILOCTOPUS_*` from Cloud Run env vars.
+- Blog content in `content/` is copied into the image and read at runtime.
+- Map a custom domain via Cloud Run or serve behind Cloud CDN for performance.
+
 ### Manual Deployment
 
 1. Build the project:

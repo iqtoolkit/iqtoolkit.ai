@@ -1,0 +1,12 @@
+# Ignore files not needed in the Docker build context
+node_modules
+.next
+coverage
+dist
+.git
+.gitignore
+.vscode
+.env*
+*.log
+**/*.test.*
+scripts/test-emailoctopus.js
