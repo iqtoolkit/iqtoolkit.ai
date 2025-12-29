@@ -1,88 +1,230 @@
-# Infra (OpenTofu/Terraform)
+# Infra (OpenTofu/Terraform) - AWS Deployment
 
-This folder contains infrastructure-as-code to provision Google Cloud prerequisites:
+This folder contains infrastructure-as-code to provision AWS resources for iqtoolkit.ai:
 
-- Artifact Registry repository (Docker)
-- Secret Manager secrets for `EMAILOCTOPUS_API_KEY` and `EMAILOCTOPUS_LIST_ID`
+- **S3 bucket** for Terraform state storage (with versioning & encryption)
+- **DynamoDB table** for state locking
+- **AWS Amplify** app for Next.js hosting with SSR
+- **Secrets Manager** secrets for `EMAILOCTOPUS_API_KEY` and `EMAILOCTOPUS_LIST_ID`
+- **IAM roles** for Amplify to access secrets
 
 ## Prerequisites
 
-- GCP project created and selected
-- IAM permissions to create Artifact Registry and Secrets
+- AWS account with appropriate permissions
+- AWS CLI configured (`aws configure`)
 - OpenTofu (or Terraform) installed
+- GitHub repository for your application
+- GitHub personal access token (for Amplify to access your repo)
 
-## Usage (local state)
+## Two-Phase Deployment
+
+### Phase 1: Create S3 State Bucket (Local State)
+
+The first run creates the S3 bucket and DynamoDB table while keeping state locally.
 
 ```bash
-# Set project
-export TF_VAR_project_id=YOUR_PROJECT_ID
-# Region can be overridden via TF_VAR_region
-
 cd infra
-# Initialize providers
+
+# Set required variables
+export TF_VAR_github_repository_url="https://github.com/YOUR_ORG/iqtoolkit.ai"
+export TF_VAR_aws_region="us-east-1"  # Optional, defaults to us-east-1
+
+# Initialize with local state
 opentofu init
-# Plan
+
+# Plan and review
 opentofu plan -out tfplan
-# Apply
+
+# Apply to create S3 bucket, DynamoDB, and all resources
 opentofu apply tfplan
 ```
 
-To create initial secret values at the same time:
+After successful apply, note the outputs:
+
+```bash
+opentofu output s3_state_bucket_name
+opentofu output dynamodb_lock_table_name
+opentofu output amplify_app_url
+```
+
+### Phase 2: Migrate State to S3
+
+After the S3 bucket is created, migrate the state file from local to S3.
+
+1. **Uncomment the backend configuration** in `providers.tf`:
+
+```hcl
+backend "s3" {
+  bucket         = "iqtoolkit-ai-terraform-state"
+  key            = "amplify/terraform.tfstate"
+  region         = "us-east-1"
+  dynamodb_table = "iqtoolkit-ai-terraform-locks"
+  encrypt        = true
+}
+```
+
+2. **Migrate the state**:
+
+```bash
+# Re-initialize to configure the S3 backend
+opentofu init -migrate-state
+
+# Confirm when prompted to copy state to S3
+# Answer: yes
+```
+
+3. **Verify state migration**:
+
+```bash
+# List S3 bucket contents
+aws s3 ls s3://iqtoolkit-ai-terraform-state/amplify/
+
+# Run plan to verify (should show no changes)
+opentofu plan
+```
+
+4. **Clean up local state files** (optional):
+
+```bash
+rm terraform.tfstate*
+```
+
+## GitHub Integration
+
+### Connect Amplify to GitHub
+
+1. Generate a GitHub personal access token with `repo` permissions
+2. Add it to AWS Secrets Manager or provide during Amplify setup:
+
+```bash
+aws amplify update-app \
+  --app-id $(opentofu output -raw amplify_app_id) \
+  --access-token YOUR_GITHUB_TOKEN
+```
+
+3. Trigger initial deployment:
+
+```bash
+aws amplify start-job \
+  --app-id $(opentofu output -raw amplify_app_id) \
+  --branch-name main \
+  --job-type RELEASE
+```
+
+### Auto-deployments
+
+Amplify will automatically deploy when you push to the configured branches.
+
+## Managing Secrets
+
+### Option 1: Create secrets via OpenTofu (during apply)
 
 ```bash
 opentofu apply \
   -var create_secret_versions=true \
-  -var emailoctopus_api_key=YOUR_KEY \
-  -var emailoctopus_list_id=YOUR_LIST
+  -var emailoctopus_api_key="YOUR_API_KEY" \
+  -var emailoctopus_list_id="YOUR_LIST_ID"
 ```
 
-## Remote state (recommended)
-
-Create a GCS bucket manually for state (one-time):
+### Option 2: Manually add secret values after creation
 
 ```bash
-gsutil mb -l us-central1 gs://YOUR_STATE_BUCKET
+# Add EmailOctopus API key
+aws secretsmanager put-secret-value \
+  --secret-id iqtoolkit-ai/emailoctopus-api-key \
+  --secret-string "YOUR_API_KEY"
+
+# Add EmailOctopus list ID
+aws secretsmanager put-secret-value \
+  --secret-id iqtoolkit-ai/emailoctopus-list-id \
+  --secret-string "YOUR_LIST_ID"
 ```
 
-Then edit `providers.tf` and uncomment the `backend "gcs" {}` block, adding a `backend.hcl` file:
+## Custom Domain Setup
 
-```hcl
-bucket = "YOUR_STATE_BUCKET"
-prefix = "iqtoolkit-ai/infra"
-project = "YOUR_PROJECT_ID"
-```
+To use a custom domain (e.g., iqtoolkit.ai):
 
-Initialize with backend:
+1. Add the domain variable:
 
 ```bash
-opentofu init -backend-config=backend.hcl
+opentofu apply -var custom_domain="iqtoolkit.ai"
 ```
 
-## Next steps
-
-- Build and push the app image to the created Artifact Registry.
-- Deploy Cloud Run referencing the image and reading secrets as env vars.
-- Optionally automate via Cloud Build triggers or GitHub Actions with Workload Identity Federation.
-
-## GitHub Actions with Workload Identity Federation (WIF)
-
-Provision WIF and IAM via OpenTofu:
+2. After applying, get the DNS records from Amplify:
 
 ```bash
-opentofu apply \
-  -var project_id=YOUR_PROJECT_ID \
-  -var github_org=YOUR_GITHUB_ORG \
-  -var github_repo=iqtoolkit.ai
-
-# Get outputs
-opentofu output wif_provider_resource
-opentofu output deployer_service_account_email
+aws amplify get-domain-association \
+  --app-id $(opentofu output -raw amplify_app_id) \
+  --domain-name iqtoolkit.ai
 ```
 
-Add the following GitHub repository secrets:
+3. Add the provided CNAME records to your DNS provider
 
-- `GCP_PROJECT_ID`: your project ID
-- `GCP_WIF_PROVIDER`: value from `wif_provider_resource`
-- `GCP_SERVICE_ACCOUNT`: value from `deployer_service_account_email`
+4. Wait for SSL certificate validation (can take up to 48 hours)
 
-Push to `main` to trigger the workflow in `.github/workflows/deploy.yml`. The job authenticates via WIF, submits Cloud Build with `cloudbuild.yaml`, which builds, pushes, and deploys to Cloud Run. IAM for the Cloud Build default service account is granted by `infra/cloudbuild_iam.tf` to push images, deploy to Cloud Run, and read secrets.
+## Monitoring & Logs
+
+View Amplify build logs:
+
+```bash
+# List recent builds
+aws amplify list-jobs \
+  --app-id $(opentofu output -raw amplify_app_id) \
+  --branch-name main
+
+# Get specific build logs
+aws amplify get-job \
+  --app-id $(opentofu output -raw amplify_app_id) \
+  --branch-name main \
+  --job-id JOB_ID
+```
+
+## Cost Optimization
+
+- **Amplify Hosting**: Pay for build minutes and data transfer
+- **S3**: Minimal cost for state storage
+- **DynamoDB**: PAY_PER_REQUEST mode (only pay for actual requests)
+- **Secrets Manager**: ~$0.40/month per secret
+
+## Cleanup
+
+To destroy all resources:
+
+```bash
+# Destroy infrastructure
+opentofu destroy
+
+# Manually delete the S3 state bucket (if needed)
+aws s3 rb s3://iqtoolkit-ai-terraform-state --force
+```
+
+⚠️ **Warning**: The S3 bucket has deletion protection. Remove versioning first if you need to delete it.
+
+## Troubleshooting
+
+### State Lock Issues
+
+If you encounter a state lock error:
+
+```bash
+# Force unlock (use with caution)
+opentofu force-unlock LOCK_ID
+```
+
+### Amplify Build Failures
+
+Check the Amplify console or use:
+
+```bash
+aws amplify get-app --app-id $(opentofu output -raw amplify_app_id)
+```
+
+### GitHub Authentication Issues
+
+Re-connect GitHub:
+
+```bash
+aws amplify update-app \
+  --app-id $(opentofu output -raw amplify_app_id) \
+  --access-token NEW_GITHUB_TOKEN
+```

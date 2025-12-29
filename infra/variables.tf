@@ -1,22 +1,40 @@
-variable "project_id" {
-  description = "GCP project ID"
+variable "aws_region" {
+  description = "AWS region for resources"
+  type        = string
+  default     = "us-east-1"
+}
+
+variable "environment" {
+  description = "Environment name (e.g., production, staging)"
+  type        = string
+  default     = "production"
+}
+
+variable "github_repository_url" {
+  description = "Full GitHub repository URL (e.g., https://github.com/username/repo)"
   type        = string
 }
 
-variable "region" {
-  description = "Default region (e.g., us-central1)"
+variable "main_branch_name" {
+  description = "Main branch name for production deployment"
   type        = string
-  default     = "us-central1"
+  default     = "main"
 }
 
-variable "artifact_repo" {
-  description = "Artifact Registry repository name"
+variable "custom_domain" {
+  description = "Custom domain for Amplify app (leave empty to skip)"
   type        = string
-  default     = "iqtoolkit"
+  default     = ""
+}
+
+variable "enable_pr_previews" {
+  description = "Enable automatic PR preview deployments"
+  type        = bool
+  default     = true
 }
 
 variable "create_secret_versions" {
-  description = "Set to true to create initial Secret Manager versions from provided values"
+  description = "Set to true to create initial Secrets Manager versions from provided values"
   type        = bool
   default     = false
 }
