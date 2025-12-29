@@ -1,0 +1,250 @@
+---
+title: "How to Use iqtoolkit/pgtools: HOT Update Optimization Checklist (Part 2)"
+date: "2025-12-28"
+excerpt: "Validate fillfactor changes, troubleshoot why HOT updates still lag, and master advanced strategies to optimize your PostgreSQL update workloads."
+author: "Giovanni Martinez"
+tags: ["postgresql", "pgtools", "performance", "dba", "maintenance", "monitoring"]
+---
+
+# How to Use iqtoolkit/pgtools: HOT Update Optimization Checklist (Part 2)
+
+This is the second post in our series on using **iqtoolkit/pgtools** for PostgreSQL performance optimization.
+
+In [Part 1](./how-to-use-iqtoolkit-pgtools-hot-update-optimization.mdx), we covered what HOT updates are, how to detect them, and how to apply fillfactor recommendations. 
+
+In this post you'll learn:
+
+- How to validate that your fillfactor changes actually improved HOT behavior
+- Why HOT% might *still* be low after tuning
+- Strategies for investigating index-related issues
+- When (and when not) to reach for more aggressive rewrite operations
+- Setting up continuous monitoring with pgtools
+
+## Validating Changes in Production
+
+After applying `ALTER TABLE ... SET (fillfactor=...)` and a rewrite operation, you need solid data to confirm improvement.
+
+### The Validation Window
+
+Here's the key insight: **statistics reset on rewrite**.
+
+When you run `VACUUM (FULL)`, `CLUSTER`, or `pg_repack`, PostgreSQL resets the counters in `pg_stat_user_tables` for that table. This is actually helpful—it gives you a clean baseline.
+
+The validation process:
+
+1. **Note the timestamp** before your rewrite operation
+2. **Run the rewrite** (`VACUUM (FULL)`, `CLUSTER`, or `pg_repack`)
+3. **Let your application run** for the same duration as before (e.g., if you collected stats over 24 hours, wait 24 hours again)
+4. **Re-run the pgtools checklist** and compare
+
+### Example Validation Query
+
+After your change, you can run:
+
+```sql
+SELECT
+  schemaname,
+  tablename,
+  n_tup_upd,
+  n_tup_hot_upd,
+  ROUND(100.0 * n_tup_hot_upd / NULLIF(n_tup_upd, 0), 2) AS hot_ratio,
+  pg_size_pretty(pg_total_relation_size(schemaname||'.'||tablename)) AS size
+FROM pg_stat_user_tables
+WHERE schemaname = 'public'
+  AND n_tup_upd > 1000  -- Focus on meaningful workloads
+ORDER BY n_tup_hot_upd DESC;
+```
+
+**What you're looking for:**
+- `hot_ratio` should improve compared to before the change
+- If it doesn't improve, that signals a different root cause (see troubleshooting below)
+
+## Troubleshooting: Why Didn't HOT% Improve?
+
+So you lowered `fillfactor`, ran the rewrite, and HOT% is still low. Here are the most common culprits.
+
+### 1. Updates Are Changing Indexed Columns
+
+This is the most common reason HOT updates aren't happening.
+
+**The Problem:**
+If you're running `UPDATE mytable SET indexed_column = value ...`, PostgreSQL *must* update all indexes on `indexed_column`. HOT is impossible in that case—it's a physical constraint, not a tuning opportunity.
+
+**How to Find It:**
+
+Use the pgtools index analysis script to identify which columns in your indexes are being frequently updated:
+
+```bash
+psql -d your_db -Xq -f analysis/index_column_update_analysis.sql \
+  | jq -r '.analysis[] | select(.update_frequency > 10) | {table, index, columns}'
+```
+
+Or, if you're using application-level tracking, correlate your `UPDATE` statements with your table indexes.
+
+**The Fix:**
+- **Consider if the index is necessary.** If updates always change a certain indexed column but queries rarely use that column, drop the index.
+- **Use a partial index** if only a subset of rows need it (e.g., `WHERE status = 'active'`).
+- **Defer the column update** to a separate, less-frequent operation if your business logic allows.
+
+### 2. Fillfactor Is Still Too High (or You Skipped the Rewrite)
+
+Lower fillfactor *only helps new inserts and page splits*. If you set `fillfactor=80` but never rewrote the table, the old pages are still packed at 100%.
+
+**The Fix:**
+- Run the rewrite operation (`VACUUM (FULL)`, `CLUSTER`, or `pg_repack`) *after* setting fillfactor.
+- Choose the least disruptive approach for your workload:
+  - **`VACUUM (FULL)`**: Simplest, but locks the table (use during maintenance windows).
+  - **`CLUSTER`**: Locks but also optimizes physical order on disk (good if you have a natural sort key).
+  - **`pg_repack`**: Non-blocking external tool (requires installation, but safest for uptime).
+
+### 3. Vacuum Isn't Keeping Up
+
+If dead tuples accumulate faster than `VACUUM` can reclaim them, page fragmentation gets worse, and HOT updates *still* can't find free space.
+
+**Diagnosis:**
+```sql
+SELECT
+  schemaname,
+  tablename,
+  n_dead_tup,
+  n_live_tup,
+  ROUND(100.0 * n_dead_tup / NULLIF(n_live_tup + n_dead_tup, 0), 2) AS dead_ratio
+FROM pg_stat_user_tables
+WHERE n_live_tup > 10000
+ORDER BY dead_ratio DESC;
+```
+
+If `dead_ratio` is above ~10% on update-heavy tables, autovacuum is likely falling behind.
+
+**The Fix:**
+- Tune autovacuum parameters for that table:
+  ```sql
+  ALTER TABLE mytable SET (
+    autovacuum_vacuum_scale_factor = 0.01,  -- vacuum at 1% dead tuples
+    autovacuum_analyze_scale_factor = 0.005 -- analyze at 0.5%
+  );
+  ```
+- Consider manual `VACUUM` runs on a schedule during off-peak hours.
+- Monitor `autovacuum_workers` and ensure they're not resource-starved.
+
+### 4. Row Width Is Expanding (LOB Columns, JSON, Text)
+
+Large columns can make it impossible to fit an updated row on the same page, even with lower fillfactor.
+
+**Diagnosis:**
+```sql
+SELECT
+  tablename,
+  pg_size_pretty(pg_total_relation_size(schemaname||'.'||tablename)) AS total_size,
+  pg_size_pretty(pg_total_relation_size(schemaname||'.'||tablename) / (n_live_tup + 1)) AS avg_row_size
+FROM pg_stat_user_tables
+WHERE schemaname = 'public'
+  AND n_live_tup > 0
+ORDER BY avg_row_size DESC;
+```
+
+**The Fix:**
+- **Extract large columns** to a separate table (consider a JSONB column in a "details" table instead of inline).
+- **Compress data** if you're storing serialized text (JSONB compression, pgcrypto, bytea with compression).
+- **Use TOAST settings** to force large values out-of-line:
+  ```sql
+  ALTER TABLE mytable ALTER COLUMN large_col SET STORAGE EXTERNAL;
+  ```
+
+## Advanced Monitoring: Setting Up Continuous Tracking
+
+Once you've tuned a table, don't set it and forget it.
+
+### Create a Baseline View
+
+Create a view that captures your "optimized" tables and their target HOT ratios:
+
+```sql
+CREATE VIEW hot_optimization_baseline AS
+SELECT
+  schemaname,
+  tablename,
+  current_setting('fillfactor'::text)::int AS fillfactor_setting,
+  75 AS target_hot_ratio,  -- Adjust based on your SLA
+  n_tup_upd,
+  n_tup_hot_upd,
+  ROUND(100.0 * n_tup_hot_upd / NULLIF(n_tup_upd, 0), 2) AS current_hot_ratio,
+  CASE
+    WHEN ROUND(100.0 * n_tup_hot_upd / NULLIF(n_tup_upd, 0), 2) >= 75 THEN 'GOOD'
+    WHEN ROUND(100.0 * n_tup_hot_upd / NULLIF(n_tup_upd, 0), 2) >= 50 THEN 'FAIR'
+    ELSE 'NEEDS ATTENTION'
+  END AS status
+FROM pg_stat_user_tables
+WHERE schemaname = 'public'
+  AND tablename IN (
+    'payments', 'orders', 'inventory'  -- Your optimized tables
+  );
+```
+
+### Alert on Regression
+
+Query this baseline periodically (daily or weekly) and alert if `status` drops below your target:
+
+```bash
+psql -d your_db -Xq -c "
+  SELECT tablename, current_hot_ratio, status
+  FROM hot_optimization_baseline
+  WHERE current_hot_ratio < 75 AND n_tup_upd > 0;
+" | mail -s "HOT Optimization Alert" dba-team@company.com
+```
+
+## Real-World Case Study: The Payments Table
+
+Let's walk through a complete optimization cycle:
+
+**Initial State:**
+- `payments` table: 50M rows, `fillfactor=100`, ~500k updates/day
+- HOT ratio: 12%
+- Index on `(customer_id, created_at)`
+- Index on `(status, amount)`
+
+**Analysis:**
+- Ran pgtools, found HOT recommendations
+- Checked for indexed column updates: `UPDATE payments SET status = ...` happens frequently
+- Checked dead tuples: 8% dead ratio—autovacuum was keeping up
+
+**Strategy:**
+- Status is indexed, so we can't make it HOT in all cases
+- But we *can* improve fillfactor and let autovacuum be more aggressive
+- Set `fillfactor = 75` (more conservative than default 100)
+- Ran `pg_repack` on Sunday evening (non-blocking)
+- Tuned autovacuum for that table
+
+**Result (after 1 week):**
+- HOT ratio improved from 12% to 43%
+- Index size growth slowed by ~30%
+- Update latency dropped slightly
+- Not perfect (still updating `status`), but significant improvement
+
+## When *Not* to Optimize for HOT
+
+Not every table benefits from HOT tuning. Save your effort for:
+
+- **Update-heavy tables** (>10k updates/day)
+- **Tables where most updates don't touch indexed columns**
+- **Tables where index bloat is a known pain point**
+
+Skip HOT optimization for:
+- Tables that are append-only or rarely updated
+- OLAP-style tables (batch inserts, rare updates)
+- Temporary or staging tables
+- Situations where you're already using partial indexes or partitioning for other reasons
+
+## Next Steps
+
+1. **Run pgtools** on your workloads to identify candidates
+2. **Validate baseline metrics** before making changes
+3. **Test fillfactor changes** in staging first
+4. **Monitor continuously** after production rollout
+5. **Iterate** based on real workload patterns
+
+The investment in careful monitoring often pays dividends in reduced index bloat and more predictable performance.
+
+---
+
+**Coming up:** In Part 3, we'll dive into using pgtools for **index bloat analysis** and recovery strategies for severely bloated indexes.

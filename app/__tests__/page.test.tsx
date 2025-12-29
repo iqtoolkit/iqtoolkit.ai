@@ -6,7 +6,7 @@ describe("Home Page", () => {
 
   it("renders the compelling value proposition", () => {
     render(<Home />);
-    const tagline = screen.getByText(/Diagnose database incidents/i);
+    const tagline = screen.getByText(/prevent incidents/i);
     expect(tagline).toBeInTheDocument();
   });
 
