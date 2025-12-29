@@ -1,0 +1,40 @@
+# Cloud Build pipeline to build, push, and deploy to Cloud Run
+# Substitutions: _REGION, _REPO, _SERVICE
+
+substitutions:
+  _REGION: "us-central1"
+  _REPO: "iqtoolkit"
+  _SERVICE: "iqtoolkit-ai"
+
+steps:
+  - name: gcr.io/cloud-builders/docker
+    id: Build
+    args: ["build", "-t", "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA", "."]
+
+  - name: gcr.io/cloud-builders/docker
+    id: Push
+    args: ["push", "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA"]
+
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    id: Deploy
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - ${_SERVICE}
+      - --image
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA
+      - --region
+      - ${_REGION}
+      - --platform
+      - managed
+      - --allow-unauthenticated
+      - --port
+      - "3000"
+      - --set-secrets
+      - EMAILOCTOPUS_API_KEY=EMAILOCTOPUS_API_KEY:latest,EMAILOCTOPUS_LIST_ID=EMAILOCTOPUS_LIST_ID:latest
+
+images:
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA
+
+timeout: "1200s"

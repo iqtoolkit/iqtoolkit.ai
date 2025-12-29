@@ -166,6 +166,25 @@ Notes:
 - Blog content in `content/` is copied into the image and read at runtime.
 - Map a custom domain via Cloud Run or serve behind Cloud CDN for performance.
 
+### IaC + CI/CD (SRE best practices)
+
+- **Infra (OpenTofu/Terraform):** See [infra/](infra) to provision the Artifact Registry and Secret Manager secrets.
+- **Pipeline (Cloud Build):** Use [cloudbuild.yaml](cloudbuild.yaml) with a GitHub trigger to build, push, and deploy.
+
+Create a Cloud Build trigger (one-time):
+
+```bash
+gcloud builds triggers create github \
+	--name iqtoolkit-ai-deploy \
+	--repo-name iqtoolkit.ai \
+	--repo-owner iqtoolkit \
+	--branch-pattern ^main$ \
+	--build-config cloudbuild.yaml \
+	--substitutions _REGION=us-central1,_REPO=iqtoolkit,_SERVICE=iqtoolkit-ai
+```
+
+Alternative: GitHub Actions with Workload Identity Federation (no service account keys). If you prefer Actions, I can add a workflow wiring up WIF.
+
 ### Manual Deployment
 
 1. Build the project:
