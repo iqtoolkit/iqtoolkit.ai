@@ -80,6 +80,7 @@ opentofu output deployer_service_account_email
 ```
 
 Add the following GitHub repository secrets:
+
 - `GCP_PROJECT_ID`: your project ID
 - `GCP_WIF_PROVIDER`: value from `wif_provider_resource`
 - `GCP_SERVICE_ACCOUNT`: value from `deployer_service_account_email`
