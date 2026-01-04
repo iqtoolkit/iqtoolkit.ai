@@ -186,7 +186,8 @@ export default function Home() {
           <div className="mx-auto mb-20 max-w-3xl rounded-2xl border border-[#1f2b3f] bg-[#0b1425] p-6 text-left shadow-[0_0_80px_rgba(20,71,51,0.25)]">
             <p className="text-left text-lg font-medium text-[#e4ebff]">
               🔒 <strong>Self-Hosted & Privacy-First</strong> — Deploy via Docker or Kubernetes with
-              Ollama for offline AI or OpenAI for cloud analysis. Your query data never leaves your
+              Ollama for offline AI or choose from OpenAI, Anthropic Claude, Google Gemini, AWS
+              Bedrock, or Azure OpenAI for cloud analysis. Your query data never leaves your
               perimeter. No vendor lock-in. Ever.
             </p>
           </div>
