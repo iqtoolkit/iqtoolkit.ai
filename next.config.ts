@@ -4,9 +4,6 @@ const nextConfig: NextConfig = {
   // Enable React strict mode for better development experience
   reactStrictMode: true,
 
-  // Optimize server runtime for Docker/Cloud Run
-  output: "standalone",
-
   // Configure MDX support
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 
