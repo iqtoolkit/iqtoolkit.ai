@@ -79,17 +79,11 @@ export default function RoadmapPage() {
           </div>
           <ul className="mt-4 space-y-2 text-[#c0c9e5]">
             <li>
-              v0.2.4 — Governance & version sync; contributor workflow simplified; artifacts
-              aligned.
+              v0.2.6 — Database-direct EXPLAIN analysis, config integration, contextual AI
+              recommendations.
             </li>
-            <li>
-              v0.2.3 — Multi-cloud AI support (Gemini, Bedrock, Claude, Azure OpenAI, OpenAI) with
-              6-provider client.
-            </li>
-            <li>
-              v0.2.2 — Ollama-first local AI support with privacy-first defaults and flexible
-              provider system.
-            </li>
+            <li>v0.2.5 — Documentation and roadmap clarification; repo version sync.</li>
+            <li>v0.2.4 — Governance and contributor workflow simplification.</li>
           </ul>
         </section>
 
@@ -97,26 +91,23 @@ export default function RoadmapPage() {
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold text-white">Now</h2>
             <span className="rounded-full bg-[#123f2a] px-3 py-1 text-xs font-semibold text-[#6dffbd]">
-              v0.2.4 — Stable
+              v0.2.6 — Stable
             </span>
           </div>
           <ul className="mt-4 space-y-2 text-[#c0c9e5]">
+            <li>Database-direct EXPLAIN against live PostgreSQL (no log files required).</li>
             <li>
-              Governance and version sync: contributor workflow simplified; artifacts aligned to
-              0.2.4.
+              IQToolkit config integration with environment variable expansion for database
+              connections.
             </li>
             <li>
-              AI providers: 6 supported (Ollama default, plus Gemini, Bedrock, Claude, Azure OpenAI,
-              OpenAI) with seamless switching.
+              AI providers: 6 supported (Ollama default plus OpenAI, Gemini, Bedrock, Claude, Azure
+              OpenAI) with contextual recommendations.
             </li>
-            <li>
-              Analyzers: PostgreSQL slow query + EXPLAIN components; MongoDB profiler-based slow
-              query analyzer.
-            </li>
+            <li>CLI: `--db-name`, `--sql`, and `--query-file` flags for on-demand analysis.</li>
             <li>Reports: JSON, Markdown, and HTML (interactive MongoDB dashboards included).</li>
             <li>
-              Deploy: Docker/Compose with privacy-first defaults via Ollama; cloud providers
-              optional.
+              Deployment: Docker/Compose with privacy-first defaults via Ollama; cloud optional.
             </li>
           </ul>
         </section>
@@ -125,15 +116,14 @@ export default function RoadmapPage() {
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold text-white">Next</h2>
             <span className="rounded-full bg-[#3a250c] px-3 py-1 text-xs font-semibold text-[#f5c075]">
-              v0.3.0 — Q2 2026
+              v0.2.7 — Jan-Feb 2026
             </span>
           </div>
           <ul className="mt-4 space-y-2 text-[#c0c9e5]">
-            <li>
-              Platform modularity: Analyzer service, IQAI service, hub gateway, shared contracts.
-            </li>
-            <li>Orchestration: hub calls Analyzer + IQAI with clear interfaces.</li>
-            <li>Deployment hardening: Helm charts and CI/CD pipelines (dev → staging → prod).</li>
+            <li>Stabilization sprint with test coverage expansion to 80%+.</li>
+            <li>PostgreSQL EXPLAIN parser hardening for parallel and large plans.</li>
+            <li>Documentation polish, provider guides, and PyPI publication.</li>
+            <li>Prep for modular architecture and service split.</li>
           </ul>
         </section>
 
@@ -141,19 +131,13 @@ export default function RoadmapPage() {
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold text-white">Later</h2>
             <span className="rounded-full bg-[#11233a] px-3 py-1 text-xs font-semibold text-[#8fb4ff]">
-              v0.4.0 — Q3 2026
+              v0.3.0 — Feb-Mar 2026
             </span>
           </div>
           <ul className="mt-4 space-y-2 text-[#c0c9e5]">
-            <li>
-              Traditional SQL expansion: MySQL slow query log support and SQL Server Extended
-              Events.
-            </li>
-            <li>Database-agnostic analysis engine with cross-database comparisons.</li>
-            <li>
-              Unified configuration for multiple database types and database-specific
-              recommendations.
-            </li>
+            <li>Modular architecture: Analyzer service, IQAI service, shared contracts, hub.</li>
+            <li>Orchestration between Analyzer + IQAI with clear interfaces.</li>
+            <li>Deployment hardening with Helm/CI/CD from dev → staging → prod.</li>
           </ul>
         </section>
 

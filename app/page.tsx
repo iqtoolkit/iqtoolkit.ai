@@ -179,7 +179,7 @@ export default function Home() {
             >
               Start monitoring with AI
             </a>
-            <span className="text-sm text-[#8ea2c6]">v0.2.2 — Stable</span>
+            <span className="text-sm text-[#8ea2c6]">v0.2.6 — Stable</span>
           </div>
 
           {/* Key Differentiator */}
@@ -213,35 +213,35 @@ export default function Home() {
                 title="Multi-Database Support"
                 description="Analyze PostgreSQL and MongoDB today; MySQL and SQL Server next."
                 icon="🗄️"
-                badge="v0.2.2"
+                badge="v0.2.6"
                 badgeTone="now"
               />
               <FeatureCard
                 title="AI-Powered Analysis"
-                description="Automatically surface slow queries, spot missing indexes, and summarize EXPLAIN plans."
+                description="Database-direct EXPLAIN, contextual AI recommendations, and 6 AI providers."
                 icon="🤖"
-                badge="v0.2.2"
+                badge="v0.2.6"
                 badgeTone="now"
               />
               <FeatureCard
                 title="Self-Hosted & Open Source"
                 description="Deploy via Docker or Kubernetes; keep data private with local LLMs (Ollama) or use OpenAI in the cloud."
                 icon="🔒"
-                badge="v0.2.2"
+                badge="v0.2.6"
                 badgeTone="now"
               />
               <FeatureCard
                 title="PostgreSQL Analyzer"
-                description="Turn EXPLAIN into action: index suggestions, plan insights, and anomaly detection."
+                description="Run EXPLAIN directly against databases with contextual AI and index guidance."
                 icon="🐘"
-                badge="v0.2.2"
+                badge="v0.2.6"
                 badgeTone="now"
               />
               <FeatureCard
                 title="MongoDB Analyzer"
                 description="Find slow ops, highlight inefficient scans, and guide index strategies."
                 icon="🍃"
-                badge="v0.2.2"
+                badge="v0.2.6"
                 badgeTone="now"
               />
               <FeatureCard
@@ -255,7 +255,7 @@ export default function Home() {
                 title="Rich Reports"
                 description="Export results to Markdown, JSON, and HTML (including MongoDB dashboards) to share or archive analyses."
                 icon="📈"
-                badge="v0.2.2"
+                badge="v0.2.6"
                 badgeTone="now"
               />
             </div>

@@ -363,7 +363,7 @@ export default function AboutPage() {
               </li>
               <li>
                 • Complete rebranding from &apos;slow-query-doctor&apos; to &apos;iqtoolkit
-                Analyzer&apos; with v0.2.2a1
+                Analyzer&apos; through the v0.2.6 database-direct EXPLAIN release
               </li>
             </ul>
             <a
