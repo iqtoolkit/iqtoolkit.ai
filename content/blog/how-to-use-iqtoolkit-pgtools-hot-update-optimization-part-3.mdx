@@ -10,7 +10,7 @@ tags: ["postgresql", "pgtools", "performance", "dba", "maintenance", "bloat"]
 
 In [Part 1](./how-to-use-iqtoolkit-pgtools-hot-update-optimization.mdx) and [Part 2](./how-to-use-iqtoolkit-pgtools-hot-update-optimization-part-2.mdx), we mastered HOT updates—optimizing the table heap to prevent index churn.
 
-But what do you do if your indexes are *already* bloated?
+But what do you do if your indexes are _already_ bloated?
 
 In this post you'll learn:
 
@@ -26,13 +26,14 @@ Just like table heaps, PostgreSQL B-Tree indexes accumulate "dead" space. When a
 While Autovacuum eventually marks these spots as reusable, it cannot always shrink the physical file size. If your index grows to 1GB due to a massive delete operation, it might stay 1GB forever, even if it only holds 100MB of live data.
 
 **Why it matters:**
+
 - **RAM Waste:** Bloated indexes waste space in `shared_buffers` and the OS page cache.
 - **I/O Latency:** Scans read more pages than necessary.
 - **Backup Size:** Your physical backups take longer and cost more.
 
 ## Step 1: Detecting Bloat with pgtools
 
-The `iqtoolkit/pgtools` repository provides a dedicated script for this exact problem. Unlike standard system views, this script calculates the *estimated* bloat by comparing the actual relation size against what the data *should* ideally occupy.
+The `iqtoolkit/pgtools` repository provides a dedicated script for this exact problem. Unlike standard system views, this script calculates the _estimated_ bloat by comparing the actual relation size against what the data _should_ ideally occupy.
 
 To run the analysis:
 
@@ -50,6 +51,7 @@ The `bloating.sql` script provides a detailed breakdown of dead tuples and waste
 
 **Rule of Thumb:**
 Don't panic over 10-20% bloat—that's healthy "breathing room" for future inserts. You should take action when:
+
 1. **Bloat ratio > 50%**
 2. **Wasted size > 100MB** (or whatever threshold hurts your specific storage/RAM budget)
 
@@ -66,7 +68,7 @@ For production systems that cannot tolerate downtime, this is the gold standard.
 REINDEX INDEX CONCURRENTLY public.idx_payments_status;
 ```
 
-*Note: This consumes extra I/O and disk space during the operation.*
+_Note: This consumes extra I/O and disk space during the operation._
 
 ### Strategy B: `REINDEX INDEX` (Blocking)
 
@@ -79,7 +81,7 @@ REINDEX INDEX public.idx_payments_status;
 
 ### Strategy C: `pg_squeeze` or `pg_repack` (External Tools)
 
-If you need to rebuild both the table (to fix fillfactor from Part 1) *and* the indexes simultaneously without locking, `pg_squeeze` is the recommended approach. If `pg_squeeze` is not available in your environment, `pg_repack` is the industry standard alternative. Both are external extensions not covered by the core `pgtools` SQL scripts.
+If you need to rebuild both the table (to fix fillfactor from Part 1) _and_ the indexes simultaneously without locking, `pg_squeeze` is the recommended approach. If `pg_squeeze` is not available in your environment, `pg_repack` is the industry standard alternative. Both are external extensions not covered by the core `pgtools` SQL scripts.
 
 ## Step 3: Automating Maintenance
 
@@ -88,8 +90,9 @@ If you find yourself manually reindexing frequently, it is time to automate. The
 This script handles comprehensive maintenance operations including `VACUUM`, `ANALYZE`, and `REINDEX`.
 
 ### Features of `auto_maintenance.sh`:
+
 - **Intelligent Thresholds:** It doesn't just reindex everything; it targets objects based on configurable parameters.
-- **Safety Controls:** Includes parallel processing limits and a "dry-run" mode so you can see what it *would* do before it touches your data.
+- **Safety Controls:** Includes parallel processing limits and a "dry-run" mode so you can see what it _would_ do before it touches your data.
 - **Large Table Detection:** Helps manage resources so a massive index rebuild doesn't tank your CPU.
 
 ### Example Usage
@@ -107,7 +110,7 @@ To schedule it (e.g., via cron):
 ./maintenance/auto_maintenance.sh --operation reindex --database mydb
 ```
 
-*Tip: Combine this with `maintenance_scheduler.sql` to analyze which maintenance windows usually have the lowest load.*
+_Tip: Combine this with `maintenance_scheduler.sql` to analyze which maintenance windows usually have the lowest load._
 
 ## Summary of the Series
 
