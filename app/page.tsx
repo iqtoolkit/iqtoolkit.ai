@@ -410,7 +410,8 @@ export default function Home() {
               </p>
               <p className="mb-8 text-lg text-[#c0c9e5]">
                 From deploying Transparent Data Encryption at enterprise scale to building
-                AI-powered diagnostic tools and performance analytics, Giovanni brings deep expertise in
+                AI-powered diagnostic tools and performance analytics, Giovanni brings deep
+                expertise in
                 <strong>
                   database optimization, cloud architecture (AWS/Azure), and AI/ML integration
                 </strong>
