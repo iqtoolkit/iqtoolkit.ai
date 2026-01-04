@@ -148,7 +148,7 @@ export default function RoadmapPage() {
               v1.0.0 (Q4 2026): web UI, API access, auth, scheduling, and enterprise integrations.
             </li>
             <li>ML/self-learning intelligence for trend detection and regression alerts.</li>
-            <li>Observability and collaboration: monitoring hooks, Slack/Teams notifications.</li>
+            <li>Collaboration and integrations: webhook support, Slack/Teams notifications.</li>
           </ul>
           <p className="mt-4 text-sm text-[#8ea2c6]">
             For the most accurate details and changes, follow the canonical roadmap in{" "}

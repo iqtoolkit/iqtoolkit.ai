@@ -177,7 +177,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-full border border-transparent bg-[#3fb366] px-6 py-3 text-base font-semibold text-[#030712] transition-all hover:scale-105 hover:bg-[#6dffbd]"
             >
-              Start monitoring with AI
+              Start diagnosing with AI
             </a>
             <span className="text-sm text-[#8ea2c6]">v0.2.6 — Stable</span>
           </div>
@@ -409,8 +409,8 @@ export default function Home() {
                 lock-in or sending sensitive data to third-party clouds.
               </p>
               <p className="mb-8 text-lg text-[#c0c9e5]">
-                From deploying Transparent Data Encryption at enterprise scale to architecting
-                AI-powered monitoring dashboards with Datadog, Giovanni brings deep expertise in
+                From deploying Transparent Data Encryption at enterprise scale to building
+                AI-powered diagnostic tools and performance analytics, Giovanni brings deep expertise in
                 <strong>
                   database optimization, cloud architecture (AWS/Azure), and AI/ML integration
                 </strong>
