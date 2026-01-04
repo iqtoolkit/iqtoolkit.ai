@@ -1,0 +1,128 @@
+---
+title: "How to Use iqtoolkit/pgtools: Index Bloat Analysis & Recovery (Part 3)"
+date: "2026-01-10"
+excerpt: "Complete your optimization journey by detecting hidden index bloat with pgtools, understanding wasted space, and implementing safe recovery strategies."
+author: "Giovanni Martinez"
+tags: ["postgresql", "pgtools", "performance", "dba", "maintenance", "bloat"]
+---
+
+# How to Use iqtoolkit/pgtools: Index Bloat Analysis & Recovery (Part 3)
+
+In [Part 1](./how-to-use-iqtoolkit-pgtools-hot-update-optimization.mdx) and [Part 2](./how-to-use-iqtoolkit-pgtools-hot-update-optimization-part-2.mdx), we mastered HOT updates—optimizing the table heap to prevent index churn.
+
+But what do you do if your indexes are *already* bloated?
+
+In this post you'll learn:
+
+- How to use `pgtools` to measure index bloat accurately
+- How to interpret "wasted space" metrics
+- The difference between standard `REINDEX` and `CONCURRENTLY`
+- How to automate recovery using the pgtools maintenance suite
+
+## What is Index Bloat?
+
+Just like table heaps, PostgreSQL B-Tree indexes accumulate "dead" space. When a row is updated or deleted, the old index entry isn't immediately removed; it's marked as dead.
+
+While Autovacuum eventually marks these spots as reusable, it cannot always shrink the physical file size. If your index grows to 1GB due to a massive delete operation, it might stay 1GB forever, even if it only holds 100MB of live data.
+
+**Why it matters:**
+- **RAM Waste:** Bloated indexes waste space in `shared_buffers` and the OS page cache.
+- **I/O Latency:** Scans read more pages than necessary.
+- **Backup Size:** Your physical backups take longer and cost more.
+
+## Step 1: Detecting Bloat with pgtools
+
+The `iqtoolkit/pgtools` repository provides a dedicated script for this exact problem. Unlike standard system views, this script calculates the *estimated* bloat by comparing the actual relation size against what the data *should* ideally occupy.
+
+To run the analysis:
+
+```bash
+psql -U postgres -d mydb -f monitoring/bloating.sql
+```
+
+### Understanding the Output
+
+The `bloating.sql` script provides a detailed breakdown of dead tuples and wasted space. While the exact columns may vary by version, you are typically looking for:
+
+- **`bloat_ratio`**: The percentage of the index that is "empty" space.
+- **`wasted_size`**: The potential disk space you could reclaim.
+- **`real_size`**: The current physical size on disk.
+
+**Rule of Thumb:**
+Don't panic over 10-20% bloat—that's healthy "breathing room" for future inserts. You should take action when:
+1. **Bloat ratio > 50%**
+2. **Wasted size > 100MB** (or whatever threshold hurts your specific storage/RAM budget)
+
+## Step 2: Recovery Strategies
+
+Once you have identified the offenders using `monitoring/bloating.sql`, you have three primary ways to fix them.
+
+### Strategy A: `REINDEX CONCURRENTLY` (Recommended)
+
+For production systems that cannot tolerate downtime, this is the gold standard. It builds a new index alongside the old one and swaps them out.
+
+```sql
+-- Safe for live traffic
+REINDEX INDEX CONCURRENTLY public.idx_payments_status;
+```
+
+*Note: This consumes extra I/O and disk space during the operation.*
+
+### Strategy B: `REINDEX INDEX` (Blocking)
+
+If you have a maintenance window, a standard reindex is faster but locks the table against writes.
+
+```sql
+-- Blocks writes! Use only during maintenance windows.
+REINDEX INDEX public.idx_payments_status;
+```
+
+### Strategy C: `pg_squeeze` or `pg_repack` (External Tools)
+
+If you need to rebuild both the table (to fix fillfactor from Part 1) *and* the indexes simultaneously without locking, `pg_squeeze` is the recommended approach. If `pg_squeeze` is not available in your environment, `pg_repack` is the industry standard alternative. Both are external extensions not covered by the core `pgtools` SQL scripts.
+
+## Step 3: Automating Maintenance
+
+If you find yourself manually reindexing frequently, it is time to automate. The `iqtoolkit/pgtools` library includes a shell script designed for this purpose: **`auto_maintenance.sh`**.
+
+This script handles comprehensive maintenance operations including `VACUUM`, `ANALYZE`, and `REINDEX`.
+
+### Features of `auto_maintenance.sh`:
+- **Intelligent Thresholds:** It doesn't just reindex everything; it targets objects based on configurable parameters.
+- **Safety Controls:** Includes parallel processing limits and a "dry-run" mode so you can see what it *would* do before it touches your data.
+- **Large Table Detection:** Helps manage resources so a massive index rebuild doesn't tank your CPU.
+
+### Example Usage
+
+To test the automation in dry-run mode (safe):
+
+```bash
+./maintenance/auto_maintenance.sh --dry-run --database mydb
+```
+
+To schedule it (e.g., via cron):
+
+```bash
+# Run reindexing logic on 'mydb'
+./maintenance/auto_maintenance.sh --operation reindex --database mydb
+```
+
+*Tip: Combine this with `maintenance_scheduler.sql` to analyze which maintenance windows usually have the lowest load.*
+
+## Summary of the Series
+
+You have now completed the full optimization loop using `iqtoolkit/pgtools`:
+
+1.  **Prevention (Part 1):** You used `hot_update_optimization_checklist.sql` to adjust fillfactors, enabling HOT updates and preventing future index bloat.
+2.  **Validation (Part 2):** You verified the wins using `pg_stat_user_tables` and established a monitoring baseline.
+3.  **Cure (Part 3):** You used `monitoring/bloating.sql` to find existing damage and `auto_maintenance.sh` to repair it.
+
+## Where to Go From Here?
+
+Performance tuning is a cycle, not a destination. To keep your database healthy:
+
+- **Check Locks:** If you encounter issues during reindexing, use `monitoring/locks.sql` or `monitoring/postgres_locking_blocking.sql` to investigate.
+- **Monitor Resources:** Use `performance/resource_monitoring.sql` to ensure your maintenance tasks aren't starving your application.
+- **Contribute:** If you build a custom script or improve an existing one, consider contributing back to the repository.
+
+Happy tuning!
